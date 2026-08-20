@@ -29,7 +29,7 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
 - 相对 target Ledoit-Wolf 和 source covariance，记录级配对 bootstrap 的检出率差
   95% CI 为正；相对 target sample covariance 和算术实体均值，CI 仍跨 0；
 - 故障异常分数不随标称严重度稳定单调，原严重度排序假设未成立。
-- 在提交 `fddf2f7` 冻结后，独立双三相 PMSM 的健康阶段得到 `1/32` 误报；点 FAR
+- 在提交 `fddf2f7` 冻结后，独立 30.16 kW 双三相 PMSM 的健康阶段得到 `1/32` 误报；点 FAR
   为 `0.03125`，但描述性 Wilson 上界为 `0.1574`，超过预设外部 H1 的 `0.12`，
   因此该闸门按失败报告，方法和阈值不作事后调整。
 - 48 条外部故障记录在协议与阈值冻结后一次性揭盲。原方法的 fault-block detection
@@ -78,6 +78,8 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
 [`submission/jeet/`](submission/jeet/)：匿名 Word 正文、18 页审稿 PDF、独立标题页
 模板、投稿信模板、8 页补充材料、匿名复现代码包以及 Fig1--Fig11 独立源文件均已就位。
 最终视觉与结构复核状态记录在 [`submission/jeet/QA_Report.md`](submission/jeet/QA_Report.md)；
+三类审稿人视角的拒稿风险、证据位置和处理状态记录在
+[`docs/mock_peer_review_2026-08-21.md`](docs/mock_peer_review_2026-08-21.md)；
 补齐作者信息后仍须由全体作者在最终提交所用 Word 版本中逐页复核并批准全部声明。
 截至 2026-08-21，Springer 与 KIEE 均指向同一 Editorial Manager 地址，但落地页仍显示
 “Site under development”并明确禁止正式投稿；若提交时该警告仍在，须先联系

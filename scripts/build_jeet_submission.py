@@ -1091,7 +1091,7 @@ def build_cover_letter(output: Path) -> None:
         "an audit-first cross-dataset evaluation in which a complete healthy-only pipeline, "
         "threshold, and eleven-method comparison were frozen before a one-time external fault "
         "reveal. Near-ceiling same-family performance reversed on an independently produced "
-        "dual-three-phase PMSM dataset, exposing operating-trajectory alarm drift and "
+        "30.16-kW dual-three-phase PMSM dataset, exposing operating-trajectory alarm drift and "
         "conditional negative transfer that conventional random-window evaluation can hide.",
     )
     add_bullet(doc, "Motor- and file-level separation prevents adjacent-window leakage.")
@@ -1300,6 +1300,10 @@ manuscript file.
 metadata that cannot be inferred safely. It is also an internal file and must not be
 uploaded.
 
+`Portal_Clarification_Email_Draft.md` is a ready-to-personalize message for the JEET
+office if the linked Editorial Manager site still displays its implementation warning.
+It is an internal draft, not an upload file, and has not been sent.
+
 ## Remaining human-only gates
 
 - Confirm author names, order, affiliations, ORCIDs, corresponding author, CRediT roles,
@@ -1374,6 +1378,43 @@ submission route before uploading any file.
 """
     (OUT_DIR / "README.md").write_text(readme, encoding="utf-8")
     (OUT_DIR / "Submission_Checklist.md").write_text(checklist, encoding="utf-8")
+    portal_email = f"""# JEET submission-route clarification e-mail draft
+
+Status: **not sent**. Personalize the bracketed fields before sending.
+
+To: `jeet@kiee.or.kr`
+
+Subject: Request for current submission route for a JEET Original Article
+
+Dear JEET Editorial Office,
+
+I am preparing an Original Article entitled “{TITLE}” for submission to the
+*Journal of Electrical Engineering & Technology*.
+
+On {today_iso()}, both the Springer and KIEE journal pages directed authors to
+`https://www.editorialmanager.com/eete`, but that landing page displayed “Site under
+development. Do not use for live manuscript submission.” Before uploading any files,
+could you please confirm:
+
+1. the currently active submission URL or procedure;
+2. whether the anonymous manuscript plus separate title page remains the correct
+   double-blind file arrangement; and
+3. the current page-charge schedule and whether page charges also apply when an author
+   selects the optional open-access route?
+
+No manuscript is attached to this routing inquiry.
+
+Sincerely,
+
+[CORRESPONDING AUTHOR NAME]
+
+[DEPARTMENT AND INSTITUTION]
+
+[INSTITUTIONAL E-MAIL]
+"""
+    (OUT_DIR / "Portal_Clarification_Email_Draft.md").write_text(
+        portal_email, encoding="utf-8"
+    )
     author_metadata = """title: >-
   When Healthy-Only Transfer Fails in PMSM Stator-Fault Detection:
   A Leakage-Resistant Cross-Dataset Evaluation

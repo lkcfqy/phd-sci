@@ -64,6 +64,15 @@ small number of continuous records.
    identifies the headline experiment as the `primary two-dataset analysis`; the
    separately and prospectively frozen transient compatibility audit remains explicitly
    non-confirmatory.
+5. **Medium — the external machine description was too sparse for an electrical-machines
+   review.** The Zenodo record identifies the IECON 2022 machine paper as its detailed
+   source. Table I of that paper reports 30.16 kW nominal power, a 200 V DC link, 107 A
+   maximum continuous current, ten pole pairs, and 8000 rpm nominal speed. These
+   source-backed parameters are now in Section 5.2, while analyzed speed is still taken
+   from the released measurements rather than the filename.
+6. **Low — window duration could be mistaken for a real-time implementation claim.** The
+   Discussion now states that all analyses were offline and that feature-extraction
+   latency, memory footprint, and embedded numerical stability were not benchmarked.
 
 ## Calculation spot-checks
 
@@ -119,6 +128,8 @@ Final PDF layout review is recorded separately in `submission/jeet/QA_Report.md`
   load, sampling rate, controller, or sensor chain individually.
 - Neither Wilson bounds nor conformal p-values are population-level safety guarantees
   under the observed temporal/session dependence.
+- The 0.2 s feature window and 3 s alarm block do not establish real-time or embedded
+  feasibility; no latency or resource benchmark was performed.
 - The secondary transient analysis remains a failed frozen compatibility test plus a
   post-reveal single-motor sensitivity, not a third confirmation dataset.
 

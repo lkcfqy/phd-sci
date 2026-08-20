@@ -26,8 +26,8 @@ same-manufacturer 1.0, 1.5, and 3.0 kW PMSMs at fixed speed and load. The motor-
 Log-Euclidean detector produced 0/42
 healthy alarms and 95.71% fault-block detection. A motor-balanced Isolation
 Forest produced 0/42 and 96.07%, without a resolved difference. We froze the
-pipeline and health threshold before revealing 48 fault records from an
-independent dual-three-phase PMSM accelerated at eight loads. The frozen detector
+pipeline and health threshold before revealing 48 fault records from a
+30.16-kW dual-three-phase PMSM accelerated across eight loads. The frozen detector
 failed its empirical health gate (1/32 alarms; descriptive 95% Wilson upper confidence
 bound 15.74% versus a 12% limit), detected 25.00% of fault blocks (95% turn-stratified
 record-bootstrap interval 21.09--29.43%), and attained an area under the
@@ -337,12 +337,14 @@ retained irrespective of target-fault results.
 
 The external target is a public dual-three-phase PMSM with winding taps, two
 measured three-phase current subsystems, and externally emulated interturn short
-circuits [@kozovsky2024dualthreephasepmsm; @kozovsky2022dualthreephasemodel]. Its eight
-healthy records are acceleration sweeps at 0--35 Nm, not steady 5000 rpm records. A
+circuits [@kozovsky2024dualthreephasepmsm; @kozovsky2022dualthreephasemodel]. The
+cited machine description reports a custom 30.16 kW design with a 200 V DC link,
+107 A maximum continuous current, ten pole pairs, and 8000 rpm nominal speed. Its eight
+healthy records are acceleration sweeps at 0--35 N m, not steady 5000 rpm records. A
 health-only audit fixed the common analysis interval to [12, 36) s before any external
-fault file was downloaded. The 0 Nm record supplies four 3 s target-adaptation blocks;
-the independent 10, 20, and 30 Nm records supply 24 system-calibration blocks; and the
-5, 15, 25, and 35 Nm records supply 32 held-out healthy blocks.
+fault file was downloaded. The 0 N m record supplies four 3 s target-adaptation blocks;
+the independent 10, 20, and 30 N m records supply 24 system-calibration blocks; and the
+5, 15, 25, and 35 N m records supply 32 held-out healthy blocks.
 
 Each three-phase subsystem receives its own target robust alignment and target
 covariance. The three KAIST source motors and that target subsystem contribute one
@@ -715,6 +717,10 @@ a coordinate system, but a nominal 5% conformal p-value needs at least 19 calibr
 units. In this study those units are ordered blocks from a few continuous records, not
 independent sessions; the resulting Wilson intervals and p-values are descriptive under
 a stationarity/mixing interpretation. They are not machine-level safety guarantees.
+
+All analyses were executed offline. Feature-extraction latency, memory footprint, and
+embedded numerical stability were not benchmarked, so the 0.2 s window length and 3 s
+alarm block do not by themselves establish real-time feasibility.
 
 The secondary transient audit adds a different failure mode: a validation can fail
 before model comparison if file-time semantics or available prefault baselines do not

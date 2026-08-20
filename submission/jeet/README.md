@@ -24,6 +24,10 @@ manuscript file.
 metadata that cannot be inferred safely. It is also an internal file and must not be
 uploaded.
 
+`Portal_Clarification_Email_Draft.md` is a ready-to-personalize message for the JEET
+office if the linked Editorial Manager site still displays its implementation warning.
+It is an internal draft, not an upload file, and has not been sent.
+
 ## Remaining human-only gates
 
 - Confirm author names, order, affiliations, ORCIDs, corresponding author, CRediT roles,

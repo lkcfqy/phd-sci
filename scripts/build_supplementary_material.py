@@ -482,7 +482,7 @@ def render_s1(sources: dict[str, Any]) -> str:
             ],
             [
                 "External dual-three-phase PMSM",
-                "1",
+                "1 (custom 30.16 kW)",
                 "56 (8 healthy; 48 fault)",
                 "112 (2 subsystems per record)",
                 "10 kHz; [12, 36) s",

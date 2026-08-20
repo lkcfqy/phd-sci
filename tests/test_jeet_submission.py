@@ -106,6 +106,12 @@ def test_source_meets_jeet_abstract_keyword_and_resource_requirements() -> None:
     assert "Online Resource 1" in normalized
     assert "Online Resource 2" in normalized
     assert "## Statements and declarations" in text
+    assert "custom 30.16 kW design with a 200 V DC link" in normalized
+    assert (
+        "All analyses were executed offline. Feature-extraction latency, memory footprint, "
+        "and embedded numerical stability were not benchmarked"
+        in normalized
+    )
 
 
 def test_manuscript_defines_curated_abbreviations_before_reuse() -> None:
@@ -151,6 +157,7 @@ def test_package_contains_every_expected_submission_artifact() -> None:
         "ESM_1_Supplementary_Material.pdf",
         "ESM_2_Reproducibility_Code.zip",
         "Submission_Checklist.md",
+        "Portal_Clarification_Email_Draft.md",
         "Author_Input_Form_CN.md",
         "author_metadata_REQUIRED.yaml",
         "build_metadata.json",

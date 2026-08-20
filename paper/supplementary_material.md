@@ -32,7 +32,7 @@ physical motor; its 48 fault records are operating-condition records, not 48 mot
 | Dataset | Physical motors | Physical records | Record-subsystem streams | Sampling | Frozen analysis grain |
 | --- | --- | --- | --- | --- | --- |
 | KAIST source | 3 (1, 1.5, and 3 kW) | 45 (3 healthy; 42 fault) | not applicable | 100 kHz; leading 120 s | 600 non-overlapping 0.2 s windows and 40 3 s blocks per record |
-| External dual-three-phase PMSM | 1 | 56 (8 healthy; 48 fault) | 112 (2 subsystems per record) | 10 kHz; [12, 36) s | 120 windows and 8 blocks per record-subsystem; one system block after maxima |
+| External dual-three-phase PMSM | 1 (custom 30.16 kW) | 56 (8 healthy; 48 fault) | 112 (2 subsystems per record) | 10 kHz; [12, 36) s | 120 windows and 8 blocks per record-subsystem; one system block after maxima |
 
 The external MAT records contain two three-phase current subsystems (`SubSys1` and
 `SubSys2`). Each subsystem is scored separately. A block score is the maximum over

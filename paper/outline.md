@@ -80,7 +80,7 @@ points (95% turn-stratified record-bootstrap interval [-49.48, -40.63]).
 
 | Item | Setting |
 |---|---|
-| Motor | one dual-three-phase PMSM, independent laboratory |
+| Motor | one custom 30.16 kW dual-three-phase PMSM, independent laboratory |
 | Healthy records | eight loads: 0--35 N m in 5 N m increments |
 | Fault records | 6 turn counts × 8 loads = 48 |
 | Sampling / trajectory | 10 kHz acceleration sweeps |
@@ -98,7 +98,7 @@ points (95% turn-stratified record-bootstrap interval [-49.48, -40.63]).
 - Distinguish same-dataset discrimination from deployable target alarms.
 - Explain why target faults are unavailable but target healthy commissioning is realistic.
 - Show how motor, file, time, and operating-point leakage inflate reported performance.
-- State the six evaluation contributions; do not lead with a new matrix mean.
+- State the five evaluation contributions; do not lead with a new matrix mean.
 
 ### 2. Related work
 

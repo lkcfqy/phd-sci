@@ -19,6 +19,9 @@ This is an internal handoff record. Do not upload it as a manuscript file.
   affiliation token.
 - The separate title page and cover letter deliberately retain conspicuous
   `AUTHOR_INPUT_REQUIRED` filenames, document metadata, and bracketed fields.
+- `Portal_Clarification_Email_Draft.md` is generated as an internal, explicitly unsent
+  routing inquiry; it asks the journal to confirm the active portal, double-blind file
+  arrangement, and charge treatment without attaching the manuscript.
 - The separate title page follows the KIEE April 2025 declaration inventory: funding,
   author contributions, competing interests, ethics approval, consent to participate,
   consent for publication, data/materials/code availability, and generative-AI use are
@@ -27,10 +30,10 @@ This is an internal handoff record. Do not upload it as a manuscript file.
   `ESM_1_Supplementary_Material.pdf` has eight landscape pages. All 26 final pages were
   rendered at 180 dpi and visually inspected for clipping, overlap, broken
   figure/caption pairs, missing-glyph boxes, table overflow, and unintended blank pages.
-  In the last caption-only rebuild, manuscript pages 1--13 and 15--18 and all eight
-  supplementary pages matched the preceding render byte for byte; the changed page 14
-  was re-inspected after replacing a literal inline formula with a section cross-reference.
-  The supplement's 17 tables all fit within their page frames.
+  After the engineering-scope revision, manuscript pages 1, 5--7, and 15 and
+  supplementary page 1 were re-inspected; the other 20 pages matched the preceding
+  fully inspected render byte for byte. The supplement's 17 tables all fit within
+  their page frames.
 - All figure-wide titles, subtitles, and caption-like footer prose were removed from the
   uploaded artwork. The corresponding denominators, interval definitions, H1 limits,
   dependence warnings, and single-motor caveats are carried by synchronized manuscript
@@ -43,6 +46,12 @@ This is an internal handoff record. Do not upload it as a manuscript file.
   external AUROC, and one 0.01 percentage-point interval-rounding discrepancy.
 - A dated reference audit resolved all 34 cited records through DOI registries or the
   publisher page and found no normalized title, first-author, or available-year mismatch.
+- The external dataset's linked primary machine paper was inspected directly. Its
+  Table I supports the 30.16 kW, 200 V DC-link, 107 A continuous-current, ten-pole-pair,
+  and 8000 rpm parameters now reported in Section 5.2. The Discussion explicitly states
+  that the analyses were offline and that no latency, memory, or embedded-feasibility
+  claim was tested. A three-perspective internal red-team review records the remaining
+  scientific and editorial risks in `docs/mock_peer_review_2026-08-21.md`.
 - S9 preserves the frozen `0/21` parser-compatibility failure separately from the
   post-reveal implicit-time repair; it does not present the 200 W sensitivity as a
   third confirmatory validation dataset.
