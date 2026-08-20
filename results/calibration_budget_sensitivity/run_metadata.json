@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-08-20T13:37:13.748665+00:00",
+  "features": "C:\\lkc\\phd sci\\data\\processed\\kaist_current_features.csv.gz",
+  "scikit_learn": "1.9.0",
+  "method": "log_euclidean_entity_covariance",
+  "feature_arm": "scale_free",
+  "adaptation_seconds": [
+    3.0,
+    6.0,
+    12.0,
+    24.0
+  ],
+  "primary_calibration_seconds": 60.0,
+  "block_seconds": 3.0,
+  "alpha": 0.05,
+  "minimum_calibration_blocks": 19,
+  "log_ridge_fraction": 0.01,
+  "ridge_selection": "fixed source-only nested pseudo-target validation",
+  "block_score_quantile": 1.0,
+  "designs": [
+    "fixed_horizon",
+    "sequential"
+  ],
+  "design_descriptions": {
+    "fixed_horizon": "Nested prefixes from blocks 0-7; blocks 9-28 calibrate and 30-39 test every budget, while unused prefix blocks isolate the statistical adaptation amount.",
+    "sequential": "Calibration immediately follows adaptation plus one guard; the later healthy-test duration therefore changes by budget."
+  },
+  "target_fault_data_used_for_selection": false,
+  "interpretation": "Adaptation seconds vary target healthy scaling/covariance data; an independent 60-second healthy sequence calibrates conformal alarms."
+}

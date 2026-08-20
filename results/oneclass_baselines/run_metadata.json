@@ -1,0 +1,98 @@
+{
+  "created_utc": "2026-08-20T13:47:05.057934+00:00",
+  "features": "C:\\lkc\\phd sci\\data\\processed\\kaist_current_features.csv.gz",
+  "features_sha256": "6276bfae67169f0e70a3b1bd3c4fdbf42c08631a4d4dcfd097ef8246ef970d20",
+  "scikit_learn": "1.9.0",
+  "protocol": {
+    "feature_arm": "scale_free",
+    "window_seconds": 0.2,
+    "block_seconds": 3.0,
+    "block_score": "maximum",
+    "adaptation_blocks": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "guard_blocks": [
+      4,
+      25
+    ],
+    "calibration_blocks": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "healthy_test_blocks": [
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "alpha": 0.05
+  },
+  "hyperparameter_policy": "Fixed common defaults before this run; no target-fault labels or scores were used for model selection. Calibration replaces estimator-native contamination thresholds.",
+  "methods": {
+    "ocsvm": {
+      "kernel": "rbf",
+      "gamma": "scale",
+      "nu": 0.05
+    },
+    "isolation_forest": {
+      "n_estimators": 500,
+      "max_samples": "auto (min(256, n_train))",
+      "contamination": "auto (not used as alarm threshold)",
+      "max_features": 1.0,
+      "bootstrap": false
+    },
+    "min_cov_det": {
+      "assume_centered": true,
+      "support_fraction": "scikit-learn default",
+      "numerical_preprocessing": "Rank-revealing QR on healthy fit rows only; invariant and exact linearly redundant columns are removed before fitting with a sqrt(machine-epsilon) relative rank tolerance."
+    }
+  },
+  "source_target_balance": "Four complete healthy blocks per motor. Target uses adaptation blocks 0-3; each source contributes four evenly spaced blocks from 0-23.",
+  "primary_seed": 20260820,
+  "stochastic_sensitivity_seeds": [
+    20260820,
+    1201,
+    2402,
+    3603,
+    4804
+  ],
+  "record_bootstrap": {
+    "iterations": 10000,
+    "seed": 711,
+    "unit": "whole fault record",
+    "stratification": "motor_id",
+    "scope": "conditional on the three observed motors"
+  },
+  "inference_boundary": "The 42 healthy test blocks come from only three healthy time series and are dependent. Their pooled Wilson interval is descriptive and must not be presented as an independent-block coverage guarantee. Fault intervals resample the 42 whole fault records within observed motor."
+}

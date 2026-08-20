@@ -1,0 +1,6 @@
+feature_arm,method,healthy_test_blocks,false_alarms,pooled_false_alarm_rate,pooled_far_wilson_lower,pooled_far_wilson_upper,max_motor_false_alarm_rate,h1_empirical_pass,mean_detection_rate,worst_motor_detection_rate,mean_lowest_two_detection_rate,mean_block_auroc
+scale_free,entity_balanced_covariance,42,0,0.0,0.0,0.08379879086570388,0.0,True,0.9547619047619048,0.8785714285714286,1.0,0.9988520408163265
+scale_free,log_euclidean_entity_covariance,42,0,0.0,0.0,0.08379879086570388,0.0,True,0.9571428571428572,0.9,1.0,0.9993197278911564
+scale_free,source_covariance,42,0,0.0,0.0,0.08379879086570388,0.0,True,0.8910714285714286,0.7017857142857142,1.0,0.9967687074829933
+scale_free,target_ledoit,42,1,0.023809523809523808,0.004215404134432499,0.12321201573766641,0.07142857142857142,False,0.9029761904761905,0.8214285714285714,1.0,0.9968962585034014
+scale_free,target_sample_covariance,42,0,0.0,0.0,0.08379879086570388,0.0,True,0.9386904761904762,0.8678571428571429,1.0,0.9982993197278912

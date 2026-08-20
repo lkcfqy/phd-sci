@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-08-20T13:30:46.181675+00:00",
+  "features": "C:\\lkc\\phd sci\\data\\processed\\kaist_current_features.csv.gz",
+  "scikit_learn": "1.9.0",
+  "alpha": 0.05,
+  "ridge_fraction": 0.001,
+  "log_ridge_fraction": 0.01,
+  "block_score_quantile": 1.0,
+  "feature_arms": [
+    "scale_free"
+  ]
+}

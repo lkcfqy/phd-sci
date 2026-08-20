@@ -1,0 +1,7 @@
+calibration_seconds,calibration_blocks,alpha,minimum_attainable_p_value,minimum_required_blocks,minimum_required_seconds,finite_threshold,status
+3.0,1,0.05,0.5,19,57.0,False,skipped_insufficient_calibration_units
+6.0,2,0.05,0.3333333333333333,19,57.0,False,skipped_insufficient_calibration_units
+12.0,4,0.05,0.2,19,57.0,False,skipped_insufficient_calibration_units
+24.0,8,0.05,0.1111111111111111,19,57.0,False,skipped_insufficient_calibration_units
+57.0,19,0.05,0.05,19,57.0,True,feasible_not_evaluated
+60.0,20,0.05,0.047619047619047616,19,57.0,True,primary_evaluated

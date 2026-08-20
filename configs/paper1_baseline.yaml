@@ -1,0 +1,69 @@
+dataset:
+  root: data/raw/kaist_faults
+  sample_rate_current_hz: 100000
+  duration_seconds: 120
+  motors: [1kW, 1.5kW, 3kW]
+
+segmentation:
+  window_seconds: 0.2
+  window_stride_seconds: 0.2
+  block_seconds: 3.0
+  guard_blocks: 1
+  adaptation_fraction: 0.12
+  calibration_fraction: 0.55
+
+calibration:
+  alpha: [0.05]
+  block_score_quantile: 1.0
+  healthy_only_target: true
+
+covariance:
+  arithmetic_ridge_fraction: 0.001
+  log_euclidean_ridge_fraction: 0.01
+  log_ridge_selection: source_only_nested_pseudo_target
+  entity_weighting: equal_per_motor
+
+one_class_baselines:
+  fit_arms: [target_only, motor_balanced_source_target]
+  methods: [ocsvm_rbf, isolation_forest, min_cov_det]
+  ocsvm:
+    gamma: scale
+    nu: 0.05
+  isolation_forest:
+    n_estimators: 500
+    max_samples: auto
+    max_features: 1.0
+    bootstrap: false
+  primary_seed: 20260820
+  stochastic_sensitivity_seeds: [20260820, 1201, 2402, 3603, 4804]
+  alarm_threshold: target_healthy_block_conformal
+
+sensitivity:
+  target_adaptation_seconds: [3, 6, 12, 24]
+  independent_calibration_seconds: 60
+  partition_designs: [fixed_horizon, sequential]
+  candidate_block_seconds: [1, 2, 3, 5, 6]
+  candidate_block_aggregations: [max, q90]
+  infeasible_alpha_combinations: skip
+
+evaluation:
+  seeds: [42]
+  outer_split: leave_one_motor_out
+  primary_alpha: 0.05
+  primary_feature_arm: scale_free
+  sensitivity_feature_arms: [all_features, healthy_relative]
+  bootstrap_replicates: 10000
+  bootstrap_unit: fault_record_stratified_by_target_motor
+
+external_validation:
+  primary_dataset_doi: 10.5281/zenodo.13889418
+  target_topology: dual_three_phase_pmsm
+  ten_pole_pair_analysis_time_seconds: [12, 36]
+  target_health_adaptation_load_nm: [0]
+  target_health_adaptation_blocks: [0, 1, 2, 3]
+  target_health_calibration_load_nm: [10, 20, 30]
+  target_health_calibration_blocks_per_record: 8
+  held_out_healthy_test_load_nm: [5, 15, 25, 35]
+  subsystem_score: per_three_phase_score_then_system_max
+  source_motors: [1kW, 1.5kW, 3kW]
+  fault_records_withheld_until_freeze: true

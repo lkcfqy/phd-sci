@@ -1,0 +1,7 @@
+proposed,baseline,proposed_fault_record_macro_detection,baseline_fault_record_macro_detection,proposed_minus_baseline_detection,paired_record_bootstrap_ci_lower,paired_record_bootstrap_ci_upper,bootstrap_probability_proposed_better,fault_records,proposed_false_alarms_over_42_blocks,baseline_false_alarms_over_42_blocks
+log_euclidean_entity_covariance,target_ocsvm_rbf,0.9571428571428572,0.8970238095238097,0.06011904761904763,0.010714285714285713,0.11904761904761905,0.9933,42,0,0
+log_euclidean_entity_covariance,source_target_ocsvm_rbf,0.9571428571428572,0.9124999999999999,0.044642857142857144,-0.004166666666666662,0.1017857142857143,0.9614,42,0,0
+log_euclidean_entity_covariance,target_isolation_forest,0.9571428571428572,0.9755952380952382,-0.01845238095238095,-0.0488095238095238,0.006547619047619045,0.0846,42,0,1
+log_euclidean_entity_covariance,source_target_isolation_forest,0.9571428571428572,0.9607142857142857,-0.0035714285714285665,-0.03928571428571428,0.034523809523809526,0.423,42,0,0
+log_euclidean_entity_covariance,target_min_cov_det,0.9571428571428572,0.8982142857142857,0.05892857142857144,0.009523809523809525,0.11666666666666665,0.9942,42,0,1
+log_euclidean_entity_covariance,source_target_min_cov_det,0.9571428571428572,0.9232142857142859,0.03392857142857143,0.002976190476190478,0.06845238095238095,0.9861,42,0,1

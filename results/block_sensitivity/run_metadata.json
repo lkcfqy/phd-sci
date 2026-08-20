@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-08-20T13:44:17.780791+00:00",
+  "features": "C:\\lkc\\phd sci\\data\\processed\\kaist_current_features.csv.gz",
+  "scikit_learn": "1.9.0",
+  "method": "log_euclidean_entity_covariance",
+  "feature_arm": "scale_free",
+  "alpha": 0.05,
+  "window_seconds": 0.2,
+  "record_seconds": 120.0,
+  "target_adaptation_seconds": 12.0,
+  "source_reference_seconds": 72.0,
+  "calibration_seconds": 60.0,
+  "log_ridge_fraction": 0.01,
+  "primary_setting": "3 s/max (frozen from healthy ACF)",
+  "selection_uses_target_faults": false,
+  "candidate_block_seconds": [
+    1.0,
+    2.0,
+    3.0,
+    5.0,
+    6.0
+  ],
+  "candidate_aggregations": [
+    "max",
+    "q90"
+  ],
+  "replication_caveat": "Macroblocks from one 120 s record are dependent derived units, not independent recording repetitions; do not compare raw block counts as n."
+}

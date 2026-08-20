@@ -1,0 +1,13 @@
+target_motor,comparator,mean_detection_difference
+1.5kW,target_ledoit,0.012500000000000011
+1kW,target_ledoit,0.0
+3kW,target_ledoit,0.15
+1.5kW,target_sample_covariance,-0.04999999999999999
+1kW,target_sample_covariance,0.0017857142857142874
+3kW,target_sample_covariance,0.10357142857142858
+1.5kW,source_covariance,0.1982142857142857
+1kW,source_covariance,0.0
+3kW,source_covariance,0.0
+1.5kW,entity_balanced_covariance,0.021428571428571443
+1kW,entity_balanced_covariance,0.0
+3kW,entity_balanced_covariance,-0.01428571428571429

@@ -1,0 +1,77 @@
+kaist_stator_faults:
+  title: Vibration and Current Dataset of Three-Phase Permanent Magnet Synchronous Motors with Stator Faults
+  doi: 10.17632/rgn5brrgrn.5
+  article_doi: 10.1016/j.dib.2023.108952
+  license: CC BY 4.0
+  version: 5
+  api: https://data.mendeley.com/public-api/datasets/rgn5brrgrn/files?folder_id=root&version=5
+  files:
+    1.0kW.zip:
+      id: 9714abc1-441f-4bb3-bff2-78811996df44
+      bytes: 1770532508
+      sha256: 3a7f64626b40cf7be46a220fabe4e62496b0a2700d0919bcf7f1205c97fa15aa
+    1.5kW.zip:
+      id: f9cddf4c-1c95-46e4-8a5e-e763daba0673
+      bytes: 2542599644
+      sha256: 5bb090bd7944974a9bcfa9e192e840e61d1bad561172b621670f7f4f8776c524
+    3.0kW.zip:
+      id: 2be8bdae-16e7-4636-97eb-ef5f56dda9f9
+      bytes: 2660445808
+      sha256: 6cfd069bc23e9404b0dd0e9f46da1b773ef41c5370f6c8dbcde99de754008545
+
+pmsm_geometry_torque:
+  title: PMSM geometrical parameters and torque signals
+  doi: 10.5281/zenodo.15688397
+  article_doi: 10.1007/s00366-025-02123-1
+  license: GPL-3.0-or-later
+  file: PMSM_torque_data-20250618T092925Z-1-001.zip
+  bytes: 15641795
+  md5: 69eb4cd01d8eec9a6189cd99bfdf5605
+
+dual_three_phase_pmsm_itsc:
+  title: Dual-three-phase PMSM interturn-short-circuit current dataset
+  doi: 10.5281/zenodo.13889418
+  license: CC BY 4.0
+  sample_rate_hz: 10000
+  pole_pairs: 10
+  record_duration_seconds: 41.5
+  operating_profile: common_acceleration_sweep_from_near_zero_to_about_4400_rpm
+  frozen_analysis_time_seconds: [12, 36]
+  role: primary_frozen_external_validation
+  topology: dual_three_phase_pmsm
+  staged_scope: all_8_independent_healthy_load_records_only
+  healthy_load_nm: [0, 5, 10, 15, 20, 25, 30, 35]
+  healthy_files: 8
+  healthy_bytes: 187111299
+  withheld_fault_scope:
+    records: 48
+    shorted_turns: [1, 2, 3, 4, 5, 6]
+    phases: [U, V]
+    disclosure_rule: download_and_evaluate_once_after_protocol_and_code_freeze
+  local_manifest: data/raw/external_validation/staged_download_manifest.json
+
+transient_cross_capacity_pmsm_itsc:
+  title: Transient interturn-short-circuit data from 200 W and 20 kW PMSMs
+  doi: 10.5281/zenodo.15631383
+  license: CC BY 4.0
+  sample_rate_hz: 10000
+  role: secondary_cross_capacity_transient_stress_test
+  motors: [200W, 20kW]
+  file: OpenData.zip
+  bytes: 91533036
+  md5: b9b03b6e31a33ea08f49cd1cbeed12b2
+  limitation: no_independent_healthy_files; each_record_transitions_from_health_to_fault
+  parser_status: MATLAB_timeseries_MCOS_requires_conversion_or_compatible_reader
+
+pmsg_long_record_itsc:
+  title: Permanent-magnet synchronous generator fault dataset
+  doi: 10.18710/ZN1LPD
+  license: CC0 1.0
+  sample_rate_hz: 10000
+  role: tertiary_cross_topology_out_of_distribution_stress_test
+  topology: 2.2kW_pmsg
+  staged: false
+  primary_archive:
+    file: CS.rar
+    bytes: 5197707992
+  limitation: generator_domain_is_not_an_additional_pmsm_motor_cohort

@@ -1,0 +1,5 @@
+proposed,comparator,mean_detection_difference,bootstrap_ci_lower,bootstrap_ci_upper,bootstrap_probability_positive,records
+log_euclidean_entity_covariance,target_ledoit,0.054166666666666675,0.005937500000000013,0.1119047619047619,0.9858,42
+log_euclidean_entity_covariance,target_sample_covariance,0.018452380952380956,-0.02142857142857142,0.06011904761904762,0.8123,42
+log_euclidean_entity_covariance,source_covariance,0.06607142857142857,0.01785714285714286,0.12321428571428568,0.9988,42
+log_euclidean_entity_covariance,entity_balanced_covariance,0.002380952380952384,-0.013690476190476178,0.02321428571428572,0.5793,42

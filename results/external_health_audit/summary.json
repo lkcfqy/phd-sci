@@ -1,0 +1,129 @@
+{
+  "audit_scope": {
+    "fault_files_read": 0,
+    "health_files_audited": 8,
+    "health_files_expected": 8,
+    "official_md5_verified": true,
+    "unexpected_mat_files_allowed": false
+  },
+  "calibration_feasibility": {
+    "alarm_is_numerically_resolvable": true,
+    "alpha": 0.05,
+    "calibration_blocks": 24,
+    "calibration_records_pooled": 3,
+    "finite_upper_threshold": true,
+    "interpretation": "empirical block-risk calibration across record-disjoint loads",
+    "minimum_attainable_p_value": 0.04,
+    "minimum_required_blocks": 19,
+    "one_file_can_supply_20_blocks": false,
+    "one_file_common_segment_blocks": 8,
+    "one_file_complete_3s_blocks": 13,
+    "ordinary_exchangeable_conformal_guarantee_claimed": false,
+    "upper_threshold_order_statistic_rank": 24
+  },
+  "common_segment_observed_range": {
+    "electrical_hz_max": 441.74021755489815,
+    "electrical_hz_min": 29.032944858422244,
+    "pole_pair_ratio_median_above_100rpm": 10.000000000101295,
+    "speed_rpm_max": 2650.441162109375,
+    "speed_rpm_min": 174.1976776123047
+  },
+  "common_structure": {
+    "complete_0p2s_windows_per_file": 207,
+    "complete_3s_blocks_per_file": 13,
+    "duration_seconds": 41.5,
+    "required_speed_trace_unique_hashes": 8,
+    "sample_rate_hz": 10000.000000023307,
+    "samples_per_file": 415001,
+    "time_trace_unique_hashes": 1,
+    "variable_schema_identical": true,
+    "variables_per_file": 21
+  },
+  "dataset": {
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "official_api": "https://zenodo.org/api/records/13889418",
+    "record": "13889418",
+    "title": "Measurement of interturn short-circuits emulation on dual three-phase PMS motor"
+  },
+  "frozen_protocol": {
+    "adaptation": {
+      "block_ids": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "blocks": 4,
+      "loads_nm": [
+        0
+      ],
+      "seconds": 12.0
+    },
+    "analysis_block_ids": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "analysis_interval_seconds_half_open": [
+      12.0,
+      36.0
+    ],
+    "block_aggregation": "system maximum after subsystem maximum",
+    "block_seconds": 3.0,
+    "calibration": {
+      "block_ids_per_record": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "blocks": 24,
+      "loads_nm": [
+        10,
+        20,
+        30
+      ]
+    },
+    "health_test": {
+      "block_ids_per_record": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "blocks": 32,
+      "loads_nm": [
+        5,
+        15,
+        25,
+        35
+      ],
+      "records": 4
+    },
+    "window_seconds": 0.2
+  },
+  "health_record_independence": {
+    "distinct_files": 8,
+    "distinct_loads": 8,
+    "identical_required_speed_trace_across_files": false,
+    "identical_time_trace_across_files": true,
+    "independent_machines": 1,
+    "replicates_per_load": 1,
+    "sessions_documented_by_repository_metadata": false,
+    "statistical_independence_claimed": false
+  }
+}

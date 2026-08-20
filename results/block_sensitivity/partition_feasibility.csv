@@ -1,0 +1,6 @@
+block_seconds,windows_per_block,macroblocks_per_record,adaptation_blocks,adaptation_seconds_realized,guard_blocks_each_side,calibration_blocks,calibration_seconds_realized,healthy_test_blocks,healthy_test_seconds,minimum_required_calibration_blocks,minimum_attainable_p_value,nonoverlapping_calibration_units,independence_claimed,finite_alpha_threshold,status,reason,is_primary_block_length
+1.0,5,120,12,12.0,1,60,60.0,46,46.0,19,0.01639344262295082,True,False,True,evaluated_sensitivity,chronological design is feasible,False
+2.0,10,60,6,12.0,1,30,60.0,22,44.0,19,0.03225806451612903,True,False,True,evaluated_sensitivity,chronological design is feasible,False
+3.0,15,40,4,12.0,1,20,60.0,14,42.0,19,0.047619047619047616,True,False,True,evaluated_sensitivity,chronological design is feasible,True
+5.0,25,24,2,10.0,1,12,60.0,8,40.0,19,0.07692307692307693,True,False,False,skipped_infeasible_conformal_resolution,12 calibration macroblocks < 19 required for alpha=0.05; 12 s target adaptation is not exactly representable (10 s nearest realization),False
+6.0,30,20,2,12.0,1,10,60.0,6,36.0,19,0.09090909090909091,True,False,False,skipped_infeasible_conformal_resolution,10 calibration macroblocks < 19 required for alpha=0.05,False
