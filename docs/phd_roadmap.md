@@ -32,6 +32,11 @@ Health Management**
 - 韩国 MOTIE 的工业 AX 计划提出到 2030 年把企业 AI 利用率提高到 70%、制造现场 AI
   部署率提高到 40%，并在 2027 年前推进 300 个以上 anchor projects：
   <https://english.motie.go.kr/eng/article/EATCLdfa319ada/2056/view>
+- 2026 年 2 月，韩国产业通商资源部在昌原大学启动产业园区 AX 分委会：官方材料称该
+  网络覆盖 500 多家产学研机构，由昌原大学校长担任主席，并将通过本地大学开展需求
+  驱动的 R&D 与人才培养；这为制造设备健康、共享工业 AI 模型和数字孪生提供了直接
+  的项目接口：
+  <https://english.motir.go.kr/eng/article/EATCLdfa319ada/2518/view>
 - KERI 位于昌原，其公开材料包含 intelligent electricity、machine convergence 和
   Changwon Innotown 技术商业化接口：
   <https://www.keri.re.kr/upload/downfile/22brochure_en.pdf>
