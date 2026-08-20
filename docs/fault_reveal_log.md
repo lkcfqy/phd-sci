@@ -65,6 +65,12 @@ The strongest preimplemented comparator was target-only Minimum Covariance Deter
 remains a comparator; selecting it as the new primary after reveal would be post-hoc and
 is prohibited.
 
+The 6 turn-count by 8 load grid is not crossed by fault phase. File labels assign
+1/3/5/6-turn faults to phase U and 2/4-turn faults to phase V. Turn-count and phase
+effects are therefore not separately identifiable, and the turn-stratified bootstrap
+conditions on this fixed assignment. Pooled AUROC also compares all eight fault loads
+against the four held-out health loads, so it is descriptive rather than load matched.
+
 No primary result will be overwritten. Any revised condition-aware detector developed
 from this failure must be labeled exploratory on this dataset and confirmed on a new,
 unseen dataset.

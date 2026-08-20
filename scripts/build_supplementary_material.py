@@ -544,6 +544,11 @@ each physical record contributes exactly eight system block scores.
 
 {split_table}
 
+The external 6-by-8 grid is not crossed by fault phase. Fault-turn levels 1, 3, 5,
+and 6 use phase U, whereas levels 2 and 4 use phase V. Consequently, fault-turn count
+and phase effects are not separately identifiable; the turn-stratified record bootstrap
+conditions on this fixed assignment rather than resolving it.
+
 All models use the 27-feature scale-free arm: {feature_names}. Source features are
 robustly centered and scaled within source motor; external target features are
 robustly centered and scaled within subsystem from the frozen adaptation subset.
@@ -600,6 +605,10 @@ only method satisfying the prespecified empirical H1 rule. Proposed achieved 25.
 detection, one false alarm (3.12%), and AUROC 0.6354. These external results are
 reported in full below; method-specific score thresholds are not comparable in
 magnitude across estimators.
+
+The external pooled AUROC compares 384 fault blocks spanning all eight loads with 32
+held-out health blocks from only 5, 15, 25, and 35 N·m. It is therefore a descriptive
+ranking statistic under unequal load support, not a load-matched population estimand.
 
 {table}
 

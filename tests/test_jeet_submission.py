@@ -181,7 +181,7 @@ def test_title_page_and_cover_letter_remain_explicit_human_input_templates() -> 
 
 def test_review_pdfs_have_anonymous_metadata_and_expected_page_counts() -> None:
     expected = {
-        "Manuscript_Anonymous.pdf": 17,
+        "Manuscript_Anonymous.pdf": 18,
         "ESM_1_Supplementary_Material.pdf": 8,
     }
     for name, pages in expected.items():
@@ -199,10 +199,19 @@ def test_reproducibility_bundle_is_installable_shaped_hash_locked_and_anonymous(
         assert "README.md" in names
         assert "README_ANONYMOUS.md" in names
         assert "pyproject.toml" in names
+        assert "paper/manuscript.md" in names
+        assert "references/key_papers.bib" in names
         assert "src/pmsm_sci/faults/external_validation.py" in names
         assert "docs/external_validation_protocol.md" in names
         assert "docs/secondary_transient_validation_protocol.md" in names
         assert "docs/secondary_transient_reveal_log.md" in names
+        assert "docs/reference_metadata_audit.md" in names
+        assert (
+            "results/healthy_covariance_v0/target_1kW/scale_free/"
+            "log_euclidean_entity_covariance/block_predictions.csv" in names
+        )
+        assert "results/oneclass_baselines/record_summary.csv" in names
+        assert "results/oneclass_baselines/comparison_to_proposed.csv" in names
         assert (
             "results/transient_feature_build/record_compatibility.csv" in names
         )
@@ -217,7 +226,9 @@ def test_reproducibility_bundle_is_installable_shaped_hash_locked_and_anonymous(
         assert not any(".git" in name.split("/") for name in names)
         assert not any("egg-info" in name or "__pycache__" in name for name in names)
         assert not any(Path(name).name.startswith("build_jeet_") for name in names)
+        assert "scripts/build_supplementary_material.py" not in names
         assert "tests/test_jeet_submission.py" not in names
+        assert "tests/test_supplementary_material.py" not in names
 
         manifest = json.loads(archive.read("MANIFEST_SHA256.json"))
         manifest_names = {entry["path"] for entry in manifest}
@@ -258,7 +269,7 @@ def test_build_metadata_matches_final_binary_artifacts() -> None:
     assert "under development" in metadata["journal_requirements"][
         "submission_portal_warning_observed"
     ].lower()
-    assert metadata["pdfs"]["manuscript"]["pages"] == 17
+    assert metadata["pdfs"]["manuscript"]["pages"] == 18
     assert metadata["pdfs"]["supplement"]["pages"] == 8
     assert metadata["manuscript"]["sha256"] == digest(SUBMISSION / "Manuscript_Anonymous.docx")
     assert metadata["reproducibility_bundle"]["sha256"] == digest(

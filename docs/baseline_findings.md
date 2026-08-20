@@ -287,6 +287,11 @@ inter-turn -0.607；1.5 kW inter-coil -0.429、inter-turn +0.571；3.0 kW inter-
 48 条故障构成完整的 6 turns × 8 loads 条件网格；它们不是 48 台独立电机。所有文件
 均按预注册 `[12,36) s` 区间处理，无事后排除。
 
+这不是 turn × phase 的全因子网格：1/3/5/6 turns 固定为 U 相，2/4 turns 固定为 V 相。
+因此 turn 与 phase 效应不可分离，按 turn 分层的 record bootstrap 只是条件于该固定
+分配。外部 pooled AUROC 还以全部 8 个 fault loads 对比 4 个 held-out health loads，
+属于 unequal-load-support 下的描述性排序量，不是 load-matched population estimand。
+
 | Method | Healthy FAR | Detection | 95% record-bootstrap CI | AUROC | H1 |
 |---|---:|---:|---:|---:|---|
 | Target MinCovDet | 0/32 | **70.05%** | [65.36, 75.26]% | **0.9268** | pass |
@@ -302,7 +307,7 @@ inter-turn -0.607；1.5 kW inter-coil -0.429、inter-turn +0.571；3.0 kW inter-
 | Source covariance | 1/32 | 12.76% | — | 0.5747 | fail |
 
 Frozen Log-Euclidean 相对 target MinCovDet 低 45.05 个百分点，配对 CI 为
-`[-49.48, -40.63]`。不能在揭盲后把 MinCovDet 改称新 primary；可写的是预先实现的
+`[-49.48, -40.62]`。不能在揭盲后把 MinCovDet 改称新 primary；可写的是预先实现的
 比较器发生排名反转。
 
 ## 13. 报警漂移与负迁移
@@ -310,7 +315,8 @@ Frozen Log-Euclidean 相对 target MinCovDet 低 45.05 个百分点，配对 CI 
 - Frozen Log-Euclidean 在 fault block 0/1/2 上均为 `0/48` 报警，在 block 7 为
   `48/48`；唯一健康误报也在 block 7。
 - block 近似中位转速从 218 rpm 上升到 2,214 rpm，健康与故障分数同时随 block 上升。
-- detection 从 0 N m 的 56.25% 降至 35 N m 的 12.50%；turn-count 方向也不单调。
+- detection 从 0 N m 的 56.25% 降至 35 N m 的 12.50%；固定 turn--phase 条件间也不
+  单调，但不能解释为独立的 severity 或 phase 趋势。
 - `48/48 record-any alarm` 主要由最后升速块贡献，不能当作可靠早检。
 - target-only MinCovDet 为 70.05%，source+target MinCovDet 仅 30.21%；target-only
   minus balanced 的配对差为 +39.84 pp `[35.42, 44.27]`，说明源域加入造成负迁移。
@@ -356,6 +362,8 @@ arm 在 KAIST 内部仍得到 91.96% detection / 0.9947 AUROC，说明提取器�
 
 - 把 H1 fail 写成“真实 FAR 已被证明超过 5%”；
 - 把 48 fault records 写成 48 个独立 motor replicates；
+- 把未完全交叉的 turn--phase 条件写成可分离的匝数严重度效应或相位效应；
+- 把 unequal-load-support 的 pooled AUROC 写成 load-matched 泛化性能；
 - 用 AUPRC 0.958 做主证据，因为 384/416 blocks 本身就是故障，prevalence baseline
   已约 0.923；
 - 事后把 target MinCovDet 改成预注册主方法或称稳定 SOTA；

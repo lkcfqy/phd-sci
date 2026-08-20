@@ -75,7 +75,7 @@ FIGURES = [
     ),
     (
         "external_proposed_heatmap",
-        "Frozen-detector block detection over fault turns and load",
+        "Frozen-detector block detection over turn-phase conditions and load",
     ),
     (
         "external_feature_geometry",
@@ -95,12 +95,29 @@ ANONYMOUS_BUNDLE_PATHS = [
     Path("src"),
     Path("scripts"),
     Path("tests"),
+    Path("paper/manuscript.md"),
+    Path("references/key_papers.bib"),
     Path("docs/research_protocol.md"),
     Path("docs/external_validation_protocol.md"),
     Path("docs/fault_reveal_log.md"),
     Path("docs/secondary_transient_validation_protocol.md"),
     Path("docs/secondary_transient_reveal_log.md"),
     Path("docs/data_sources.yaml"),
+    Path("docs/reference_metadata_audit.md"),
+    Path(
+        "results/healthy_covariance_v0/target_1kW/scale_free/"
+        "log_euclidean_entity_covariance/block_predictions.csv"
+    ),
+    Path(
+        "results/healthy_covariance_v0/target_1.5kW/scale_free/"
+        "log_euclidean_entity_covariance/block_predictions.csv"
+    ),
+    Path(
+        "results/healthy_covariance_v0/target_3kW/scale_free/"
+        "log_euclidean_entity_covariance/block_predictions.csv"
+    ),
+    Path("results/oneclass_baselines/record_summary.csv"),
+    Path("results/oneclass_baselines/comparison_to_proposed.csv"),
     Path("results/external_pmsm_validation"),
     Path("results/external_pmsm_analysis"),
     Path("results/external_failure_diagnostics"),
@@ -1071,7 +1088,11 @@ def iter_bundle_files() -> Iterable[tuple[Path, Path]]:
                 for part in path.parts
             ):
                 continue
-            if path.name.startswith("build_jeet_") or path.name == "test_jeet_submission.py":
+            if path.name.startswith("build_jeet_") or path.name in {
+                "build_supplementary_material.py",
+                "test_jeet_submission.py",
+                "test_supplementary_material.py",
+            }:
                 continue
             if path.suffix in {".pyc", ".joblib"}:
                 continue

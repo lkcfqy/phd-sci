@@ -23,17 +23,25 @@ This is an internal handoff record. Do not upload it as a manuscript file.
   author contributions, competing interests, ethics approval, consent to participate,
   consent for publication, data/materials/code availability, and generative-AI use are
   grouped under `Statements and declarations`.
-- `Manuscript_Anonymous.pdf` has 17 portrait pages; all 17 pages were rendered at
-  180 dpi and visually inspected for clipping, overlap, broken figure/caption pairs,
-  missing-glyph boxes, table overflow, and unintended blank pages.
+- `Manuscript_Anonymous.pdf` has 18 portrait pages. Seven page-image SHA-256 values
+  exactly matched the preceding fully inspected build; the ten changed pages and new
+  page 18 were rendered at 180 dpi and visually re-inspected for clipping, overlap,
+  broken figure/caption pairs, missing-glyph boxes, table overflow, and unintended blank
+  pages.
 - `ESM_1_Supplementary_Material.pdf` has eight landscape pages; all eight pages were
-  rendered at 180 dpi and visually inspected for the same defects. Its 17 tables fit
+  covered by the final review: page 8 exactly matched the preceding inspected build,
+  while pages 1--7 were rendered at 180 dpi and visually re-inspected. Its 17 tables fit
   within their page frames, including the S9 compatibility, 12-method, and hash tables.
-- After the final title, abstract, and abbreviation-compliance rebuild, 14 of 25
-  page-image SHA-256 values matched the previously inspected renders. The 11 changed
-  pages (manuscript pages 1--3, 5--8, and 14--16; supplement page 1) were visually
-  re-inspected at 180 dpi; no clipping, overlap, broken page furniture, missing-glyph
-  boxes, or unintended blank pages were found.
+- Across the 26 final PDF pages, eight page images were byte-for-byte identical to the
+  preceding inspected render and all 18 changed or new pages were re-inspected. No
+  clipping, overlap, broken page furniture, missing-glyph boxes, or unintended blank
+  pages were found.
+- A lower-grain evidence audit independently reconstructed every headline denominator
+  and performance result used in the abstract, results, and conclusion. It also exposed
+  and corrected the fixed fault-turn/phase confounding, unequal load support in pooled
+  external AUROC, and one 0.01 percentage-point interval-rounding discrepancy.
+- A dated reference audit resolved all 34 cited records through DOI registries or the
+  publisher page and found no normalized title, first-author, or available-year mismatch.
 - S9 preserves the frozen `0/21` parser-compatibility failure separately from the
   post-reveal implicit-time repair; it does not present the 200 W sensitivity as a
   third confirmatory validation dataset.
@@ -44,15 +52,22 @@ This is an internal handoff record. Do not upload it as a manuscript file.
   and intermediate supplementary DOCX.
 - The reproducibility ZIP has an installable project shape, excludes raw/processed
   datasets, Git history, task-local absolute paths, submission-build utilities, and
-  submission-only tests. It includes both secondary transient-audit protocols and the
-  selected frozen/post-reveal result directories, and contains an internal SHA-256
-  manifest covering every archived file except the manifest itself.
+  submission-only tests. It includes the anonymous manuscript source, bibliography and
+  reference-audit snapshot, lower-grain prediction tables needed for the independent
+  manuscript-evidence check, both secondary transient-audit protocols, and the selected
+  frozen/post-reveal result directories. An internal SHA-256 manifest covers every
+  archived file except the manifest itself.
+- The final ZIP was extracted into a fresh temporary directory. With its own `src`
+  directory placed first on the import path, the independent manuscript-evidence
+  validator, every test shipped in the bundle, and Ruff all passed without reading an
+  unbundled result or processed-feature file.
 - The final binary hashes and PDF page audits are recorded in `build_metadata.json`.
 
 ## Renderer boundary
 
-The workstation did not contain Microsoft Word or LibreOffice. The canonical DOCX
-renderer was invoked and stopped with the expected missing-executable error, so a native
+The workstation did not contain Microsoft Word or LibreOffice. After the final rebuild,
+the canonical DOCX renderer was invoked again and stopped with the expected
+missing-executable error, so a native
 Word-engine render of the three final DOCX files was not available. The manuscript and
 supplement review PDFs were generated directly from the same frozen Markdown, BibTeX,
 figure, caption, and citation-order sources and received full page-by-page visual

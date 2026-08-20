@@ -19,7 +19,7 @@ link-citations: true
 
 High within-dataset accuracy does not establish that a healthy-only stator-fault
 detector will transfer to a different permanent-magnet synchronous motor (PMSM). We
-evaluate eleven covariance and one-class detectors across two datasets
+evaluate eleven healthy-only detectors in a primary two-dataset analysis
 with motor/file separation, chronological target-health splits, 3 s alarm blocks, and
 no target-fault labels for fitting or thresholding. An exploratory study used three
 same-manufacturer 1.0, 1.5, and 3.0 kW PMSMs at fixed speed and load. The motor-balanced
@@ -357,10 +357,18 @@ manifest, and processed once over the unchanged [12, 36) s interval. The run yie
 complete 6 fault-turn counts by 8 loads grid (384 system blocks). The chronological
 reveal log and hash-addressed commits are retained as audit evidence.
 
+The six fault-turn levels were not crossed with fault phase: 1-, 3-, 5-, and 6-turn
+faults were assigned to phase U, whereas 2- and 4-turn faults were assigned to phase V.
+Thus fault-turn count and fault phase are not fully crossed, and their separate effects
+are not identifiable from this external dataset.
+
 The predeclared empirical health gate (H1) required both a descriptive pooled 95%
 Wilson upper confidence bound no greater than 12% and a maximum load-specific empirical
 FAR no greater than 15%. Because its 32 blocks came from four records of one motor, H1
 was an engineering decision rule rather than a population-level probability guarantee.
+The fault endpoint covers all eight loads, whereas the held-out health endpoint covers
+5, 15, 25, and 35 N m. Pooled external block AUROC therefore contrasts eight fault-load
+conditions with four health-load conditions and is descriptive rather than load matched.
 
 ### 5.3 Prospectively frozen secondary transient-set audit
 
@@ -505,7 +513,7 @@ The fault result reversed the exploratory KAIST ranking. The frozen detector ide
 21.09--29.43%) and attained pooled block AUROC 0.6354. Target-only MinCovDet, which had
 been implemented before reveal, produced 0/32 healthy alarms, 70.05% detection
 (65.36--75.26%), and AUROC 0.9268. The paired improvement of target MinCovDet over the
-frozen detector was 45.05 percentage points (40.63--49.48%). Target-only MinCovDet is
+frozen detector was 45.05 percentage points (40.62--49.48%). Target-only MinCovDet is
 reported as the observed comparator leader, not retroactively redesignated as the
 primary method.
 
@@ -569,12 +577,13 @@ alarm trajectories are shown in Fig. 9.
 ![Threshold-normalized score and alarm drift over the acceleration trajectory.](figures/external_condition_drift.pdf)
 
 The failure was also load dependent. Frozen-detector block detection fell from 56.25%
-at 0 N m to 12.50% at 35 N m. Across fault-turn counts, detection ranged only from
-15.63% to 32.81% and did not increase monotonically. The full 6 by 8 condition grid
-shows that many high-load records triggered in only one of eight ordered blocks. The
-complete fault-turn-by-load alarm grid is shown in Fig. 10.
+at 0 N m to 12.50% at 35 N m. Across the six fixed turn--phase conditions, detection
+ranged from 15.63% to 32.81% and did not increase monotonically. Because turn count and
+phase are not fully crossed, this pattern is not an identifiable severity trend. The
+full 6 by 8 condition grid shows that many high-load records triggered in only one of
+eight ordered blocks. The complete turn--phase-by-load alarm grid is shown in Fig. 10.
 
-![Frozen-detector block detection over fault turns and load.](figures/external_proposed_heatmap.pdf)
+![Frozen-detector block detection over fault turns and load; row labels show the fixed fault phase, so turn and phase effects are not separately identifiable.](figures/external_proposed_heatmap.pdf)
 
 Source data were not uniformly harmful: the frozen target-adapted Log-Euclidean
 configuration exceeded pure source covariance by 12.24 points (paired interval
@@ -712,17 +721,19 @@ consistent with cross-record healthy heterogeneity overwhelming the short post-o
 change under these thresholds; because this interpretation followed reveal, it is a
 design diagnostic rather than evidence for a revised detector.
 
-Six limitations dominate the claims. First, each KAIST motor has only one unique
+Seven limitations dominate the claims. First, each KAIST motor has only one unique
 healthy record, so its calibration and later-time evaluation are not independent
 sessions. Second, all KAIST machines share manufacturer and fixed operating condition.
 Third, the KAIST target faults were inspected during development and are exploratory.
 Fourth, the external 48-record grid comes from one physical dual-three-phase motor;
 record bootstrap quantifies variability across its recorded conditions, not across a
-population of motors. Fifth, the external shift is compound, so this experiment cannot
-causally separate topology, sampling rate, controller, speed, and load effects. Sixth,
-the secondary transient dataset has no independent healthy records; its frozen parser
-failed, only four of nine 20 kW records passed the repaired baseline gate, and the
-reported 200 W sensitivity is post-reveal and conditional on one motor.
+population of motors. Fifth, external fault-turn count and phase are not fully crossed,
+so their effects cannot be separated. Sixth, the external shift is compound, so this
+experiment cannot causally separate topology, sampling rate, controller, speed, and
+load effects. Seventh, the secondary transient dataset has no independent healthy
+records; its frozen parser failed, only four of nine 20 kW records passed the repaired
+baseline gate, and the reported 200 W sensitivity is post-reveal and conditional on one
+motor.
 
 The next method study should use only healthy data to condition scores on electrical
 frequency and load, include a target-only MinCovDet primary comparator, harmonize

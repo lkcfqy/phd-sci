@@ -671,13 +671,13 @@ def plot_proposed_heatmap(
         "paper_blue",
         ["#F4F7FA", "#C7DAE9", "#73A2C6", "#2F6B9A", "#1D4668"],
     )
-    figure, axis = plt.subplots(figsize=(8.4, 4.9))
+    figure, axis = plt.subplots(figsize=(8.4, 5.1))
     figure.suptitle(
-        "Proposed fault-record detection across turns and load",
+        "Proposed fault-record detection across turn-phase conditions and load",
         x=0.08,
         y=0.965,
         ha="left",
-        fontsize=14,
+        fontsize=13.5,
         fontweight="bold",
         color=INK,
     )
@@ -729,13 +729,14 @@ def plot_proposed_heatmap(
     figure.text(
         0.08,
         0.035,
-        "12.5% = 1/8 blocks. The heatmap reports failures as observed; it does not imply "
-        "that block-wise observations are independent repetitions.",
+        "12.5% = 1/8 blocks. Phase is fixed by turn count (U: 1, 3, 5, 6; V: 2, 4), "
+        "so turn and phase effects are not separable.\n"
+        "Blocks within a record are ordered operating points, not independent repetitions.",
         ha="left",
         color=MUTED,
         fontsize=8,
     )
-    figure.subplots_adjust(left=0.13, right=0.91, top=0.84, bottom=0.18)
+    figure.subplots_adjust(left=0.13, right=0.91, top=0.84, bottom=0.22)
     return _save_pair(figure, output_dir, "external_proposed_heatmap")
 
 

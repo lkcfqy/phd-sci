@@ -50,6 +50,11 @@ each physical record contributes exactly eight system block scores.
 | Held-out health test | healthy blocks 26–39 (14 blocks) | healthy loads 5, 15, 25, and 35 N·m; all 8 blocks (4 records; 32 system blocks) |
 | Fault test | 14 records × 40 blocks = 560 blocks per target motor | 6 turn-fault states × 8 loads = 48 records; 8 blocks each = 384 system blocks |
 
+The external 6-by-8 grid is not crossed by fault phase. Fault-turn levels 1, 3, 5,
+and 6 use phase U, whereas levels 2 and 4 use phase V. Consequently, fault-turn count
+and phase effects are not separately identifiable; the turn-stratified record bootstrap
+conditions on this fixed assignment rather than resolving it.
+
 All models use the 27-feature scale-free arm: `fundamental_hz`, `sequence_unbalance`, `fundamental_amplitude_cv`, `phase_rms_cv`, `clarke_radius_cv`, `zero_sequence_ratio`, `spectral_entropy`, `sideband_lower_ratio`, `sideband_upper_ratio`, `harmonic_2_ratio_mean`, `harmonic_2_ratio_max`, `harmonic_3_ratio_mean`, `harmonic_3_ratio_max`, `harmonic_4_ratio_mean`, `harmonic_4_ratio_max`, `harmonic_5_ratio_mean`, `harmonic_5_ratio_max`, `thd_2_to_5_mean`, `rms_ratio_a`, `crest_a`, `kurtosis_a`, `rms_ratio_b`, `crest_b`, `kurtosis_b`, `rms_ratio_c`, `crest_c`, `kurtosis_c`. Source features are
 robustly centered and scaled within source motor; external target features are
 robustly centered and scaled within subsystem from the frozen adaptation subset.
@@ -66,6 +71,10 @@ only method satisfying the prespecified empirical H1 rule. Proposed achieved 25.
 detection, one false alarm (3.12%), and AUROC 0.6354. These external results are
 reported in full below; method-specific score thresholds are not comparable in
 magnitude across estimators.
+
+The external pooled AUROC compares 384 fault blocks spanning all eight loads with 32
+held-out health blocks from only 5, 15, 25, and 35 N·m. It is therefore a descriptive
+ranking statistic under unequal load support, not a load-matched population estimand.
 
 | Method | Healthy training/reference | Threshold | Health FA | H1 | Fault block detection | Record-macro detection | Record-bootstrap 95% CI (%) | Record any-alarm | AUROC | AUPRC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

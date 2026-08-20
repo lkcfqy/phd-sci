@@ -36,6 +36,9 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
   仅 `0.2500`（95% record-bootstrap CI `[0.2109, 0.2943]`），AUROC `0.6354`；
   预先实现的 target-only MinCovDet 达到 `0.7005`（`[0.6536, 0.7526]`）、
   AUROC `0.9268`，且健康误报为 `0/32`。
+- 外部 6 turns × 8 loads 网格没有与故障相位完全交叉：1/3/5/6 turns 固定为 U 相，
+  2/4 turns 固定为 V 相，因此二者效应不可分离。pooled AUROC 还以 8 个 fault loads
+  对比 4 个 held-out health loads，只能解释为 unequal-load-support 下的描述性排序量。
 - 原方法在外部故障 block 0--2 上均为 `0/48` 报警，而 block 7 为 `48/48`；唯一健康
   误报也位于 block 7。检出率还从 0 N m 的 `0.5625` 降至 35 N m 的 `0.1250`，
   显示分数与升速/负载轨迹强烈共变。
@@ -72,7 +75,7 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
 ## JEET 投稿包状态
 
 面向 *Journal of Electrical Engineering & Technology* 的双盲投稿包已经生成在
-[`submission/jeet/`](submission/jeet/)：匿名 Word 正文、17 页审稿 PDF、独立标题页
+[`submission/jeet/`](submission/jeet/)：匿名 Word 正文、18 页审稿 PDF、独立标题页
 模板、投稿信模板、8 页补充材料、匿名复现代码包以及 Fig1--Fig11 独立源文件均已就位。
 最终视觉与结构复核状态记录在 [`submission/jeet/QA_Report.md`](submission/jeet/QA_Report.md)；
 补齐作者信息后仍须由全体作者在最终提交所用 Word 版本中逐页复核并批准全部声明。
@@ -124,7 +127,8 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
   5/15/25/35 Nm 产生 32 个完全不同文件的健康 FAR 测试块；
 - 两个三相子系统分别计分，再取系统 maximum 并用同一系统分数校准；
 - 48 条故障文件在协议、代码、环境与健康阈值形成带哈希提交后一次性下载并校验；
-  完整 6 turns × 8 loads 网格已按冻结 `[12,36) s` 协议运行，无文件事后排除。
+  完整 6 turns × 8 loads 网格已按冻结 `[12,36) s` 协议运行，无文件事后排除；turn
+  与 phase 的固定对应关系被保留并明确报告，不能用于分离两者效应。
 
 完整揭盲规则见 [`docs/external_validation_protocol.md`](docs/external_validation_protocol.md)。
 
@@ -180,6 +184,10 @@ $python = "C:\Users\lkcfq\.cache\codex-runtimes\codex-primary-runtime\dependenci
 & .\.venv\Scripts\python.exe scripts\run_calibration_budget_sensitivity.py
 & .\.venv\Scripts\python.exe scripts\run_block_sensitivity.py
 & .\.venv\Scripts\python.exe scripts\make_paper1_figures.py
+
+# 从最细粒度冻结结果独立复算正文关键数字；文献元数据审计会访问 DOI 注册机构。
+& .\.venv\Scripts\python.exe scripts\validate_manuscript_evidence.py
+& .\.venv\Scripts\python.exe scripts\audit_reference_metadata.py --as-of 2026-08-21
 
 # 外部验证的健康阶段：默认下载器不会下载48条故障记录。
 & .\.venv\Scripts\python.exe scripts\download_external_pmsm_validation.py

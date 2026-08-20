@@ -161,9 +161,12 @@ points (95% turn-stratified record-bootstrap interval [-49.48, -40.63]).
 
 #### 6.4 Operating-point confounding
 
-- Alarm rate by ordered block, approximate speed, load, and turn count.
+- Alarm rate by ordered block, approximate speed, load, and fixed turn--phase condition;
+  the dataset does not separately identify turn-count and phase effects.
 - First-four/first-seven/full-horizon detection and first-alarm speed.
 - Per-block AUROC to distinguish residual fault information from threshold drift.
+- State that pooled AUROC compares eight fault loads with four held-out health loads and
+  is descriptive rather than load matched.
 - Avoid headline AUPRC because prevalence is 384/416 = 92.3%.
 
 #### 6.5 Negative transfer
@@ -200,7 +203,7 @@ failed detector merely “needs more validation.”
 2. KAIST exploratory performance and paired comparisons.
 3. External eleven-method detection plus health H1 decisions.
 4. Frozen-detector score and alarm drift across ordered acceleration blocks.
-5. Turn-count × load detection heatmap.
+5. Fixed turn--phase condition × load detection heatmap.
 6. Early-horizon/per-block diagnostic figure if it remains readable.
 
 ## Required tables
@@ -220,6 +223,8 @@ failed detector merely “needs more validation.”
 - Log-Euclidean, deep learning, or source augmentation is uniformly superior.
 - Target MinCovDet was the preregistered primary method.
 - 48 external records represent 48 independent motors.
+- External turn-count and fault-phase effects are separately identified.
+- Pooled external AUROC is a load-matched population estimand.
 - 100% record-any alarm means reliable early detection.
 - High AUPRC is strong evidence under 92.3% fault-block prevalence.
 - Severity estimation, prognosis, RUL, or acceptance by an SCI journal.
