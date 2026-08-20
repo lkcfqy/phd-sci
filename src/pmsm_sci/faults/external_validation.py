@@ -114,6 +114,15 @@ def system_block_scores(
     )
     if not observed.map(lambda items: items == expected).all():
         raise ValueError("Each system block must contain every expected subsystem")
+    component_scores = subsystem.pivot(
+        index=["record_id", "load_nm", "block_id"],
+        columns="subsystem",
+        values="subsystem_score",
+    ).reset_index()
+    component_scores.columns.name = None
+    component_scores = component_scores.rename(
+        columns={item: f"subsystem_score_{item}" for item in expected}
+    )
     system = (
         subsystem.groupby(
             ["record_id", "load_nm", "block_id"], observed=True, sort=True
@@ -124,4 +133,8 @@ def system_block_scores(
         )
         .reset_index()
     )
-    return system
+    return system.merge(
+        component_scores,
+        on=["record_id", "load_nm", "block_id"],
+        validate="one_to_one",
+    )

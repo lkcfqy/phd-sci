@@ -59,6 +59,8 @@ def test_system_score_is_maximum_over_window_and_subsystem() -> None:
     assert len(result) == 1
     assert result.loc[0, "score"] == pytest.approx(34.0)
     assert result.loc[0, "subsystem_count"] == 2
+    assert result.loc[0, "subsystem_score_SubSys1"] == pytest.approx(24.0)
+    assert result.loc[0, "subsystem_score_SubSys2"] == pytest.approx(34.0)
 
 
 def test_system_score_rejects_missing_subsystem() -> None:
