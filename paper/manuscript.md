@@ -381,6 +381,19 @@ valid severity estimation.
 
 ![Nonmonotonic detection across nominal severity.](figures/severity_detection.pdf)
 
+### 6.7 Locked external health stage
+
+After commit `fddf2f7` froze the complete external pipeline, the proposed detector was
+run once on the 32 record-disjoint healthy blocks. It raised one alarm, in the final
+analyzed block of the held-out 35 Nm record. The point false-alarm rate was 3.125%, the
+maximum load-specific rate was 1/8 = 12.5%, and the descriptive pooled Wilson upper
+bound was 15.74%. The preregistered external health gate therefore failed because its
+upper-bound criterion was 12%, despite the low point estimate. Motor-balanced and
+target-only Isolation Forest raised 2/32 and 3/32 alarms, respectively. Target-only
+Minimum Covariance Determinant raised none, but switching to it after revealing the
+health test would be post-hoc selection and is not permitted. The pipeline remains
+unchanged for the sealed fault reveal.
+
 ## 7. Discussion
 
 The most operationally relevant result is not the near-perfect AUROC. It is the contrast

@@ -1,0 +1,12 @@
+method,alpha,threshold,calibration_records,calibration_blocks,health_test_records,health_test_blocks,false_alarms,healthy_block_false_alarm_rate,descriptive_wilson_lower,descriptive_wilson_upper,max_heldout_load_false_alarm_rate,h1_empirical_pass,faults_available,fault_records,fault_blocks,fault_block_detection_rate,fault_record_macro_detection_rate,record_bootstrap_detection_ci_lower,record_bootstrap_detection_ci_upper,fault_record_any_alarm_rate,block_auroc,block_auprc
+target_ledoit,0.05,183.88696048195305,3,24,4,32,1,0.03125,0.005537860164003122,0.15744263820012555,0.125,False,False,0,0,,,,,,,
+target_sample_covariance,0.05,738.7026855800124,3,24,4,32,1,0.03125,0.005537860164003122,0.15744263820012555,0.125,False,False,0,0,,,,,,,
+source_covariance,0.05,109212.27762107668,3,24,4,32,1,0.03125,0.005537860164003122,0.15744263820012555,0.125,False,False,0,0,,,,,,,
+entity_balanced_covariance,0.05,1250.372244355571,3,24,4,32,1,0.03125,0.005537860164003122,0.15744263820012555,0.125,False,False,0,0,,,,,,,
+log_euclidean_entity_covariance,0.05,4983.287627092597,3,24,4,32,1,0.03125,0.005537860164003122,0.15744263820012555,0.125,False,False,0,0,,,,,,,
+target_ocsvm_rbf,0.05,0.40173581428355754,3,24,4,32,1,0.03125,0.005537860164003122,0.15744263820012555,0.125,False,False,0,0,,,,,,,
+source_target_ocsvm_rbf,0.05,0.8276634174834231,3,24,4,32,1,0.03125,0.005537860164003122,0.15744263820012555,0.125,False,False,0,0,,,,,,,
+target_isolation_forest,0.05,0.569218190283984,3,24,4,32,3,0.09375,0.032401551298366194,0.24218154728387864,0.125,False,False,0,0,,,,,,,
+source_target_isolation_forest,0.05,0.5816769003968111,3,24,4,32,2,0.0625,0.01731056703164098,0.20147123144154577,0.125,False,False,0,0,,,,,,,
+target_min_cov_det,0.05,1238.096170587123,3,24,4,32,0,0.0,0.0,0.10717919825507058,0.0,True,False,0,0,,,,,,,
+source_target_min_cov_det,0.05,9802.524118036708,3,24,4,32,1,0.03125,0.005537860164003122,0.15744263820012555,0.125,False,False,0,0,,,,,,,

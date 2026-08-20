@@ -136,6 +136,27 @@ secondary stress test because it lacks independent healthy files and uses MATLAB
 time-series objects. The 2.2 kW PMSG set (`10.18710/ZN1LPD`) is tertiary because its
 generator topology changes the deployment domain.
 
+## 2026-08-20 — Frozen external health result
+
+Commit `fddf2f7` froze the protocol, parser, feature pipeline, eleven comparators, tests,
+and explicit fault-reveal downloader before any external fault value was downloaded.
+The subsequent single health-stage run produced the following locked outcome:
+
+- the proposed Log-Euclidean detector raised `1/32` held-out healthy block alarms;
+- the point FAR was 3.125%, the descriptive Wilson upper bound was 15.74%, and the
+  largest per-load FAR was 1/8 = 12.5%;
+- the alarm occurred in the final analyzed block of the 35 Nm record;
+- the predeclared H1 gate therefore **failed** because 15.74% exceeds 12%, even though
+  the point FAR and per-load criterion were below their limits;
+- motor-balanced Isolation Forest raised `2/32` alarms and target-only Isolation Forest
+  raised `3/32`; target-only MinCovDet happened to raise `0/32`, but selecting it after
+  the health reveal would be post-hoc model switching and is prohibited.
+
+No feature, interval, ridge, aggregation, load split, or threshold will be changed. The
+protocol explicitly requires the 48 sealed fault records to be revealed and reported
+even when H1 fails, so the result remains a valid OOD stress test rather than a hidden
+failed experiment.
+
 ## Open decisions after the strengthened pilot
 
 1. Verify exact current/vibration synchronization before any multimodal claim.
