@@ -208,7 +208,12 @@ def _save_pair(figure: Figure, output_dir: Path) -> tuple[Path, Path]:
     png = output_dir / "external_feature_geometry.png"
     pdf = output_dir / "external_feature_geometry.pdf"
     figure.savefig(png, dpi=300, bbox_inches="tight", pad_inches=0.06)
-    figure.savefig(pdf, bbox_inches="tight", pad_inches=0.06)
+    figure.savefig(
+        pdf,
+        bbox_inches="tight",
+        pad_inches=0.06,
+        metadata={"CreationDate": None, "ModDate": None},
+    )
     plt.close(figure)
     return png, pdf
 
@@ -224,27 +229,9 @@ def plot_feature_geometry(data: pd.DataFrame, output_dir: Path) -> tuple[Path, P
     figure, (axis_discrimination, axis_contribution) = plt.subplots(
         1,
         2,
-        figsize=(11.3, 6.6),
+        figsize=(11.3, 5.6),
         sharey=True,
         gridspec_kw={"width_ratios": [1.04, 1.0]},
-    )
-    figure.suptitle(
-        "External feature discrimination and frozen-score attribution",
-        x=0.055,
-        y=0.975,
-        ha="left",
-        fontsize=14,
-        fontweight="bold",
-        color=INK,
-    )
-    figure.text(
-        0.055,
-        0.932,
-        "Third-harmonic contrast separates the recorded conditions but is weakly weighted; "
-        "fundamental frequency shows the inverse mismatch.",
-        ha="left",
-        color=MUTED,
-        fontsize=9,
     )
 
     axis_discrimination.axvline(0.5, color=INK, linestyle=":", linewidth=1.0, zorder=1)
@@ -379,27 +366,7 @@ def plot_feature_geometry(data: pd.DataFrame, output_dir: Path) -> tuple[Path, P
         handletextpad=0.6,
     )
 
-    figure.text(
-        0.055,
-        0.045,
-        "Post-reveal exploratory diagnosis; descriptive and conditional on one physical "
-        "motor. Panel (a): record×subsystem×block means at the four loads with held-out "
-        "health; one health condition is reused across six fault-turn comparisons.",
-        ha="left",
-        color=MUTED,
-        fontsize=7.8,
-    )
-    figure.text(
-        0.055,
-        0.019,
-        r"Panel (b): winning-window attribution for all fault records versus held-out health. "
-        r"Cross-terms use the symmetric split $c_j=x_j(Px)_j$; signed contributions may be "
-        r"negative, while plotted shares use absolute contributions normalized to sum to 1.",
-        ha="left",
-        color=MUTED,
-        fontsize=7.8,
-    )
-    figure.subplots_adjust(left=0.205, right=0.985, top=0.81, bottom=0.18, wspace=0.20)
+    figure.subplots_adjust(left=0.205, right=0.985, top=0.86, bottom=0.13, wspace=0.20)
     return _save_pair(figure, output_dir)
 
 

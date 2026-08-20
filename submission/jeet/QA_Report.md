@@ -23,19 +23,20 @@ This is an internal handoff record. Do not upload it as a manuscript file.
   author contributions, competing interests, ethics approval, consent to participate,
   consent for publication, data/materials/code availability, and generative-AI use are
   grouped under `Statements and declarations`.
-- `Manuscript_Anonymous.pdf` has 18 portrait pages. Seven page-image SHA-256 values
-  exactly matched the preceding fully inspected build; the ten changed pages and new
-  page 18 were rendered at 180 dpi and visually re-inspected for clipping, overlap,
-  broken figure/caption pairs, missing-glyph boxes, table overflow, and unintended blank
-  pages.
-- `ESM_1_Supplementary_Material.pdf` has eight landscape pages; all eight pages were
-  covered by the final review: page 8 exactly matched the preceding inspected build,
-  while pages 1--7 were rendered at 180 dpi and visually re-inspected. Its 17 tables fit
-  within their page frames, including the S9 compatibility, 12-method, and hash tables.
-- Across the 26 final PDF pages, eight page images were byte-for-byte identical to the
-  preceding inspected render and all 18 changed or new pages were re-inspected. No
-  clipping, overlap, broken page furniture, missing-glyph boxes, or unintended blank
-  pages were found.
+- `Manuscript_Anonymous.pdf` has 18 portrait pages and
+  `ESM_1_Supplementary_Material.pdf` has eight landscape pages. All 26 final pages were
+  rendered at 180 dpi and visually inspected for clipping, overlap, broken
+  figure/caption pairs, missing-glyph boxes, table overflow, and unintended blank pages.
+  In the last caption-only rebuild, manuscript pages 1--13 and 15--18 and all eight
+  supplementary pages matched the preceding render byte for byte; the changed page 14
+  was re-inspected after replacing a literal inline formula with a section cross-reference.
+  The supplement's 17 tables all fit within their page frames.
+- All figure-wide titles, subtitles, and caption-like footer prose were removed from the
+  uploaded artwork. The corresponding denominators, interval definitions, H1 limits,
+  dependence warnings, and single-motor caveats are carried by synchronized manuscript
+  captions. Vector PDFs are the upload-quality figure sources; 300 dpi PNGs are retained
+  as review/Word copies. Two complete figure regenerations produced identical PDF
+  SHA-256 values.
 - A lower-grain evidence audit independently reconstructed every headline denominator
   and performance result used in the abstract, results, and conclusion. It also exposed
   and corrected the fixed fault-turn/phase confounding, unequal load support in pooled
@@ -57,10 +58,12 @@ This is an internal handoff record. Do not upload it as a manuscript file.
   manuscript-evidence check, both secondary transient-audit protocols, and the selected
   frozen/post-reveal result directories. An internal SHA-256 manifest covers every
   archived file except the manifest itself.
-- The final ZIP was extracted into a fresh temporary directory. With its own `src`
-  directory placed first on the import path, the independent manuscript-evidence
-  validator, every test shipped in the bundle, and Ruff all passed without reading an
-  unbundled result or processed-feature file.
+- Repository-wide Ruff, the supplementary drift check, the independent manuscript-
+  evidence validator, and all 145 repository tests passed. The final ZIP was extracted
+  into a fresh temporary directory. With its own `src` directory placed first on the
+  import path (confirmed from `pmsm_sci.__file__`), the evidence validator, all 129 tests
+  shipped in the bundle, and Ruff passed without reading an unbundled result or
+  processed-feature file.
 - The final binary hashes and PDF page audits are recorded in `build_metadata.json`.
 
 ## Renderer boundary

@@ -62,7 +62,7 @@ small number of continuous records.
    text and internal findings now use 40.62 rather than 40.63.
 4. **Low — abstract scope could be read as ignoring the auxiliary third dataset.** It now
    identifies the headline experiment as the `primary two-dataset analysis`; the
-   separately preregistered transient compatibility audit remains explicitly
+   separately and prospectively frozen transient compatibility audit remains explicitly
    non-confirmatory.
 
 ## Calculation spot-checks
@@ -100,10 +100,12 @@ passed normalized title, first-author, and available year checks. The dated tabl
 `docs/reference_metadata_audit.md`; resolution verifies metadata existence, not the
 correctness of every narrative interpretation.
 
-The final external heatmap labels every turn row with its fixed phase and now states the
-non-identifiability directly. All other figures retain explicit denominators, held-out
-health scope, time/block ordering, or post-reveal status near the visual claim. Final
-PDF layout review is recorded separately in `submission/jeet/QA_Report.md`.
+The final external heatmap labels every turn row with its fixed phase. Its formal
+caption states the non-identifiability directly. To follow the journal artwork rule,
+the separate illustration files contain no figure-wide titles, subtitles, or
+caption-like footer paragraphs; explicit denominators, held-out-health scope,
+time/block ordering, and post-reveal status are carried by the manuscript captions.
+Final PDF layout review is recorded separately in `submission/jeet/QA_Report.md`.
 
 ## Required caveats for submission
 
@@ -111,7 +113,7 @@ PDF layout review is recorded separately in `submission/jeet/QA_Report.md`.
   acceleration design.
 - Turn-count and phase effects are not separately identifiable in the external grid.
 - Pooled external AUROC is not load matched.
-- Target MinCovDet is a preimplemented comparator, not the preregistered primary; its
+- Target MinCovDet is a preimplemented comparator, not the pre-reveal primary; its
   exact primary-seed operating point is not stable across all five seeds.
 - The compound shift does not identify a causal contribution from topology, speed,
   load, sampling rate, controller, or sensor chain individually.

@@ -57,29 +57,79 @@ JOURNAL = "Journal of Electrical Engineering & Technology"
 FIGURES = [
     ("protocol_overview", "Motor holdout, sequential target-health split, and method flow"),
     ("method_performance", "Per-motor detection and healthy false-alarm intervals"),
-    ("paired_detection_differences", "Record-level paired detection differences"),
+    (
+        "paired_detection_differences",
+        (
+            "Record-level paired detection-rate differences between the Log-Euclidean entity "
+            "detector and each covariance comparator. Points are mean paired differences and "
+            "bars are 95% percentile intervals from 10,000 motor-stratified fault-record "
+            "bootstrap replicates over the 42 available KAIST fault records; positive values "
+            "favor the Log-Euclidean detector."
+        ),
+    ),
     (
         "oneclass_detection_differences",
-        "Paired record differences against strong one-class baselines",
+        (
+            "Record-level paired detection-rate differences between the proposed detector and "
+            "the strong one-class baselines. Points are mean paired differences and bars are "
+            "95% percentile intervals from 10,000 motor-stratified fault-record bootstrap "
+            "replicates over the 42 available KAIST fault records; positive values favor the "
+            "proposed detector. Parenthetical FA labels report false alarms among the 42 "
+            "later-health blocks."
+        ),
     ),
     ("adaptation_budget", "Adaptation-budget sensitivity and calibration feasibility"),
     ("block_sensitivity", "Block-length and aggregation sensitivity"),
     ("severity_detection", "Nonmonotonic detection across nominal severity"),
     (
         "external_method_performance",
-        "External fault detection, healthy false alarms, and the predeclared H1 decision",
+        (
+            "External fault detection, held-out-health false alarms, and the predeclared H1 "
+            "decision on one dual-three-phase PMSM. Panel (a) shows block detection with "
+            "turn-stratified record-bootstrap intervals over 48 fault records and 384 ordered "
+            "blocks. Panel (b) shows pooled false-alarm rates with descriptive 95% Wilson "
+            "intervals over four held-out healthy loads and 32 blocks, maximum load-specific "
+            "false-alarm rates, and the H1 limits of 12% for the pooled Wilson upper bound and "
+            "15% for the maximum-load rate. Gold marks the observed detection leader and "
+            "hatched blue marks the frozen proposed detector; intervals are descriptive at the "
+            "recorded-condition level."
+        ),
     ),
     (
         "external_condition_drift",
-        "Threshold-normalized score and alarm drift over the acceleration trajectory",
+        (
+            "Frozen Log-Euclidean score and alarm drift over eight ordered 3 s external "
+            "analysis blocks. Panel (a) shows the median and interquartile range of "
+            "threshold-normalized scores on a logarithmic scale for 48 fault records and four "
+            "held-out healthy records per block; the top axis gives approximate median speed. "
+            "Panel (b) shows empirical block alarm rates. Blocks are ordered operating points "
+            "rather than independent repeats, and the score and alarm drift are therefore "
+            "confounded with the rise from approximately 218 to 2,214 rpm."
+        ),
     ),
     (
         "external_proposed_heatmap",
-        "Frozen-detector block detection over turn-phase conditions and load",
+        (
+            "Frozen-detector alarm fraction across six fixed turn-phase conditions and eight "
+            "loads on the external motor. Each cell is the fraction of eight ordered 3 s "
+            "blocks alarmed within one record, so 12.5% represents one of eight blocks. Phase "
+            "is fixed by turn count (U: 1, 3, 5, and 6; V: 2 and 4), so turn and phase effects "
+            "are not separately identifiable; blocks within a record are ordered operating "
+            "points rather than independent repetitions."
+        ),
     ),
     (
         "external_feature_geometry",
-        "Post-reveal single-feature discrimination versus frozen-score contribution",
+        (
+            "Post-reveal single-feature discrimination versus frozen-score contribution on "
+            "one external motor. Panel (a) shows direction-free AUROC and the absolute matched "
+            "standardized difference for record-subsystem-block means at the four loads with "
+            "held-out health; each healthy condition is reused across six fault-turn "
+            "comparisons. Panel (b) shows winning-window absolute Mahalanobis contribution "
+            "shares for all fault records and held-out health, using the symmetric cross-term "
+            "split defined in Section 6.9. The analysis is descriptive, no detector was refit, and no "
+            "threshold was changed."
+        ),
     ),
 ]
 

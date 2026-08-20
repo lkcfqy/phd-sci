@@ -1,7 +1,7 @@
 # External PMSM Fault-Reveal Log
 
 This log records the one-time reveal of the 48 dual-three-phase PMSM fault files.
-Times are UTC on 2026-08-20. It supplements the preregistration in
+Times are UTC on 2026-08-20. It supplements the pre-reveal frozen protocol in
 `docs/external_validation_protocol.md`.
 
 ## Immutable stages before fault values were opened

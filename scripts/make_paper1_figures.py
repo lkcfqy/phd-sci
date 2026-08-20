@@ -58,7 +58,10 @@ def configure_style() -> None:
 
 def save_figure(figure: plt.Figure, output_dir: Path, stem: str) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    figure.savefig(output_dir / f"{stem}.pdf")
+    figure.savefig(
+        output_dir / f"{stem}.pdf",
+        metadata={"CreationDate": None, "ModDate": None},
+    )
     figure.savefig(output_dir / f"{stem}.png")
     plt.close(figure)
 
@@ -139,7 +142,7 @@ def plot_paired_differences(results_dir: Path, output_dir: Path) -> None:
     upper = comparisons["bootstrap_ci_upper"].to_numpy()
     y = np.arange(len(comparisons))
 
-    figure, axis = plt.subplots(figsize=(6.2, 2.7), constrained_layout=True)
+    figure, axis = plt.subplots(figsize=(6.2, 2.5), constrained_layout=True)
     significant = lower > 0
     colors = np.where(significant, "#24548f", "#7c7c7c")
     for index in range(len(comparisons)):
@@ -160,7 +163,6 @@ def plot_paired_differences(results_dir: Path, output_dir: Path) -> None:
         [METHOD_LABELS[method] for method in comparisons.index],
     )
     axis.set_xlabel("Detection-rate difference: Log-Euclidean entity minus comparator")
-    axis.set_title("Paired fault-record bootstrap (10,000 replicates; 95% CI)")
     save_figure(figure, output_dir, "paired_detection_differences")
 
 
@@ -429,7 +431,7 @@ def plot_oneclass_comparisons(output_dir: Path) -> None:
     upper = comparisons["paired_record_bootstrap_ci_upper"].to_numpy()
     y = np.arange(len(comparisons))
 
-    figure, axis = plt.subplots(figsize=(6.8, 3.3), constrained_layout=True)
+    figure, axis = plt.subplots(figsize=(6.8, 3.0), constrained_layout=True)
     for index in range(len(comparisons)):
         supported = lower[index] > 0
         color = "#24548f" if supported else "#7c7c7c"
@@ -448,7 +450,6 @@ def plot_oneclass_comparisons(output_dir: Path) -> None:
     axis.set_yticks(y, [labels[item] for item in order])
     axis.invert_yaxis()
     axis.set_xlabel("Detection-rate difference: proposed minus one-class baseline")
-    axis.set_title("Paired fault-record bootstrap; FA = false alarms among 42 healthy blocks")
     save_figure(figure, output_dir, "oneclass_detection_differences")
 
 

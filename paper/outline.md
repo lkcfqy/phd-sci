@@ -18,7 +18,7 @@ A Leakage-Resistant Cross-Dataset Evaluation**
   11 个比较器和失败门槛均在打开任何外部故障值之前形成哈希提交。
 - 外部 48 条故障记录来自一台物理电机的 6 turns × 8 loads 条件网格，不是 48 台电机。
 - Wilson 区间和 record bootstrap 只描述已记录条件，不能外推成机群安全保证。
-- 预注册 Log-Euclidean detector 外部失败后仍保留为 primary；target MinCovDet 只能称
+- 预揭盲冻结的 Log-Euclidean detector 外部失败后仍保留为 primary；target MinCovDet 只能称
   observed comparator leader，不能事后更换主方法。
 - 任何揭盲后开发的速度条件化模型都属于 Paper 2 探索结果，必须在新未见数据确认。
 
@@ -221,7 +221,7 @@ failed detector merely “needs more validation.”
   certification.
 - Universal cross-machine, cross-topology, or cross-condition generalization.
 - Log-Euclidean, deep learning, or source augmentation is uniformly superior.
-- Target MinCovDet was the preregistered primary method.
+- Target MinCovDet was the pre-reveal primary method.
 - 48 external records represent 48 independent motors.
 - External turn-count and fault-phase effects are separately identified.
 - Pooled external AUROC is a load-matched population estimand.

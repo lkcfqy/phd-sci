@@ -1246,7 +1246,10 @@ def render_s9(root: Path, sources: dict[str, Any]) -> str:
     )
 
     hash_artifacts = [
-        ("preregistered protocol", "docs/secondary_transient_validation_protocol.md"),
+        (
+            "prospectively frozen pre-reveal protocol",
+            "docs/secondary_transient_validation_protocol.md",
+        ),
         ("chronological reveal log", "docs/secondary_transient_reveal_log.md"),
         (
             "frozen parser compatibility",

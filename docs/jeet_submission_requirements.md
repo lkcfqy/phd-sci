@@ -28,9 +28,16 @@ Authoritative sources:
   links when available.
 - The abstract must contain 150--250 words and the manuscript must have 4--6 keywords.
 - Figures should be cited in order and placed in the manuscript; separate source files
-  should be named `Fig1`, `Fig2`, and so on. Figure captions use `Fig. N` and lettering
-  should remain legible at publication size. Accessibility text and non-color-only
-  distinctions are required.
+  should be named `Fig1`, `Fig2`, and so on. Figure captions use `Fig. N`, belong in the
+  manuscript rather than inside the illustration, and end without punctuation. The
+  current figure sources therefore retain only axes, legends, panel labels, and
+  data-attached annotations; figure-wide titles, subtitles, and caption-like footer text
+  are outside the graphics. Lettering should remain legible at publication size.
+  Accessibility text and non-color-only distinctions are required.
+- The journal prefers EPS for vector graphics and requests 1,200 dpi for bitmap line art
+  or 600 dpi for bitmap combination art. This package uses the vector PDF copy of every
+  figure as its upload-quality source; the 300 dpi PNG files are review/Word-rendering
+  copies rather than the archival artwork source.
 - A data-availability statement and relevant Statements and Declarations, including
   competing interests, are required.
 - Text supplementary material is submitted as PDF and cited in the article as an

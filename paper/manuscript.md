@@ -11,7 +11,7 @@ link-citations: true
 > fault records were inspected during method development. The independent-laboratory
 > fault files were opened only after the protocol, code, environment, healthy
 > calibration scores, and primary threshold had been frozen in hash-addressed commits.
-> A separately preregistered transient-set audit is non-confirmatory: its frozen
+> A separate prospectively frozen transient-set audit is non-confirmatory: its frozen
 > parser failed before scoring, and the repaired 200 W analysis is explicitly
 > post-reveal.
 
@@ -356,6 +356,9 @@ and Message-Digest Algorithm 5 (MD5)
 manifest, and processed once over the unchanged [12, 36) s interval. The run yielded a
 complete 6 fault-turn counts by 8 loads grid (384 system blocks). The chronological
 reveal log and hash-addressed commits are retained as audit evidence.
+This was a prospective repository-based freeze, not a registration in an external
+preregistration service; the claims therefore use *frozen* or *pre-reveal* rather than
+*preregistered*.
 
 The six fault-turn levels were not crossed with fault phase: 1-, 3-, 5-, and 6-turn
 faults were assigned to phase U, whereas 2- and 4-turn faults were assigned to phase V.
@@ -425,7 +428,7 @@ source transfer, but it does not establish that Log-Euclidean averaging is unifo
 better than simpler entity averaging. The record-level paired differences are shown in
 Fig. 3.
 
-![Record-level paired detection differences.](figures/paired_detection_differences.pdf)
+![Record-level paired detection-rate differences between the Log-Euclidean entity detector and each covariance comparator. Points are mean paired differences and bars are 95% percentile intervals from 10,000 motor-stratified fault-record bootstrap replicates over the 42 available KAIST fault records; positive values favor the Log-Euclidean detector.](figures/paired_detection_differences.pdf)
 
 ### 6.3 Strong one-class baselines
 
@@ -457,7 +460,7 @@ motor-balanced Isolation Forest varied from 96.01% to 96.85% detection and from 
 to two healthy alarms, illustrating that a single favorable seed is insufficient for
 an alarm-risk claim. Paired record differences against these baselines appear in Fig. 4.
 
-![Paired record differences against strong one-class baselines.](figures/oneclass_detection_differences.pdf)
+![Record-level paired detection-rate differences between the proposed detector and the strong one-class baselines. Points are mean paired differences and bars are 95% percentile intervals from 10,000 motor-stratified fault-record bootstrap replicates over the 42 available KAIST fault records; positive values favor the proposed detector. Parenthetical FA labels report false alarms among the 42 later-health blocks.](figures/oneclass_detection_differences.pdf)
 
 ### 6.4 Adaptation budget
 
@@ -548,7 +551,7 @@ comparison.
 
 Figure 8 jointly shows fault detection, healthy alarms, and the predeclared H1 decision.
 
-![External fault detection, healthy false alarms, and the predeclared H1 decision.](figures/external_method_performance.pdf)
+![External fault detection, held-out-health false alarms, and the predeclared H1 decision on one dual-three-phase PMSM. Panel (a) shows block detection with turn-stratified record-bootstrap intervals over 48 fault records and 384 ordered blocks. Panel (b) shows pooled false-alarm rates with descriptive 95% Wilson intervals over four held-out healthy loads and 32 blocks, maximum load-specific false-alarm rates, and the H1 limits of 12% for the pooled Wilson upper bound and 15% for the maximum-load rate. Gold marks the observed detection leader and hatched blue marks the frozen proposed detector; intervals are descriptive at the recorded-condition level.](figures/external_method_performance.pdf)
 
 ### 6.8 Operating-point drift and negative transfer
 
@@ -574,7 +577,7 @@ matching acceleration position, while the transported unconditional score and fi
 threshold were overwhelmed by operating-point drift. The threshold-normalized score and
 alarm trajectories are shown in Fig. 9.
 
-![Threshold-normalized score and alarm drift over the acceleration trajectory.](figures/external_condition_drift.pdf)
+![Frozen Log-Euclidean score and alarm drift over eight ordered 3 s external analysis blocks. Panel (a) shows the median and interquartile range of threshold-normalized scores on a logarithmic scale for 48 fault records and four held-out healthy records per block; the top axis gives approximate median speed. Panel (b) shows empirical block alarm rates. Blocks are ordered operating points rather than independent repeats, and the score and alarm drift are therefore confounded with the rise from approximately 218 to 2,214 rpm.](figures/external_condition_drift.pdf)
 
 The failure was also load dependent. Frozen-detector block detection fell from 56.25%
 at 0 N m to 12.50% at 35 N m. Across the six fixed turn--phase conditions, detection
@@ -583,7 +586,7 @@ phase are not fully crossed, this pattern is not an identifiable severity trend.
 full 6 by 8 condition grid shows that many high-load records triggered in only one of
 eight ordered blocks. The complete turn--phase-by-load alarm grid is shown in Fig. 10.
 
-![Frozen-detector block detection over fault turns and load; row labels show the fixed fault phase, so turn and phase effects are not separately identifiable.](figures/external_proposed_heatmap.pdf)
+![Frozen-detector alarm fraction across six fixed turn-phase conditions and eight loads on the external motor. Each cell is the fraction of eight ordered 3 s blocks alarmed within one record, so 12.5% represents one of eight blocks. Phase is fixed by turn count (U: 1, 3, 5, and 6; V: 2 and 4), so turn and phase effects are not separately identifiable; blocks within a record are ordered operating points rather than independent repetitions.](figures/external_proposed_heatmap.pdf)
 
 Source data were not uniformly harmful: the frozen target-adapted Log-Euclidean
 configuration exceeded pure source covariance by 12.24 points (paired interval
@@ -627,7 +630,7 @@ reused across six fault-turn conditions and every record comes from one motor, s
 effect sizes are descriptive and post-reveal only. Figure 11 contrasts single-feature
 discrimination with the frozen-score contribution allocation.
 
-![Post-reveal single-feature discrimination versus frozen-score contribution.](figures/external_feature_geometry.pdf)
+![Post-reveal single-feature discrimination versus frozen-score contribution on one external motor. Panel (a) shows direction-free AUROC and the absolute matched standardized difference for record-subsystem-block means at the four loads with held-out health; each healthy condition is reused across six fault-turn comparisons. Panel (b) shows winning-window absolute Mahalanobis contribution shares for all fault records and held-out health, using the symmetric cross-term split defined in Section 6.9. The analysis is descriptive, no detector was refit, and no threshold was changed.](figures/external_feature_geometry.pdf)
 
 ### 6.10 Sampling-rate sensitivity
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import hashlib
 import json
 import re
@@ -23,6 +24,59 @@ def digest(path: Path) -> str:
 def xml_text(archive: zipfile.ZipFile, member: str) -> str:
     root = ElementTree.fromstring(archive.read(member))
     return "".join(root.itertext())
+
+
+def test_figure_artwork_keeps_manuscript_captions_outside_graphics() -> None:
+    external_sources = [
+        ROOT / "scripts" / "make_external_validation_figures.py",
+        ROOT / "scripts" / "make_external_feature_geometry_figure.py",
+    ]
+    for path in external_sources:
+        source = path.read_text(encoding="utf-8")
+        assert ".suptitle(" not in source
+        assert "figure.text(" not in source
+
+    paper_figure_source = (ROOT / "scripts" / "make_paper1_figures.py").read_text(
+        encoding="utf-8"
+    )
+    assert (
+        "Paired fault-record bootstrap (10,000 replicates; 95% CI)"
+        not in paper_figure_source
+    )
+    assert "Paired fault-record bootstrap; FA =" not in paper_figure_source
+
+    manuscript = (ROOT / "paper" / "manuscript.md").read_text(encoding="utf-8")
+    for relocated_detail in (
+        "10,000 motor-stratified fault-record bootstrap replicates",
+        "48 fault records and 384 ordered blocks",
+        "approximately 218 to 2,214 rpm",
+        "12.5% represents one of eight blocks",
+        "no detector was refit, and no threshold was changed",
+    ):
+        assert relocated_detail in manuscript
+
+
+def test_manuscript_and_separate_figure_captions_are_synchronized() -> None:
+    manuscript = (ROOT / "paper" / "manuscript.md").read_text(encoding="utf-8")
+    manuscript_figures = re.findall(
+        r"^!\[(.*?)\]\(figures/([^/)]+)\.pdf\)$",
+        manuscript,
+        flags=re.MULTILINE,
+    )
+    build_source = (ROOT / "scripts" / "build_jeet_submission.py").read_text(
+        encoding="utf-8"
+    )
+    tree = ast.parse(build_source)
+    figure_assignment = next(
+        node
+        for node in tree.body
+        if isinstance(node, ast.Assign)
+        and any(isinstance(target, ast.Name) and target.id == "FIGURES" for target in node.targets)
+    )
+    separate_figures = ast.literal_eval(figure_assignment.value)
+    observed = [(stem, caption.rstrip(".")) for caption, stem in manuscript_figures]
+    expected = [(stem, caption.rstrip(".")) for stem, caption in separate_figures]
+    assert observed == expected
 
 
 def test_source_meets_jeet_abstract_keyword_and_resource_requirements() -> None:

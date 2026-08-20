@@ -328,7 +328,12 @@ def _save_pair(figure: Figure, output_dir: Path, stem: str) -> tuple[Path, Path]
     png = output_dir / f"{stem}.png"
     pdf = output_dir / f"{stem}.pdf"
     figure.savefig(png, dpi=300, bbox_inches="tight", pad_inches=0.06)
-    figure.savefig(pdf, bbox_inches="tight", pad_inches=0.06)
+    figure.savefig(
+        pdf,
+        bbox_inches="tight",
+        pad_inches=0.06,
+        metadata={"CreationDate": None, "ModDate": None},
+    )
     plt.close(figure)
     return png, pdf
 
@@ -346,27 +351,9 @@ def plot_method_performance(
     figure, (axis_detection, axis_far) = plt.subplots(
         1,
         2,
-        figsize=(11.2, 6.2),
+        figsize=(11.2, 5.35),
         sharey=True,
         gridspec_kw={"width_ratios": [1.12, 1.0]},
-    )
-    figure.suptitle(
-        "External validation performance by method",
-        x=0.055,
-        y=0.975,
-        ha="left",
-        fontsize=14,
-        fontweight="bold",
-        color=INK,
-    )
-    figure.text(
-        0.055,
-        0.932,
-        "48 fault records (384 blocks); four held-out healthy loads (32 blocks). "
-        "Intervals are descriptive at the recorded-data level.",
-        ha="left",
-        color=MUTED,
-        fontsize=9,
     )
 
     bars = axis_detection.barh(
@@ -532,17 +519,7 @@ def plot_method_performance(
         handletextpad=0.6,
         fontsize=7.4,
     )
-    figure.text(
-        0.055,
-        0.035,
-        "H1 passes only when the pooled Wilson upper bound ≤ 12% and the maximum "
-        "held-out-load FAR ≤ 15%. Gold marks the observed detection leader; hatched blue "
-        "marks the proposed method.",
-        ha="left",
-        color=MUTED,
-        fontsize=8,
-    )
-    figure.subplots_adjust(left=0.29, right=0.985, top=0.86, bottom=0.24, wspace=0.12)
+    figure.subplots_adjust(left=0.29, right=0.985, top=0.94, bottom=0.22, wspace=0.12)
     return _save_pair(figure, output_dir, "external_method_performance")
 
 
@@ -564,27 +541,9 @@ def plot_condition_drift(
     figure, axes = plt.subplots(
         2,
         1,
-        figsize=(8.4, 6.5),
+        figsize=(8.4, 5.55),
         sharex=True,
         gridspec_kw={"height_ratios": [1.55, 1.0]},
-    )
-    figure.suptitle(
-        "Proposed score and alarm drift across analysis blocks",
-        x=0.09,
-        y=0.975,
-        ha="left",
-        fontsize=14,
-        fontweight="bold",
-        color=INK,
-    )
-    figure.text(
-        0.09,
-        0.936,
-        "Log-Euclidean detector; fault n = 48 records/block, held-out health n = 4 "
-        "records/block. Lines show medians; bands show interquartile ranges.",
-        ha="left",
-        color=MUTED,
-        fontsize=9,
     )
     for condition in ("Fault", "Held-out health"):
         group = summary.loc[summary["condition"].eq(condition)].sort_values("block_id")
@@ -645,17 +604,7 @@ def plot_condition_drift(
     axes[1].set_xticks(EXPECTED_BLOCKS)
     axes[1].set_title("(b) Empirical block alarm rate", loc="left", fontweight="bold")
     axes[1].grid(axis="y")
-    figure.text(
-        0.09,
-        0.028,
-        f"Block is an ordered operating point, not an independent repeat: median speed rises "
-        f"from ≈{speed_by_block.iloc[0]:,.0f} to {speed_by_block.iloc[-1]:,.0f} rpm. "
-        "Score and alarm drift are therefore confounded with speed.",
-        ha="left",
-        color=MUTED,
-        fontsize=8,
-    )
-    figure.subplots_adjust(left=0.12, right=0.98, top=0.84, bottom=0.14, hspace=0.28)
+    figure.subplots_adjust(left=0.12, right=0.98, top=0.87, bottom=0.11, hspace=0.30)
     return _save_pair(figure, output_dir, "external_condition_drift")
 
 
@@ -671,25 +620,7 @@ def plot_proposed_heatmap(
         "paper_blue",
         ["#F4F7FA", "#C7DAE9", "#73A2C6", "#2F6B9A", "#1D4668"],
     )
-    figure, axis = plt.subplots(figsize=(8.4, 5.1))
-    figure.suptitle(
-        "Proposed fault-record detection across turn-phase conditions and load",
-        x=0.08,
-        y=0.965,
-        ha="left",
-        fontsize=13.5,
-        fontweight="bold",
-        color=INK,
-    )
-    figure.text(
-        0.08,
-        0.91,
-        "Each cell is the fraction of eight ordered 3 s macroblocks alarmed within one "
-        "dual-three-phase fault record.",
-        ha="left",
-        color=MUTED,
-        fontsize=9,
-    )
+    figure, axis = plt.subplots(figsize=(8.4, 3.85))
     image = axis.imshow(
         heatmap.rates,
         cmap=color_map,
@@ -726,17 +657,7 @@ def plot_proposed_heatmap(
     colorbar = figure.colorbar(image, ax=axis, fraction=0.042, pad=0.025)
     colorbar.set_label("Detected macroblocks")
     colorbar.ax.yaxis.set_major_formatter(PercentFormatter(1.0, decimals=0))
-    figure.text(
-        0.08,
-        0.035,
-        "12.5% = 1/8 blocks. Phase is fixed by turn count (U: 1, 3, 5, 6; V: 2, 4), "
-        "so turn and phase effects are not separable.\n"
-        "Blocks within a record are ordered operating points, not independent repetitions.",
-        ha="left",
-        color=MUTED,
-        fontsize=8,
-    )
-    figure.subplots_adjust(left=0.13, right=0.91, top=0.84, bottom=0.22)
+    figure.subplots_adjust(left=0.13, right=0.91, top=0.97, bottom=0.16)
     return _save_pair(figure, output_dir, "external_proposed_heatmap")
 
 

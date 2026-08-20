@@ -423,7 +423,7 @@ records. It cannot confirm cross-capacity transfer or support population inferen
 
 | Role | Artifact | SHA-256 |
 | --- | --- | --- |
-| preregistered protocol | `docs/secondary_transient_validation_protocol.md` | d5f072dd6b494e6b09c1ec6c8956c5d0e60310fc724711d4a66792a78b1b8a08 |
+| prospectively frozen pre-reveal protocol | `docs/secondary_transient_validation_protocol.md` | d5f072dd6b494e6b09c1ec6c8956c5d0e60310fc724711d4a66792a78b1b8a08 |
 | chronological reveal log | `docs/secondary_transient_reveal_log.md` | 2620b53b6a6ef16d093d74f9b7522fd937dff8c3d61f6bef2ecbb515ad374801 |
 | frozen parser compatibility | `results/transient_feature_build/record_compatibility.csv` | b2f737ca6d2dfbd20f211b1e083dd7a045954658f21f7a7553bcf8fb93aa219e |
 | post-reveal compatibility | `results/transient_feature_build_post_reveal_implicit_time/record_compatibility.csv` | 315d0887fc8db78d87f6ac8db3c120bc91977b4ee4b4e42a8b65748a5c7172a0 |
