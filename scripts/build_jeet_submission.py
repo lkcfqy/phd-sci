@@ -41,9 +41,8 @@ OUT_DIR = ROOT / "submission" / "jeet"
 TMP_DIR = ROOT / "tmp" / "jeet_submission"
 
 TITLE = (
-    "When Healthy-Only Transfer Fails: A Leakage-Resistant Cross-Dataset "
-    "Evaluation of PMSM Stator-Fault Detectors under Compound Speed, Load, "
-    "and Topology Shift"
+    "When Healthy-Only Transfer Fails in PMSM Stator-Fault Detection: "
+    "A Leakage-Resistant Cross-Dataset Evaluation"
 )
 
 
@@ -971,8 +970,9 @@ def build_title_page(output: Path) -> None:
     )
     doc.add_paragraph("Generative AI assistance", style="Heading 2")
     doc.add_paragraph(
-        "An LLM-based coding assistant was used under human direction for implementation "
-        "support, automated consistency checks, and manuscript drafting and editing. "
+        "A large language model (LLM)-based coding assistant was used under human "
+        "direction for implementation support, automated consistency checks, and "
+        "manuscript drafting and editing. "
         "All authors must review this disclosure and approve the final submitted text."
     )
     set_core_properties(doc, anonymous=False)
@@ -1304,8 +1304,8 @@ submission route before uploading any file.
     (OUT_DIR / "README.md").write_text(readme, encoding="utf-8")
     (OUT_DIR / "Submission_Checklist.md").write_text(checklist, encoding="utf-8")
     author_metadata = """title: >-
-  When Healthy-Only Transfer Fails: A Leakage-Resistant Cross-Dataset Evaluation of
-  PMSM Stator-Fault Detectors under Compound Speed, Load, and Topology Shift
+  When Healthy-Only Transfer Fails in PMSM Stator-Fault Detection:
+  A Leakage-Resistant Cross-Dataset Evaluation
 article_type: Original Article
 authors:
   - full_name: "REQUIRED"
@@ -1330,9 +1330,10 @@ data_materials_code_availability: >-
   Online Resources 1 and 2 contain supplementary evidence and an anonymized
   reproducibility bundle.
 generative_ai_assistance: >-
-  An LLM-based coding assistant was used under human direction for implementation
-  support, automated consistency checks, and manuscript drafting and editing. All
-  authors must review this disclosure and approve the final submitted text.
+  A large language model (LLM)-based coding assistant was used under human direction
+  for implementation support, automated consistency checks, and manuscript drafting
+  and editing. All authors must review this disclosure and approve the final submitted
+  text.
 """
     (OUT_DIR / "author_metadata_REQUIRED.yaml").write_text(author_metadata, encoding="utf-8")
     author_input_cn = """# JEET 作者信息填写单（不要上传此文件）

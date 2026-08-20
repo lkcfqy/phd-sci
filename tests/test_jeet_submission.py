@@ -28,14 +28,64 @@ def xml_text(archive: zipfile.ZipFile, member: str) -> str:
 def test_source_meets_jeet_abstract_keyword_and_resource_requirements() -> None:
     text = (ROOT / "paper" / "manuscript.md").read_text(encoding="utf-8")
     normalized = " ".join(text.split())
+    front_matter = text.split("---", 2)[1]
+    title = " ".join(
+        line.strip()
+        for line in front_matter.splitlines()
+        if line.startswith("  ")
+    )
     abstract = text.split("## Abstract", 1)[1].split("**Keywords:**", 1)[0]
+    normalized_abstract = " ".join(abstract.split())
     abstract_words = re.findall(r"[A-Za-z0-9]+(?:[.-][A-Za-z0-9]+)*", abstract)
     keywords = text.split("**Keywords:**", 1)[1].split("##", 1)[0].replace("\n", " ").split(";")
+    assert title == (
+        "When Healthy-Only Transfer Fails in PMSM Stator-Fault Detection: "
+        "A Leakage-Resistant Cross-Dataset Evaluation"
+    )
+    assert len(re.findall(r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*", title)) <= 18
     assert len(abstract_words) == 247
     assert len([keyword for keyword in keywords if keyword.strip()]) == 6
+    assert (
+        "area under the receiver-operating-characteristic curve (AUROC)"
+        in normalized_abstract
+    )
     assert "Online Resource 1" in normalized
     assert "Online Resource 2" in normalized
     assert "## Statements and declarations" in text
+
+
+def test_manuscript_defines_curated_abbreviations_before_reuse() -> None:
+    text = (ROOT / "paper" / "manuscript.md").read_text(encoding="utf-8")
+    _, review_text = text.split("## Abstract", 1)
+    review_text = " ".join(review_text.split())
+
+    definitions = {
+        "PMSM": "permanent-magnet synchronous motor (PMSM)",
+        "KAIST": "Korea Advanced Institute of Science and Technology (KAIST)",
+        "AUROC": "area under the receiver-operating-characteristic curve (AUROC)",
+        "DANN": "domain-adversarial neural networks (DANN)",
+        "MMD": "maximum mean discrepancy (MMD)",
+        "CORAL": "correlation alignment (CORAL)",
+        "SVM": "one-class support vector machine (SVM)",
+        "SPD": "symmetric positive-definite (SPD)",
+        "CRC": "cyclic redundancy check (CRC)",
+        "SHA-256": "256-bit Secure Hash Algorithm (SHA-256)",
+        "TDMS": "Technical Data Management Streaming (TDMS)",
+        "RMS": "root-mean-square (RMS)",
+        "CI": "confidence interval (CI)",
+        "FAR": "false-alarm rate (FAR)",
+        "H1": "empirical health gate (H1)",
+        "MD5": "Message-Digest Algorithm 5 (MD5)",
+        "AUPRC": "area under the precision-recall curve (AUPRC)",
+        "CC BY": "Creative Commons Attribution (CC BY)",
+        "LLM": "large language model (LLM)",
+    }
+    for abbreviation, definition in definitions.items():
+        assert definition in review_text, abbreviation
+        assert review_text.index(definition) <= review_text.index(abbreviation)
+
+    assert "LOMO" not in review_text
+    assert "health-ACF" not in review_text
 
 
 def test_package_contains_every_expected_submission_artifact() -> None:

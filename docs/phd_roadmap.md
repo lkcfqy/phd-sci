@@ -48,8 +48,8 @@ KERI/企业合作、数据使用权和测试台资源绑定到具体课题。
 
 ### Paper 1：评测科学与负迁移
 
-**When Healthy-Only Transfer Fails: A Leakage-Resistant Cross-Dataset Evaluation of
-PMSM Stator-Fault Detectors under Compound Speed, Load, and Topology Shift**
+**When Healthy-Only Transfer Fails in PMSM Stator-Fault Detection:
+A Leakage-Resistant Cross-Dataset Evaluation**
 
 - 作用：建立数据审计、整机/文件隔离、冻结揭盲、报警校准和证据边界。
 - 当前发现：同系列探索检出 95.71%，冻结外部仅 25.00%；target-only MinCovDet

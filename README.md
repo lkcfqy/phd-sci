@@ -4,8 +4,8 @@
 
 首篇论文已经收敛为一个由冻结外部实验直接证伪、但更具科学价值的问题：
 
-> **When Healthy-Only Transfer Fails: A Leakage-Resistant Cross-Dataset Evaluation
-> of PMSM Stator-Fault Detectors under Compound Speed, Load, and Topology Shift**
+> **When Healthy-Only Transfer Fails in PMSM Stator-Fault Detection:
+> A Leakage-Resistant Cross-Dataset Evaluation**
 
 核心问题不再是包装某个新算法优越，而是检验：同数据集内近乎满分的健康样本迁移，
 在电机拓扑、采样率、转速轨迹和负载同时变化时是否仍成立。仓库保留冻结主方法的失败，

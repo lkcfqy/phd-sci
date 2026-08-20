@@ -9,6 +9,10 @@ This is an internal handoff record. Do not upload it as a manuscript file.
 - The anonymous manuscript source has a 247-word abstract, six keywords, 34 cited
   bibliography entries, three consecutively cited tables, and eleven consecutively
   cited figures.
+- The main title is a 12-word, dataset-and-task-specific statement. The abstract defines
+  AUROC at first use, and a curated technical check verifies first-use expansions for
+  PMSM, KAIST, DANN, MMD, CORAL, SVM, SPD, CRC, SHA-256, TDMS, RMS, CI, FAR, H1, MD5,
+  AUPRC, CC BY, and LLM.
 - `Manuscript_Anonymous.docx` contains three Word tables, eleven embedded figures with
   alternative descriptions, Times New Roman styles, an automatic page-number field,
   anonymous core properties, and no known local username, author placeholder, or
@@ -25,8 +29,11 @@ This is an internal handoff record. Do not upload it as a manuscript file.
 - `ESM_1_Supplementary_Material.pdf` has eight landscape pages; all eight pages were
   rendered at 180 dpi and visually inspected for the same defects. Its 17 tables fit
   within their page frames, including the S9 compatibility, 12-method, and hash tables.
-- After the 2026-08-21 journal-compliance rebuild, all 25 newly rendered page-image
-  SHA-256 values matched the previously inspected final renders exactly.
+- After the final title, abstract, and abbreviation-compliance rebuild, 14 of 25
+  page-image SHA-256 values matched the previously inspected renders. The 11 changed
+  pages (manuscript pages 1--3, 5--8, and 14--16; supplement page 1) were visually
+  re-inspected at 180 dpi; no clipping, overlap, broken page furniture, missing-glyph
+  boxes, or unintended blank pages were found.
 - S9 preserves the frozen `0/21` parser-compatibility failure separately from the
   post-reveal implicit-time repair; it does not present the 200 W sensitivity as a
   third confirmatory validation dataset.

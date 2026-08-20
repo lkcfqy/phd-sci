@@ -2,8 +2,8 @@
 
 ## Fixed working title
 
-**When Healthy-Only Transfer Fails: A Leakage-Resistant Cross-Dataset Evaluation of
-PMSM Stator-Fault Detectors under Compound Speed, Load, and Topology Shift**
+**When Healthy-Only Transfer Fails in PMSM Stator-Fault Detection:
+A Leakage-Resistant Cross-Dataset Evaluation**
 
 中文工作题目：**健康样本迁移何时失效：复合转速、负载与拓扑偏移下 PMSM 定子故障
 检测器的防泄漏跨数据集评估**。

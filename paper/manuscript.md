@@ -1,13 +1,13 @@
 ---
 title: >-
-  When Healthy-Only Transfer Fails: A Leakage-Resistant Cross-Dataset
-  Evaluation of PMSM Stator-Fault Detectors under Compound Speed, Load,
-  and Topology Shift
+  When Healthy-Only Transfer Fails in PMSM Stator-Fault Detection:
+  A Leakage-Resistant Cross-Dataset Evaluation
 bibliography: ../references/key_papers.bib
 link-citations: true
 ---
 
-> Development draft, 2026-08-21. The KAIST study is exploratory because its target-
+> Development draft, 2026-08-21. The Korea Advanced Institute of Science and
+> Technology (KAIST) study is exploratory because its target-
 > fault records were inspected during method development. The independent-laboratory
 > fault files were opened only after the protocol, code, environment, healthy
 > calibration scores, and primary threshold had been frozen in hash-addressed commits.
@@ -19,21 +19,22 @@ link-citations: true
 
 High within-dataset accuracy does not establish that a healthy-only stator-fault
 detector will transfer to a different permanent-magnet synchronous motor (PMSM). We
-evaluate eleven covariance and one-class detectors across two experimental datasets
+evaluate eleven covariance and one-class detectors across two datasets
 with motor/file separation, chronological target-health splits, 3 s alarm blocks, and
 no target-fault labels for fitting or thresholding. An exploratory study used three
-same-manufacturer 1.0, 1.5, and 3.0 kW PMSMs at fixed speed and load. A motor-balanced
+same-manufacturer 1.0, 1.5, and 3.0 kW PMSMs at fixed speed and load. The motor-balanced
 Log-Euclidean detector produced 0/42
-later-time healthy alarms and 95.71% fault-block detection. A motor-balanced Isolation
-Forest produced 0/42 and 96.07%, with no resolved difference. We then froze the
-pipeline and healthy threshold before revealing 48 fault records from one
-independent dual-three-phase PMSM undergoing acceleration at eight loads. The frozen
-detector failed its empirical health gate (1/32 alarms; descriptive 95%
-Wilson upper bound 15.74% versus a 12% limit), detected 25.00% of fault blocks (95%
-turn-stratified record-bootstrap interval 21.09--29.43%), and attained AUROC 0.635. A
-target-only Minimum Covariance Determinant comparator instead produced
+healthy alarms and 95.71% fault-block detection. A motor-balanced Isolation
+Forest produced 0/42 and 96.07%, without a resolved difference. We froze the
+pipeline and health threshold before revealing 48 fault records from an
+independent dual-three-phase PMSM accelerated at eight loads. The frozen detector
+failed its empirical health gate (1/32 alarms; descriptive 95% Wilson upper confidence
+bound 15.74% versus a 12% limit), detected 25.00% of fault blocks (95% turn-stratified
+record-bootstrap interval 21.09--29.43%), and attained an area under the
+receiver-operating-characteristic curve (AUROC) of 0.635. Target-only Minimum
+Covariance Determinant produced
 0/32 healthy alarms, 70.05% detection (65.36--75.26%), and AUROC 0.927. The frozen
-detector alarmed on none of the 48 records in the first three blocks but on all 48 in
+detector alarmed on none of 48 records in the first three blocks but on all 48 in
 the final block; detection also fell from 56.25% at 0 N m to 12.50% at 35 N m.
 Conditional on this external motor, the results reveal a ranking reversal,
 acceleration-aligned alarm drift, and source-augmented variants that underperformed
@@ -141,8 +142,9 @@ valid severity claim.
 ### 2.2 Cross-machine diagnosis, negative transfer, and split design
 
 Cross-domain machinery diagnosis commonly aligns source and target representations or
-learns domain-invariant features. Benchmark surveys include source aggregation, DANN,
-MMD, CORAL, mixup, meta-learning, and ensemble approaches
+learns domain-invariant features. Benchmark surveys include source aggregation,
+domain-adversarial neural networks (DANN), maximum mean discrepancy (MMD), correlation
+alignment (CORAL), mixup, meta-learning, and ensemble approaches
 [@xiao2025dgsurvey]. Collaborative multimachine and multi-dataset benchmarks establish
 that neither cross-machine diagnosis nor domain generalization is itself novel
 [@li2023causalconsistency; @zhao2024dgbenchmark]. Recent machinery methods also attempt
@@ -152,14 +154,16 @@ to mitigate negative transfer [@kumar2024negativetransfer;
 The evaluation unit remains a separate problem. Signal-window holdout can share a
 physical part, acquisition day, or continuous trajectory between train and test and
 thereby measure interpolation rather than deployment [@wheat2024dataleakage]. This
-study instead treats the physical motor as the outer KAIST holdout, keeps external
-health roles in separate files/loads where possible, and reports paired fault effects at
-the record level. A source-supervised classifier is retained as a domain-shift
+study instead treats each physical motor from the Korea Advanced Institute of Science
+and Technology (KAIST) dataset as the outer holdout, keeps external health roles in
+separate files/loads where possible, and reports paired fault effects at the record
+level. A source-supervised classifier is retained as a domain-shift
 diagnostic, while the principal task is a healthy-only target alarm.
 
-### 2.3 Healthy-only detectors, SPD transfer, and calibrated alarms
+### 2.3 Healthy-only detectors, covariance geometry, and calibrated alarms
 
-One-class SVM, Isolation Forest, support-vector data description, and Minimum
+A one-class support vector machine (SVM), Isolation Forest, support-vector data
+description, and Minimum
 Covariance Determinant are established one-class or robust-description methods
 [@scholkopf2001support; @liu2008isolationforest; @tax2004svdd;
 @rousseeuw1999mcd]. Machinery studies have also fitted deep and classical one-class
@@ -170,7 +174,8 @@ innovations.
 
 A covariance matrix captures interactions among current-shape, imbalance, harmonic,
 and spectral features. Direct Euclidean averaging preserves symmetry and positive
-definiteness but does not respect the intrinsic geometry of SPD matrices. The
+definiteness but does not respect the intrinsic geometry of symmetric
+positive-definite (SPD) matrices. The
 Log-Euclidean construction maps matrices through the matrix logarithm, averages them
 in a vector space, and maps the result back by the matrix exponential
 [@arsigny2006logeuclidean]. Here each motor contributes one covariance and therefore
@@ -202,15 +207,17 @@ intercoil faults at seven nominal nonzero severity levels. Current was sampled a
 100 kHz.
 
 The archive structure nominally contains one healthy record under each fault family.
-For every motor, those two healthy members have identical uncompressed size and CRC;
-an extracted pair was additionally identical by SHA-256. They are aliases rather than
-independent repeats. After deduplication, the current study contains three healthy and
-42 fault records. Several fault TDMS files contain 121--149 s although the dataset
+For every motor, those two healthy members have identical uncompressed size and cyclic
+redundancy check (CRC); an extracted pair was additionally identical by a 256-bit Secure
+Hash Algorithm (SHA-256) digest. They are aliases rather than independent repeats. After
+deduplication, the current study contains three healthy and 42 fault records. Several
+Technical Data Management Streaming (TDMS) fault files contain 121--149 s although the dataset
 description specifies 120 s. Every record is restricted to its first 120 s, producing
 equal record weight.
 
 Each record is divided into 600 non-overlapping 0.2 s windows. Window features include
-phase RMS ratios, crest factor, kurtosis, Clarke-vector dispersion, sequence-current
+phase root-mean-square (RMS) ratios, crest factor, kurtosis, Clarke-vector dispersion,
+sequence-current
 ratios, normalized harmonics, total harmonic distortion, sideband ratios, and spectral
 entropy. Absolute RMS, zero-sequence RMS, fundamental amplitude, and mean Clarke radius
 are excluded from the primary scale-free representation. The complete table contains
@@ -313,9 +320,10 @@ Isolation Forest, and Minimum Covariance Determinant. Their hyperparameters were
 without target-fault labels. Stochastic methods were additionally evaluated across five
 fixed seeds; the primary seed was frozen before external fault reveal.
 
-Primary outcomes are the raw healthy false-alarm count, pooled Wilson interval, maximum
-per-motor empirical false-alarm rate, mean and worst-motor fault-block detection, and
-block AUROC. Paired method differences are computed for each of the 42 target fault
+Primary outcomes are the raw healthy false-alarm count, pooled Wilson confidence
+interval (CI), maximum per-motor empirical false-alarm rate (FAR), mean and worst-motor
+fault-block detection, and block AUROC. Paired method differences are computed for each
+of the 42 target fault
 records. A 10,000-replicate bootstrap resamples records within target motor and then
 averages the three motor means. Macroblocks and windows are not treated as independent
 experimental repetitions.
@@ -343,10 +351,16 @@ within each subsystem and then combined by a system maximum; the same system sco
 used for calibration. The 48 public fault records remained sealed until the protocol,
 feature parser, all comparator implementations, environment, healthy calibration
 scores, and thresholds were captured in hash-addressed commits. All 48 files were then
-downloaded from the official record, verified against a frozen filename/byte-count/MD5
+downloaded from the official record, verified against a frozen filename, byte-count,
+and Message-Digest Algorithm 5 (MD5)
 manifest, and processed once over the unchanged [12, 36) s interval. The run yielded a
 complete 6 fault-turn counts by 8 loads grid (384 system blocks). The chronological
 reveal log and hash-addressed commits are retained as audit evidence.
+
+The predeclared empirical health gate (H1) required both a descriptive pooled 95%
+Wilson upper confidence bound no greater than 12% and a maximum load-specific empirical
+FAR no greater than 15%. Because its 32 blocks came from four records of one motor, H1
+was an engineering decision rule rather than a population-level probability guarantee.
 
 ### 5.3 Prospectively frozen secondary transient-set audit
 
@@ -380,7 +394,7 @@ was 8.38%. Fault-block detection was 100.00%, 90.00%, and 97.14% when 1.0, 1.5, 
 was 90.00%. Table 1 compares the five covariance-score variants under the common
 protocol.
 
-| Method | Healthy FAR | Descriptive Wilson upper | Mean detection | Worst motor | Mean AUROC |
+| Method | Healthy false-alarm rate | Descriptive Wilson upper | Mean detection | Worst motor | Mean AUROC |
 |---|---:|---:|---:|---:|---:|
 | Target Ledoit--Wolf | 1/42 | 12.32% | 90.30% | 82.14% | 0.9969 |
 | Target sample covariance | 0/42 | 8.38% | 93.87% | 86.79% | 0.9983 |
@@ -419,7 +433,7 @@ false-alarm gate. The proposed method exceeded target one-class SVM (+6.01 point
 [0.95, 11.67]), and motor-balanced Minimum Covariance Determinant (+3.39 points,
 [0.30, 6.85]). Table 2 reports the one-class comparison under the same health gate.
 
-| One-class method | Healthy FAR | Mean detection | Worst motor |
+| One-class method | Healthy false-alarm rate | Mean detection | Worst motor |
 |---|---:|---:|---:|
 | Target one-class SVM | 0/42 | 89.70% | 82.68% |
 | Motor-balanced one-class SVM | 0/42 | 91.25% | 82.86% |
@@ -456,8 +470,8 @@ The 3 s maximum exactly reproduced the primary outputs. With the same 60 s calib
 horizon, 1 s and 2 s maxima reduced mean detection to 93.61% and 93.73%, respectively.
 A 3 s 90th-percentile aggregation increased mean detection to 97.32% but introduced
 1/42 healthy false alarms; its descriptive Wilson upper bound was 12.32%, above the
-predeclared 12% gate. It therefore does not replace the health-ACF-selected primary
-setting. Five- and six-second blocks supply only 12 and 10 calibration units and were
+predeclared 12% gate. It therefore does not replace the primary setting selected from
+health autocorrelation. Five- and six-second blocks supply only 12 and 10 calibration units and were
 skipped because they cannot resolve an alarm level of 0.05. Block-length and aggregation
 sensitivity are summarized in Fig. 6.
 
@@ -615,8 +629,9 @@ with polyphase resampling before applying the unchanged 0.2 s windows, feature s
 3 s blocks, ridge, calibration, and external protocol. This analysis was specified
 after reveal and is diagnostic rather than confirmatory.
 
-The 10 kHz KAIST arm remained usable internally: exploratory LOMO detection decreased
-from 95.71% to 91.96% and AUROC from 0.9993 to 0.9947. Replacing only the source arm in
+The 10 kHz KAIST arm remained usable internally: exploratory leave-one-motor-out
+detection decreased from 95.71% to 91.96% and AUROC from 0.9993 to 0.9947. Replacing
+only the source arm in
 the frozen external run did not recover transfer. Log-Euclidean external detection
 changed from 25.00% to 24.74%, AUROC from 0.6354 to 0.6331, and healthy alarms remained
 1/32. Forty-seven of 48 fault records were unchanged and one worsened; none improved.
@@ -661,7 +676,8 @@ The ordered-block analysis changes the interpretation of the raw external outcom
 All 48 fault records alarmed in block 7, while some had already alarmed in earlier
 blocks; the final block's operating point also drove the healthy score upward. Record-any detection would
 therefore report 100% while hiding poor early-trajectory coverage and a late healthy
-false alarm. Pooled AUPRC similarly adds limited operational information unless
+false alarm. Pooled area under the precision-recall curve (AUPRC) similarly adds
+limited operational information unless
 interpreted against the 384/416 = 92.3% fault-block prevalence, which gives an
 all-positive ranking a baseline near 0.923. The appropriate evidence is the joint display of chronological
 block detection, held-out health alarms, per-condition coverage, and record-level
@@ -739,10 +755,11 @@ safety guarantee.
 
 The KAIST source dataset is available from Mendeley Data; the independent
 dual-three-phase PMSM dataset and the secondary 200 W/20 kW transient dataset are
-available from Zenodo. All three are under CC BY 4.0
+available from Zenodo. All three are under the Creative Commons Attribution (CC BY)
+4.0 licence
 [@jung2022pmsmfaultdataset; @kozovsky2024dualthreephasepmsm;
 @zezula2024transientpmsm]. The project contains
-resumable checksummed downloads, archive and MAT audits, duplicate removal, feature
+resumable checksummed downloads, archive and MATLAB-file audits, duplicate removal, feature
 extraction, motor/file-level evaluation, paired bootstrap, sensitivity analyses,
 automated tests, and figure generation. Raw data remain excluded from version control;
 the reveal manifests, protocols, selected derived results, and audit metadata are
@@ -775,8 +792,8 @@ from this file for double-blind review.
 
 ### Generative AI assistance
 
-An LLM-based coding assistant was used under human direction for implementation
-support, automated consistency checks, and manuscript drafting and editing. All
-reported computations were executed on the cited datasets and checked against frozen
-outputs and automated tests. The human authors remain responsible for reviewing and
-approving the submitted version.
+A large language model (LLM)-based coding assistant was used under human direction for
+implementation support, automated consistency checks, and manuscript drafting and
+editing. All reported computations were executed on the cited datasets and checked
+against frozen outputs and automated tests. The human authors remain responsible for
+reviewing and approving the submitted version.
