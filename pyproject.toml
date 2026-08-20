@@ -12,6 +12,7 @@ dependencies = [
   "joblib>=1.4",
   "kagglehub>=0.3.12",
   "matplotlib>=3.9",
+  "mat-io>=1.0.0",
   "nptdms>=1.10",
   "numpy>=2.0",
   "pandas>=2.2",

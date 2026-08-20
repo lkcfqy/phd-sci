@@ -103,8 +103,8 @@ secondary_transient_validation:
     - entity_balanced_covariance
     - target_log_covariance
     - log_euclidean_entity_covariance
-    - target_ocsvm
-    - source_target_ocsvm
+    - target_ocsvm_rbf
+    - source_target_ocsvm_rbf
     - target_isolation_forest
     - source_target_isolation_forest
     - target_min_cov_det

@@ -63,8 +63,16 @@ transient_cross_capacity_pmsm_itsc:
   file: OpenData.zip
   bytes: 91533036
   md5: b9b03b6e31a33ea08f49cd1cbeed12b2
+  sha256: 1d343cd3636ea28c80cc847f4fb3bc619b41a37db69d0f30adab082724a2c81b
+  official_records: {200W: 12, 20kW: 9}
+  mat_variables_per_record:
+    [ialbt_meas, idq_meas, if_meas, SinCos, ualbt, udq, we]
+  mat_variable_class: timeseries
+  scoring_scope: ialbt_meas_only
+  onset_label_scope: if_meas_only
   limitation: no_independent_healthy_files; each_record_transitions_from_health_to_fault
-  parser_status: MATLAB_timeseries_MCOS_requires_conversion_or_compatible_reader
+  structural_audit_status: 21_of_21_MAT_metadata_verified_without_signal_loading
+  parser_status: frozen_mat_io_1_0_MCOS_whitelist_pending_signal_reveal
 
 pmsg_long_record_itsc:
   title: Permanent-magnet synchronous generator fault dataset
