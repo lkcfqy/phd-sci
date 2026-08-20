@@ -138,6 +138,25 @@ def download_file(
     }
 
 
+def planned_file(metadata: dict[str, object]) -> dict[str, object]:
+    """Return immutable Zenodo metadata without opening the file content URL."""
+
+    filename = str(metadata["key"])
+    checksum = str(metadata["checksum"])
+    algorithm, expected_hash = checksum.split(":", maxsplit=1)
+    if algorithm != "md5":
+        raise ValueError(f"Unexpected Zenodo checksum algorithm: {algorithm}")
+    links = metadata["links"]
+    if not isinstance(links, dict):
+        raise TypeError("Zenodo file links must be a mapping")
+    return {
+        "file": filename,
+        "bytes": int(metadata["size"]),
+        "md5": expected_hash,
+        "source_url": str(links["self"]),
+    }
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -150,14 +169,20 @@ def parse_args() -> argparse.Namespace:
         default=list(DEFAULT_DATASETS),
     )
     parser.add_argument("--max-retries", type=int, default=10)
+    parser.add_argument(
+        "--plan-only",
+        action="store_true",
+        help="write the official file/size/MD5 plan without downloading content",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    manifest_path = args.output_dir / "staged_download_manifest.json"
+    manifest_name = "fault_reveal_plan.json" if args.plan_only else "staged_download_manifest.json"
+    manifest_path = args.output_dir / manifest_name
     manifest: list[dict[str, object]] = []
-    if manifest_path.exists():
+    if manifest_path.exists() and not args.plan_only:
         existing = json.loads(manifest_path.read_text(encoding="utf-8"))
         if not isinstance(existing, list):
             raise TypeError("The staged download manifest must contain a list")
@@ -172,13 +197,17 @@ def main() -> None:
         record = str(specification["record"])
         files = fetch_files(record)
         dataset_dir = args.output_dir / str(specification.get("output_subdir", name))
-        dataset_dir.mkdir(parents=True, exist_ok=True)
+        if not args.plan_only:
+            dataset_dir.mkdir(parents=True, exist_ok=True)
         for filename in specification["files"]:
             if filename not in files:
                 raise FileNotFoundError(f"{filename} is absent from Zenodo record {record}")
-            result = download_file(
-                files[filename], dataset_dir, max_retries=args.max_retries
-            )
+            if args.plan_only:
+                result = planned_file(files[filename])
+            else:
+                result = download_file(
+                    files[filename], dataset_dir, max_retries=args.max_retries
+                )
             manifest.append(
                 {
                     "dataset": name,
