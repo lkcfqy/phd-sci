@@ -67,3 +67,52 @@ external_validation:
   subsystem_score: per_three_phase_score_then_system_max
   source_motors: [1kW, 1.5kW, 3kW]
   fault_records_withheld_until_freeze: true
+
+secondary_transient_validation:
+  dataset_doi: 10.5281/zenodo.15631383
+  role: secondary_cross_capacity_transient_stress_test
+  motors: [200W, 20kW]
+  official_records: {200W: 12, 20kW: 9}
+  sample_rate_hz: 10000
+  scoring_channels: [ialbt_meas_alpha, ialbt_meas_beta]
+  onset_channel_label_only: if_meas
+  forbidden_model_channels: [idq_meas, SinCos, voltage, we, relay_state]
+  window_seconds: 0.2
+  pre_fault_guard_seconds: 0.2
+  primary_post_fault_seconds: 1.0
+  secondary_post_fault_seconds: [0.2, 2.0]
+  feature_arm: scale_free_without_zero_sequence_ratio
+  source_feature_table: kaist_current_features_10khz
+  split: leave_one_record_out_with_record_disjoint_fit_and_calibration
+  split_hash_salt: "20260821"
+  calibration_alpha: 0.05
+  minimum_calibration_windows: 19
+  onset:
+    rms_window_ms: 10
+    baseline_fraction: 0.20
+    baseline_cap_seconds: 0.5
+    robust_sigma_multiplier: 10
+    primary_peak_fraction: 0.02
+    primary_persistence_ms: 20
+    sensitivity_peak_fractions: [0.01, 0.05]
+    sensitivity_persistence_ms: [10, 30]
+  methods:
+    - target_ledoit
+    - target_sample_covariance
+    - source_covariance
+    - entity_balanced_covariance
+    - target_log_covariance
+    - log_euclidean_entity_covariance
+    - target_ocsvm
+    - source_target_ocsvm
+    - target_isolation_forest
+    - source_target_isolation_forest
+    - target_min_cov_det
+    - source_target_min_cov_det
+  primary_seed: 20260820
+  stochastic_sensitivity_seeds: [20260820, 1201, 2402, 3603, 4804]
+  bootstrap_replicates: 10000
+  bootstrap_seed: 20260821
+  bootstrap_strata: [motor_id, nominal_severity]
+  minimum_compatible_record_fraction_per_motor: 0.80
+  fault_values_withheld_until_protocol_and_code_freeze: true

@@ -198,3 +198,33 @@ reserved for Paper 2 and requires a new unseen confirmation dataset.
 4. Measure runtime before making online or embedded-deployment claims.
 5. Obtain new independent healthy sessions if a formal false-alarm coverage claim is
    desired; the current evidence supports empirical block-risk only.
+
+## 2026-08-21 — Second external-motor stress-test freeze
+
+### Decision
+
+Promote Zenodo `10.5281/zenodo.15631383` from a deferred parser candidate to a
+pre-registered secondary stress test on two additional physical PMSMs (200 W and
+20 kW), without treating its fault-record prefixes as independent health files.
+
+### Leakage boundary
+
+Each of the 21 records transitions from healthy operation to an ITSC. Evaluation will
+therefore hold out an entire record, fit and calibrate only on pre-fault windows from
+other records of the same physical motor, and evaluate both the held-out pre-fault
+windows and the first 1 s after an onset derived solely from measured fault current.
+The detector itself may read only measured alpha-beta stator current. The fault-current
+channel labels onset but cannot enter any feature or score.
+
+The public article shows that the 20 kW thyristor current may precede mechanical relay
+closure by about 20 +/- 5 ms. Relay time is consequently not accepted as physical
+ground truth. The exact robust-RMS onset rule, record-disjoint split, common-observable
+feature arm, twelve methods, alpha, seeds, endpoints and incompatibility rules are
+frozen in `docs/secondary_transient_validation_protocol.md` before signal-value reveal.
+
+### Interpretation boundary
+
+This experiment can strengthen the cross-capacity evidence from one to three external
+physical motors, but it remains a within-motor, cross-record short-time test because
+no standalone healthy session exists. Results must be reported separately for the two
+motors and cannot establish a population-wide false-alarm guarantee.
