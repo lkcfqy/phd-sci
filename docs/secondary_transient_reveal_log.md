@@ -1,0 +1,64 @@
+# 200 W/20 kW PMSM secondary validation reveal log
+
+## Pre-reveal checkpoint
+
+Checkpoint date: 2026-08-21  
+Current status: **CODE FROZEN / SIGNAL VALUES NOT YET LOADED**
+
+### Frozen inputs
+
+- Dataset: Zenodo `10.5281/zenodo.15631383`, `OpenData.zip`, CC BY 4.0;
+- official bytes: `91,533,036`;
+- official MD5: `b9b03b6e31a33ea08f49cd1cbeed12b2`;
+- verified SHA-256:
+  `1d343cd3636ea28c80cc847f4fb3bc619b41a37db69d0f30adab082724a2c81b`;
+- ZIP CRC: all members passed;
+- official inventory: 12 records from the 200 W motor and 9 records from the
+  20 kW motor.
+
+The metadata-only audit identified seven scalar MATLAB `timeseries` variables in every
+record: `ialbt_meas`, `idq_meas`, `if_meas`, `SinCos`, `ualbt`, `udq`, and `we`.
+`mat-io 1.0.0` listed all 147 object headers with zero inventory errors. The audit did
+not call `loadmat` or `load_from_mat` and did not load, summarize, or plot signal values.
+
+### Frozen commits
+
+- `c9f0029`: statistical protocol, endpoints, onset rule, incompatibility rules and
+  feature-observability boundary;
+- `e1e2c5d`: official downloader/integrity audit, MCOS whitelist parser, feature build,
+  twelve-method evaluation, five-seed sensitivity, paired record bootstrap and tests.
+
+At `e1e2c5d`, repository-wide `ruff check .` passed and the canonical command
+`.venv\Scripts\python.exe -m pytest -q` passed all 136 collected tests. All parser and
+evaluation tests used synthetic arrays or pre-existing KAIST features, never a signal
+value from the new 21-record archive.
+
+### One-time reveal command
+
+The first command permitted to deserialize `ialbt_meas`, `if_meas`, or `we` is:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\build_transient_pmsm_features.py
+```
+
+It must attempt all 21 official records in one run. Its first compatibility table,
+onset diagnostics, feature table, metadata and any exception output are immutable
+primary reveal evidence. If at least 80% of each motor's official records satisfy the
+frozen 1 s endpoint and every fold has at least 19 record-disjoint calibration windows,
+the only permitted primary scoring command is:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\run_transient_pmsm_validation.py
+```
+
+The first scoring outputs must not be overwritten. Parser repairs, alternative onset
+rules, feature diagnostics or reruns after observing scores must be stored separately
+and labeled post-reveal sensitivity. A structural incompatibility is a reportable
+outcome and is not permission to change the frozen protocol.
+
+## First signal reveal
+
+Status: **PENDING**
+
+The command timestamp, exact stdout/stderr, compatibility counts, output hashes and
+decision to proceed or stop will be appended here after the one-time run.
