@@ -1,0 +1,223 @@
+{
+  "cover_letter_sha256": "769dd1b41366018e84376c2f85126e34dfe521d88d86a26243f0e5b9f176f36e",
+  "figures": [
+    {
+      "caption": "Motor holdout, sequential target-health split, and method flow",
+      "number": 1,
+      "pdf": "Fig1.pdf",
+      "pdf_sha256": "8c224b5adfb1610797dc1d7727fcce6ca5c92d21a2155ce9e05c6756d66ee96d",
+      "png": "Fig1.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        2524,
+        1294
+      ],
+      "png_sha256": "5af8c92dc606190f24b9a18d40122baa3600b7715d868b0128d87958742eeeea"
+    },
+    {
+      "caption": "Per-motor detection and healthy false-alarm intervals",
+      "number": 2,
+      "pdf": "Fig2.pdf",
+      "pdf_sha256": "5b7723a19b31e8d9284d4f0ddc51fdf02bfe7039a0976d2d2fa083928fd08bfb",
+      "png": "Fig2.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        2434,
+        960
+      ],
+      "png_sha256": "52e5727c015913c2271259f24bca0803fcfab8f6665ed5897651c5d114338db3"
+    },
+    {
+      "caption": "Record-level paired detection differences",
+      "number": 3,
+      "pdf": "Fig3.pdf",
+      "pdf_sha256": "9513a7ad1d42b2a369b745f83a302415daf63ed5f617ea44c0c3cd1c0ab417b7",
+      "png": "Fig3.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        1894,
+        844
+      ],
+      "png_sha256": "06034081176608cde79e71c145df0177711abd4d35671f1223d441c7ed112448"
+    },
+    {
+      "caption": "Paired record differences against strong one-class baselines",
+      "number": 4,
+      "pdf": "Fig4.pdf",
+      "pdf_sha256": "38630ce90164316025c17d27c3c630713bcefe5b1d25bb74a675bd6ff73c4250",
+      "png": "Fig4.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        2177,
+        1024
+      ],
+      "png_sha256": "bd58b9fcc251c6ff144c1db2f858e3da59d5716733dd8049fe2858a7d1ca93fc"
+    },
+    {
+      "caption": "Adaptation-budget sensitivity and calibration feasibility",
+      "number": 5,
+      "pdf": "Fig5.pdf",
+      "pdf_sha256": "b795701ec456fa68fa195cbca6026a3c07e09d1810684ebc53285ea9090a7858",
+      "png": "Fig5.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        2284,
+        904
+      ],
+      "png_sha256": "faa1f146ae0e76c8f5be7ecdcb4f2b0e4b59db403dea7421f307d03f7d74f1af"
+    },
+    {
+      "caption": "Block-length and aggregation sensitivity",
+      "number": 6,
+      "pdf": "Fig6.pdf",
+      "pdf_sha256": "546aaf4ebf73fcea5bdc25216a260aeb48384235892e90bf48502f749fe92876",
+      "png": "Fig6.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        2254,
+        953
+      ],
+      "png_sha256": "aa4be949aace18ccb4d35d005514a154b9d768eabb9b52bf4bafb661ea1cd9bf"
+    },
+    {
+      "caption": "Nonmonotonic detection across nominal severity",
+      "number": 7,
+      "pdf": "Fig7.pdf",
+      "pdf_sha256": "f19052d6933fde08ac05de1c20717c9b63f843fd729cc371942afc911b5a0031",
+      "png": "Fig7.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        2494,
+        1474
+      ],
+      "png_sha256": "4610e4af245fe2859d0470fbf612b74d1d4ba64a89128bcd6ad3b3ff57731b12"
+    },
+    {
+      "caption": "External fault detection, healthy false alarms, and the predeclared H1 decision",
+      "number": 8,
+      "pdf": "Fig8.pdf",
+      "pdf_sha256": "521d70b3b5ed499932870ae5a9fce62bc2c98a0bf71e756e9a08a7df30a0cbd9",
+      "png": "Fig8.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        3199,
+        1792
+      ],
+      "png_sha256": "d47740eb90063b148fc084f629a46aa949768b6f0a23c0b88e5b105ba0fd4810"
+    },
+    {
+      "caption": "Threshold-normalized score and alarm drift over the acceleration trajectory",
+      "number": 9,
+      "pdf": "Fig9.pdf",
+      "pdf_sha256": "9e39836c4790e325346e991a51eef9b3abe61fa023604e85fd8bc69c562f60c6",
+      "png": "Fig9.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        2939,
+        1890
+      ],
+      "png_sha256": "f44f589e6ba6036e1b5f2753c00eb4f54bbca5fdb04535d180b66c0f57a8bade"
+    },
+    {
+      "caption": "Frozen-detector block detection over fault turns and load",
+      "number": 10,
+      "pdf": "Fig10.pdf",
+      "pdf_sha256": "eb8ccdccf05980a5c49f979aaff9bdfc5eb6d76ba957a94b776d52c7f12ddc18",
+      "png": "Fig10.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        2364,
+        1411
+      ],
+      "png_sha256": "0e078ce0ebf79d774d273379bd76813a4f78acb0561fe8c77406eb8dc17618bd"
+    },
+    {
+      "caption": "Post-reveal single-feature discrimination versus frozen-score contribution",
+      "number": 11,
+      "pdf": "Fig11.pdf",
+      "pdf_sha256": "82d47b26924e8a699e066d96298f5b44f5e2ab5206984a70c1125d81e481a781",
+      "png": "Fig11.png",
+      "png_dpi": 299.999,
+      "png_pixels": [
+        4009,
+        1938
+      ],
+      "png_sha256": "6f1561058bc98250f892081813251f321f1da41c8dea5c64ea4bcb4c6c242170"
+    }
+  ],
+  "generated": "2026-08-21",
+  "journal": "Journal of Electrical Engineering & Technology",
+  "manuscript": {
+    "citations": 33,
+    "figures": 11,
+    "output": "submission\\jeet\\Manuscript_Anonymous.docx",
+    "sha256": "7c7de0098b9db8312921822285bf7c1c8ec7236662895cb889291aa5cf16e7aa",
+    "tables": 3
+  },
+  "pdfs": {
+    "manuscript": {
+      "author": "Anonymous",
+      "citations": 33,
+      "figures": 11,
+      "minimum_extracted_characters_per_page": 587,
+      "output": "submission\\jeet\\Manuscript_Anonymous.pdf",
+      "page_size_points": [
+        612.0,
+        792.0
+      ],
+      "pages": 16,
+      "sha256": "7f64f662a68ca71f62dcf11023c82bf60137887ff2808f0112455019bbce1035",
+      "tables": 3
+    },
+    "supplement": {
+      "author": "Anonymous",
+      "citations": 0,
+      "figures": 0,
+      "minimum_extracted_characters_per_page": 2964,
+      "output": "submission\\jeet\\ESM_1_Supplementary_Material.pdf",
+      "page_size_points": [
+        792.0,
+        612.0
+      ],
+      "pages": 6,
+      "sha256": "8581a6973af0681d20a9eba09b4b564eb5b8a4c46f51f4c217e7546e1989e735",
+      "tables": 14
+    }
+  },
+  "reproducibility_bundle": {
+    "bytes": 3243809,
+    "files": 345,
+    "sha256": "c5eb731336939d3ca4e9b1c590bf72932a169482ac37fa686382cc1bd1f5c617"
+  },
+  "source_audit": {
+    "abstract_words": 247,
+    "cited_bibliography_entries": 33,
+    "figure_citations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "keywords": 6,
+    "table_citations": [
+      1,
+      2,
+      3
+    ]
+  },
+  "supplement_intermediate": {
+    "citations": 0,
+    "figures": 0,
+    "output": "tmp\\jeet_submission\\ESM_1_Supplementary_Material.docx",
+    "sha256": "5086dae9a3f4103a6626399e5bd3727ec12b86b9f65d6a67455f5963ae9a8ef4",
+    "tables": 14
+  },
+  "title_page_sha256": "4a5b2cc0a3e7d75f0c5ff9ce7438ca28bbb7a36c6352619be6f80804369d70f5"
+}

@@ -1,6 +1,6 @@
 # Paper 1 SCI/SCIE 投稿策略
 
-更新日期：2026-08-20
+更新日期：2026-08-21
 
 ## 结论
 
@@ -23,10 +23,13 @@ SCI/SCIE 投稿，但不能保证录用。它不适合再包装成“Log-Euclide
      systems、signal processing；与 PMSM 故障跨数据集评估高度一致。
    - 官网列出 Science Citation Index Expanded (SCIE)，2025 JIF 2.0，出版模式为
      hybrid。
+   - 订阅模式不等于零费用：官网当前列出版面费为前 6 页每页 50 美元、第 7--12 页
+     每页 60 美元、超过 13 页每页 80 美元；开放获取费用另计，提交前需再次核对。
    - 风险：仍需把“新意”明确写成冻结评测方法和跨实验室失败机制，不能只是公开数据
      上比较算法。
    - 官网：<https://link.springer.com/journal/42835/aims-and-scope>
    - 索引与指标：<https://link.springer.com/journal/42835>
+   - 投稿规范与版面费：<https://link.springer.com/journal/42835/submission-guidelines>
 
 2. **IEEE Access**
 
@@ -89,9 +92,9 @@ SCI/SCIE 投稿，但不能保证录用。它不适合再包装成“Log-Euclide
 
 ## 推荐投稿顺序
 
-### 无 APC 或优先电机领域认可
+### 避免强制开放获取 APC 或优先电机领域认可
 
-1. JEET
+1. JEET（订阅模式仍有按页收取的版面费）
 2. IET Electric Power Applications（仅在补强机制分析或第三数据源后）
 3. Electrical Engineering
 

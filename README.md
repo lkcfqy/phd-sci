@@ -14,7 +14,7 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
 
 ## 当前可复现的先导结果
 
-截至 2026-08-20，三折 LOMO 的全量电流先导实验已经跑通：
+截至 2026-08-21，三折 LOMO 的全量电流先导实验已经跑通：
 
 - 27,000 个无重叠 0.2 s 窗口，45 条去重后的记录，3 s 宏块；
 - 每折只用目标电机前 12 s 健康数据适配协方差，另用 20 个健康宏块校准；
@@ -61,6 +61,19 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
 它具备继续形成 SCI/SCIE 稿件的价值，但单台外部电机仍限制总体推断，也不构成录用
 保证。精确结果与失败项见 [`docs/fault_reveal_log.md`](docs/fault_reveal_log.md) 和
 [`results/external_pmsm_analysis/`](results/external_pmsm_analysis/)。
+
+## JEET 投稿包状态
+
+面向 *Journal of Electrical Engineering & Technology* 的双盲投稿包已经生成在
+[`submission/jeet/`](submission/jeet/)：匿名 Word 正文、16 页审稿 PDF、独立标题页
+模板、投稿信模板、6 页补充材料、匿名复现代码包以及 Fig1--Fig11 独立源文件均已就位。
+22 个 PDF 页面已完成视觉检查，DOCX 已完成 OOXML 结构与匿名性检查；由于当前工作站
+没有 Word/LibreOffice，补齐作者信息后仍须在最终提交所用 Word 版本中逐页复核。
+
+提交前剩余的人工门槛和费用警告见
+[`submission/jeet/Submission_Checklist.md`](submission/jeet/Submission_Checklist.md)，
+完整 QA 边界见 [`submission/jeet/QA_Report.md`](submission/jeet/QA_Report.md)，期刊规则
+映射见 [`docs/jeet_submission_requirements.md`](docs/jeet_submission_requirements.md)。
 
 ## 为什么仍把它作为 Paper 1
 

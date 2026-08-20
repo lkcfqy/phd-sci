@@ -1,0 +1,16 @@
+title: >-
+  When Healthy-Only Transfer Fails: A Leakage-Resistant Cross-Dataset Evaluation of
+  PMSM Stator-Fault Detectors under Compound Speed, Load, and Topology Shift
+article_type: Original Article
+authors:
+  - full_name: "REQUIRED"
+    affiliation_ids: [1]
+    email: "REQUIRED"
+    orcid: ""
+    corresponding: true
+affiliations:
+  1: "Department, University, City, Country"
+funding: "REQUIRED: full funder and grant, or explicit no-funding statement"
+acknowledgments: "None, or names with permission"
+competing_interests: "The authors declare no financial or non-financial competing interests."
+author_contributions: "REQUIRED: verified CRediT roles"

@@ -15,36 +15,31 @@ link-citations: true
 ## Abstract
 
 High within-dataset accuracy does not establish that a healthy-only stator-fault
-detector will survive deployment to a different permanent-magnet synchronous motor
-(PMSM). We study this gap with an audit-first, leakage-resistant evaluation across two
-public experimental datasets. Eleven covariance and one-class detectors share
-motor/file-level separation, chronological healthy adaptation and calibration, 3 s
-alarm blocks, and zero target-fault labels during fitting or threshold selection. On
-three same-manufacturer 1.0, 1.5, and 3.0 kW PMSMs at fixed speed and load, an
-exploratory development study found 0/42 later-time healthy alarms and 95.71%
-fault-block detection for the motor-balanced Log-Euclidean detector later frozen for
-external evaluation; a motor-balanced Isolation Forest produced 0/42 and 96.07%, with
-no resolved difference. We then froze the complete pipeline and
-healthy threshold before a one-time reveal of 48 fault records from an independent
-dual-three-phase PMSM undergoing acceleration at eight loads. The Log-Euclidean
-detector failed its predeclared empirical health gate (1/32 alarms; descriptive 95% Wilson
-upper bound 15.74% versus a 12% limit), detected only 25.00% of fault blocks (95%
-turn-stratified record-bootstrap interval 21.09--29.43%), and attained AUROC 0.635.
-A preimplemented target-only Minimum Covariance Determinant comparator instead
-produced 0/32 healthy alarms, 70.05% detection (65.36--75.26%), and AUROC 0.927.
-The frozen detector alarmed on 0/48 fault records in each of the first three analysis
-blocks but on 48/48 in the final block; detection also fell from 56.25% at 0 N m to
-12.50% at 35 N m. Conditional on this one external motor, the results expose a ranking
-reversal, ordered-block alarm drift aligned with the acceleration trajectory, and
-underperformance of source-augmented variants relative to target-only counterparts
-under compound topology, sampling-rate, speed, and load shift. The study shows why random-window validation,
-record-any alarm rates, and same-dataset AUROC can overstate deployability, and it
-provides a reproducible protocol for reporting such failures without post-reveal model
-replacement.
+detector will transfer to a different permanent-magnet synchronous motor (PMSM). We
+evaluate eleven covariance and one-class detectors across two experimental datasets
+with motor/file separation, chronological target-health splits, 3 s alarm blocks, and
+no target-fault labels for fitting or thresholding. An exploratory study used three
+same-manufacturer 1.0, 1.5, and 3.0 kW PMSMs at fixed speed and load. A motor-balanced
+Log-Euclidean detector produced 0/42
+later-time healthy alarms and 95.71% fault-block detection. A motor-balanced Isolation
+Forest produced 0/42 and 96.07%, with no resolved difference. We then froze the
+pipeline and healthy threshold before revealing 48 fault records from one
+independent dual-three-phase PMSM undergoing acceleration at eight loads. The frozen
+detector failed its empirical health gate (1/32 alarms; descriptive 95%
+Wilson upper bound 15.74% versus a 12% limit), detected 25.00% of fault blocks (95%
+turn-stratified record-bootstrap interval 21.09--29.43%), and attained AUROC 0.635. A
+target-only Minimum Covariance Determinant comparator instead produced
+0/32 healthy alarms, 70.05% detection (65.36--75.26%), and AUROC 0.927. The frozen
+detector alarmed on none of the 48 records in the first three blocks but on all 48 in
+the final block; detection also fell from 56.25% at 0 N m to 12.50% at 35 N m.
+Conditional on this external motor, the results reveal a ranking reversal,
+acceleration-aligned alarm drift, and source-augmented variants that underperformed
+target-only counterparts. This audit-first protocol demonstrates why same-dataset
+scores and record-any alarms can overstate deployability under compound shift.
 
-**Keywords:** permanent-magnet synchronous motor; stator fault; cross-dataset
-evaluation; healthy-only adaptation; negative transfer; alarm drift; distribution
-shift; leakage-resistant validation
+**Keywords:** permanent-magnet synchronous motor; stator-fault diagnosis;
+cross-dataset evaluation; healthy-only learning; negative transfer; leakage-resistant
+validation
 
 ## 1. Introduction
 
@@ -238,7 +233,8 @@ The target healthy record has 40 blocks in chronological order:
 At an alarm level of 0.05, a conservative finite conformal threshold requires at least
 19 calibration units. Thus, the 12 s adaptation trace cannot also be described as a
 5% conformal calibration set: it supplies only four macroblocks. The protocol uses 20
-separate calibration blocks.
+separate calibration blocks. The motor holdout, chronological target-health split, and
+scoring flow are summarized in Fig. 1.
 
 ![Motor holdout, sequential target-health split, and method flow.](figures/protocol_overview.pdf)
 
@@ -357,7 +353,8 @@ The proposed detector raised no alarm in 42 later-time target healthy blocks. Ze
 observed events does not imply zero population risk: the pooled 95% Wilson upper bound
 was 8.38%. Fault-block detection was 100.00%, 90.00%, and 97.14% when 1.0, 1.5, and
 3.0 kW were targets, respectively. The fold mean was 95.71%, and the worst-motor result
-was 90.00%.
+was 90.00%. Table 1 compares the five covariance-score variants under the common
+protocol.
 
 | Method | Healthy FAR | Descriptive Wilson upper | Mean detection | Worst motor | Mean AUROC |
 |---|---:|---:|---:|---:|---:|
@@ -366,6 +363,8 @@ was 90.00%.
 | Source-only covariance | 0/42 | 8.38% | 89.11% | 70.18% | 0.9968 |
 | Arithmetic entity balance | 0/42 | 8.38% | 95.48% | 87.86% | 0.9989 |
 | **Log-Euclidean entity balance** | **0/42** | **8.38%** | **95.71%** | **90.00%** | **0.9993** |
+
+Per-motor detection and descriptive healthy false-alarm intervals are shown in Fig. 2.
 
 ![Per-motor detection and healthy false-alarm intervals.](figures/method_performance.pdf)
 
@@ -377,7 +376,8 @@ The interval crossed zero against target sample covariance (+1.85 points,
 [-2.14, 6.01]) and arithmetic entity balancing (+0.24 points, [-1.37, 2.32]). The
 pilot therefore supports the value of target-health covariance transfer over pure
 source transfer, but it does not establish that Log-Euclidean averaging is uniformly
-better than simpler entity averaging.
+better than simpler entity averaging. The record-level paired differences are shown in
+Fig. 3.
 
 ![Record-level paired detection differences.](figures/paired_detection_differences.pdf)
 
@@ -393,7 +393,7 @@ was more accurate. Target-only Isolation Forest attained the highest detection r
 false-alarm gate. The proposed method exceeded target one-class SVM (+6.01 points,
 [1.07, 11.90]), target Minimum Covariance Determinant (+5.89 points,
 [0.95, 11.67]), and motor-balanced Minimum Covariance Determinant (+3.39 points,
-[0.30, 6.85]).
+[0.30, 6.85]). Table 2 reports the one-class comparison under the same health gate.
 
 | One-class method | Healthy FAR | Mean detection | Worst motor |
 |---|---:|---:|---:|
@@ -409,7 +409,7 @@ The result supports a competitive deterministic and interpretable covariance det
 not a claim of universal state-of-the-art performance. Across five seeds, the
 motor-balanced Isolation Forest varied from 96.01% to 96.85% detection and from zero
 to two healthy alarms, illustrating that a single favorable seed is insufficient for
-an alarm-risk claim.
+an alarm-risk claim. Paired record differences against these baselines appear in Fig. 4.
 
 ![Paired record differences against strong one-class baselines.](figures/oneclass_detection_differences.pdf)
 
@@ -421,7 +421,8 @@ false alarms. Sequential deployment gave the same nonmonotonic pattern. The appa
 6 s maximum cannot be selected after inspecting target faults; 12 s remains the frozen
 primary choice. If these short durations were instead used for conformal calibration,
 their minimum attainable p-values would be 0.50, 0.333, 0.20, and 0.111, all above
-0.05.
+0.05. The adaptation-budget results and calibration feasibility boundary are shown in
+Fig. 5.
 
 ![Adaptation-budget sensitivity and calibration feasibility.](figures/adaptation_budget.pdf)
 
@@ -433,7 +434,8 @@ A 3 s 90th-percentile aggregation increased mean detection to 97.32% but introdu
 1/42 healthy false alarms; its descriptive Wilson upper bound was 12.32%, above the
 predeclared 12% gate. It therefore does not replace the health-ACF-selected primary
 setting. Five- and six-second blocks supply only 12 and 10 calibration units and were
-skipped because they cannot resolve an alarm level of 0.05.
+skipped because they cannot resolve an alarm level of 0.05. Block-length and aggregation
+sensitivity are summarized in Fig. 6.
 
 ![Block-length and aggregation sensitivity.](figures/block_sensitivity.pdf)
 
@@ -444,7 +446,7 @@ so the original exploratory pilot hypothesis had an uninformative ceiling. Detec
 not monotone in severity. Three of six motor--fault-family Spearman correlations between
 mean anomaly score and nominal severity were negative, including both families for the
 1.0 kW motor. Reliable threshold detection on this dataset consequently does not imply
-valid severity estimation.
+valid severity estimation. The nonmonotonic severity patterns are displayed in Fig. 7.
 
 ![Nonmonotonic detection across nominal severity.](figures/severity_detection.pdf)
 
@@ -481,7 +483,8 @@ robustness analysis using five previously fixed seeds, target-only MinCovDet rem
 above the other stochastic methods
 but ranged from 65.36% to 77.08% detection and from 0 to 2 healthy alarms; only three of
 five seeds passed H1. Its primary-seed outcome must therefore not be presented as a
-seed-invariant performance guarantee.
+seed-invariant performance guarantee. Table 3 gives the complete frozen external method
+comparison.
 
 | External method | Healthy alarms | Fault-block detection | Block AUROC | H1 |
 |---|---:|---:|---:|---|
@@ -496,6 +499,8 @@ seed-invariant performance guarantee.
 | Target one-class SVM | 1/32 | 12.76% | 0.7209 | fail |
 | Motor-balanced one-class SVM | 1/32 | 12.76% | 0.6876 | fail |
 | Source-only covariance | 1/32 | 12.76% | 0.5747 | fail |
+
+Figure 8 jointly shows fault detection, healthy alarms, and the predeclared H1 decision.
 
 ![External fault detection, healthy false alarms, and the predeclared H1 decision.](figures/external_method_performance.pdf)
 
@@ -520,14 +525,16 @@ held-out health and 0.821 for faults. Yet the equal-weight mean of eight
 block-position-specific AUROCs was 0.805, compared with the pooled AUROC of 0.635.
 This post-reveal diagnostic suggests that fault-ranking information remained after
 matching acceleration position, while the transported unconditional score and fixed
-threshold were overwhelmed by operating-point drift.
+threshold were overwhelmed by operating-point drift. The threshold-normalized score and
+alarm trajectories are shown in Fig. 9.
 
 ![Threshold-normalized score and alarm drift over the acceleration trajectory.](figures/external_condition_drift.pdf)
 
 The failure was also load dependent. Frozen-detector block detection fell from 56.25%
 at 0 N m to 12.50% at 35 N m. Across fault-turn counts, detection ranged only from
 15.63% to 32.81% and did not increase monotonically. The full 6 by 8 condition grid
-shows that many high-load records triggered in only one of eight ordered blocks.
+shows that many high-load records triggered in only one of eight ordered blocks. The
+complete fault-turn-by-load alarm grid is shown in Fig. 10.
 
 ![Frozen-detector block detection over fault turns and load.](figures/external_proposed_heatmap.pdf)
 
@@ -570,7 +577,8 @@ direction with almost no matched fault contrast, while allocating little contrib
 some fault-sensitive harmonic directions.
 It is not a causal feature-selection result. The same healthy load/block/subsystem is
 reused across six fault-turn conditions and every record comes from one motor, so these
-effect sizes are descriptive and post-reveal only.
+effect sizes are descriptive and post-reveal only. Figure 11 contrasts single-feature
+discrimination with the frozen-score contribution allocation.
 
 ![Post-reveal single-feature discrimination versus frozen-score contribution.](figures/external_feature_geometry.pdf)
 
@@ -675,4 +683,36 @@ resumable checksummed downloads, archive and MAT audits, duplicate removal, feat
 extraction, motor/file-level evaluation, paired bootstrap, sensitivity analyses,
 automated tests, and figure generation. Raw data remain excluded from version control;
 the reveal manifest, protocol, selected derived results, and audit metadata are retained
-for exact reconstruction.
+for exact reconstruction. Detailed partitions, thresholds, comparator results,
+post-reveal diagnostics, sampling-rate controls, and file hashes are provided in Online
+Resource 1. The anonymized code, automated tests, protocols, and selected derived
+outputs needed to rerun the reported analyses are provided in Online Resource 2.
+
+## Statements and declarations
+
+### Competing interests
+
+The authors declare no financial or non-financial competing interests.
+
+### Ethics approval and consent to participate
+
+Not applicable. This study reanalyzes public experimental machine-current datasets and
+does not involve human participants, animals, or personal data.
+
+### Funding
+
+Funding information is supplied on the separate title page and withheld from this file
+for double-blind review.
+
+### Author contributions
+
+The author-contribution statement is supplied on the separate title page and withheld
+from this file for double-blind review.
+
+### Generative AI assistance
+
+An LLM-based coding assistant was used under human direction for implementation
+support, automated consistency checks, and manuscript drafting and editing. All
+reported computations were executed on the cited datasets and checked against frozen
+outputs and automated tests. The human authors remain responsible for reviewing and
+approving the submitted version.
