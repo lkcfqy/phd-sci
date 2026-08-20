@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import requests
@@ -170,6 +171,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--max-retries", type=int, default=10)
     parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="parallel file downloads; each file is still verified independently",
+    )
+    parser.add_argument(
         "--plan-only",
         action="store_true",
         help="write the official file/size/MD5 plan without downloading content",
@@ -179,6 +186,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    if not 1 <= args.workers <= 8:
+        raise ValueError("workers must lie between 1 and 8")
     manifest_name = "fault_reveal_plan.json" if args.plan_only else "staged_download_manifest.json"
     manifest_path = args.output_dir / manifest_name
     manifest: list[dict[str, object]] = []
@@ -199,15 +208,28 @@ def main() -> None:
         dataset_dir = args.output_dir / str(specification.get("output_subdir", name))
         if not args.plan_only:
             dataset_dir.mkdir(parents=True, exist_ok=True)
-        for filename in specification["files"]:
+        requested_files = list(specification["files"])
+        for filename in requested_files:
             if filename not in files:
                 raise FileNotFoundError(f"{filename} is absent from Zenodo record {record}")
+
+        def retrieve(
+            filename: str,
+            record_files: dict[str, dict[str, object]] = files,
+            destination: Path = dataset_dir,
+        ) -> dict[str, object]:
             if args.plan_only:
-                result = planned_file(files[filename])
-            else:
-                result = download_file(
-                    files[filename], dataset_dir, max_retries=args.max_retries
-                )
+                return planned_file(record_files[filename])
+            return download_file(
+                record_files[filename], destination, max_retries=args.max_retries
+            )
+
+        if args.workers == 1 or args.plan_only:
+            results = map(retrieve, requested_files)
+        else:
+            executor = ThreadPoolExecutor(max_workers=args.workers)
+            results = executor.map(retrieve, requested_files)
+        for result in results:
             manifest.append(
                 {
                     "dataset": name,
@@ -216,6 +238,8 @@ def main() -> None:
                     **result,
                 }
             )
+        if args.workers > 1 and not args.plan_only:
+            executor.shutdown()
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     print(f"wrote {manifest_path.resolve()}")
 
