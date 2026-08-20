@@ -1,0 +1,22 @@
+record_id,filename,motor_id,motor_watts,condition,setpoint_rad_s,fault_turns,winding_turns,nominal_severity,fault_phase,parser_compatible,main_endpoint_compatible,incompatible_reason
+200W_load_transient_1000_4turn,load_transient_1000_4turns.mat,200W,200,load_transient,1000,4,25,0.16,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_load_transient_1200_2turn,load_transient_1200_2turns.mat,200W,200,load_transient,1200,2,25,0.08,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_load_transient_1200_4turn,load_transient_1200_4turns.mat,200W,200,load_transient,1200,4,25,0.16,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_load_transient_1200_6turn,load_transient_1200_6turns.mat,200W,200,load_transient,1200,6,25,0.24,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_steady_state_1000_4turn,steady_state_1000_4turns.mat,200W,200,steady_state,1000,4,25,0.16,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_steady_state_1200_2turn,steady_state_1200_2turns.mat,200W,200,steady_state,1200,2,25,0.08,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_steady_state_1200_4turn,steady_state_1200_4turns.mat,200W,200,steady_state,1200,4,25,0.16,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_steady_state_1200_6turn,steady_state_1200_6turns.mat,200W,200,steady_state,1200,6,25,0.24,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_velocity_transient_1000_4turn,velocity_transient_1000_4turns.mat,200W,200,velocity_transient,1000,4,25,0.16,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_velocity_transient_1200_2turn,velocity_transient_1200_2turns.mat,200W,200,velocity_transient,1200,2,25,0.08,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_velocity_transient_1200_4turn,velocity_transient_1200_4turns.mat,200W,200,velocity_transient,1200,4,25,0.16,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+200W_velocity_transient_1200_6turn,velocity_transient_1200_6turns.mat,200W,200,velocity_transient,1200,6,25,0.24,a,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+20kW_load_transient_1000_1turn,load_transient_1000_1turn.mat,20kW,20000,load_transient,1000,1,7,0.14285714285714285,b,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+20kW_load_transient_1000_2turn,load_transient_1000_2turns.mat,20kW,20000,load_transient,1000,2,7,0.2857142857142857,b,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+20kW_load_transient_1000_3turn,load_transient_1000_3turns.mat,20kW,20000,load_transient,1000,3,7,0.42857142857142855,b,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+20kW_steady_state_1000_1turn,steady_state_1000_1turn.mat,20kW,20000,steady_state,1000,1,7,0.14285714285714285,b,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+20kW_steady_state_1000_2turn,steady_state_1000_2turns.mat,20kW,20000,steady_state,1000,2,7,0.2857142857142857,b,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+20kW_steady_state_1000_3turn,steady_state_1000_3turns.mat,20kW,20000,steady_state,1000,3,7,0.42857142857142855,b,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+20kW_velocity_transient_1000_1turn,velocity_transient_1000_1turn.mat,20kW,20000,velocity_transient,1000,1,7,0.14285714285714285,b,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+20kW_velocity_transient_1000_2turn,velocity_transient_1000_2turns.mat,20kW,20000,velocity_transient,1000,2,7,0.2857142857142857,b,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate
+20kW_velocity_transient_1000_3turn,velocity_transient_1000_3turns.mat,20kW,20000,velocity_transient,1000,3,7,0.42857142857142855,b,False,False,ValueError: timeseries has no 10 kHz monotonic time candidate

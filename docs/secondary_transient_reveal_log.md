@@ -58,7 +58,38 @@ outcome and is not permission to change the frozen protocol.
 
 ## First signal reveal
 
-Status: **PENDING**
+Status: **PRIMARY REVEAL STOPPED AT PARSER-COMPATIBILITY GATE**
 
-The command timestamp, exact stdout/stderr, compatibility counts, output hashes and
-decision to proceed or stop will be appended here after the one-time run.
+The one-time feature command was run from clean commit `c09cc43` at
+`2026-08-20T16:54:35Z` (2026-08-21 local time). It exited with code 0 after attempting
+all 21 records and printed:
+
+```text
+processed all 21 records; main-compatible=0, feature rows=0
+```
+
+Every record produced the same frozen incompatibility reason:
+
+```text
+ValueError: timeseries has no 10 kHz monotonic time candidate
+```
+
+Thus `records_parser_compatible=0`, `records_main_endpoint_compatible=0`, and the
+compatible fraction was 0 for both the 200 W and 20 kW motors. No current feature,
+detector score, calibration threshold, alarm, AUROC or method comparison was produced.
+The primary scoring command was not run.
+
+Frozen first-reveal SHA-256 values are:
+
+- `record_compatibility.csv`:
+  `b2f737ca6d2dfbd20f211b1e083dd7a045954658f21f7a7553bcf8fb93aa219e`;
+- empty-header `onset_diagnostics.csv`:
+  `7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6`;
+- `run_metadata.json`:
+  `26e17b621f783eea42eb7fee5272a66508c67f1ad33611138a736d042f48ff9b`;
+- empty gzip feature-table artifact:
+  `ea88f7ed5f6f94fa64dbeee0782787f796befc7a5bc55a044e69af780fa7cb06`.
+
+This is a parser-compatibility failure, not evidence that any detector succeeds or
+fails. Any inspection of the now-revealed MCOS property tree or parser repair must be
+versioned separately as post-reveal sensitivity and cannot replace these outputs.

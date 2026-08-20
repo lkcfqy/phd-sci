@@ -228,3 +228,17 @@ This experiment can strengthen the cross-capacity evidence from one to three ext
 physical motors, but it remains a within-motor, cross-record short-time test because
 no standalone healthy session exists. Results must be reported separately for the two
 motors and cannot establish a population-wide false-alarm guarantee.
+
+## 2026-08-21 — Second external-motor primary reveal stopped
+
+The first signal-deserialization run attempted all 21 official MAT records from frozen
+commit `c09cc43`. All 21 failed the same frozen parser gate: the decoded `timeseries`
+property tree did not expose a unique explicit 10 kHz monotonic time vector under the
+pre-registered semantic/shape rule. The run produced zero feature rows and no detector
+scores; the primary evaluation was therefore not run.
+
+The immutable failure table and metadata are preserved under
+`results/transient_feature_build/`. This outcome is a technical compatibility failure,
+not an algorithm result. A subsequent structure-based parser repair is permitted only
+as labeled post-reveal sensitivity, with separate outputs and without overwriting the
+primary reveal evidence.

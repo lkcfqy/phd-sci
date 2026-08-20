@@ -1,0 +1,61 @@
+{
+  "created_utc": "2026-08-20T16:54:35.516793+00:00",
+  "dataset_doi": "10.5281/zenodo.15631383",
+  "feature_rows": 0,
+  "feature_table_sha256": "ea88f7ed5f6f94fa64dbeee0782787f796befc7a5bc55a044e69af780fa7cb06",
+  "file_sha256": {
+    "200W_load_transient_1000_4turn": "c2118bc882ba34da2acead87463d4301c3fb63650f7591413aabe0c55834455e",
+    "200W_load_transient_1200_2turn": "79fb99e90031d5d527ec3e485139b66f32f88c963bfd6e2c1a68effe92a5a21b",
+    "200W_load_transient_1200_4turn": "7af1da7b956eba815ae0ae3d25a59c3c86270e80d2f9617e9ff62f173cbafa6c",
+    "200W_load_transient_1200_6turn": "88eb14ec80a711c820807abc81d9cd2aa82d9040fd5327d8b726a86e2487faad",
+    "200W_steady_state_1000_4turn": "351b4bbf7846ce129212f690b174283be65533a5d04da607fe8f7781c980770a",
+    "200W_steady_state_1200_2turn": "18528b4c0f8d6b849777fbf05450a0481b3ac5f1473f1b59a485ca19703fd93e",
+    "200W_steady_state_1200_4turn": "053073865084b1f1ad11cecca7f25db69ad54b9ea384acdc9064278f97d92fad",
+    "200W_steady_state_1200_6turn": "bcae6be50d22cf932d511588801135c14f5ff68cafc0ead90fae1908277dc8d3",
+    "200W_velocity_transient_1000_4turn": "566ff59acbad2efd5befe045b19151e18f64dad21d6b965aa8c341b94ed40d17",
+    "200W_velocity_transient_1200_2turn": "3ce743be515573f2f405df47d1d04da65ad2935f6d866f1ef2532f35104e58a4",
+    "200W_velocity_transient_1200_4turn": "52b0a56c7dc2fb73848b494f176311773606d4dd93dc603f2f59291d943849a4",
+    "200W_velocity_transient_1200_6turn": "25723aeb6a9ae54fbee681577b046f8e11e00fd57f8955ee927ffe3ed873279e",
+    "20kW_load_transient_1000_1turn": "de4107dd174e223e6ac5308ed8b3c5cc721e2916dd18692dd683d982fe66104f",
+    "20kW_load_transient_1000_2turn": "08efb90e050fd151973dd8630a44a01e4aab8df0e188057d8e5bece489ed210e",
+    "20kW_load_transient_1000_3turn": "66e3af7465980c7e6ca6db2daf9c814be5af8f66afb556b2dd05ecd673595c38",
+    "20kW_steady_state_1000_1turn": "e587c3d60e6d06226a7407897970e1607d4f6615ebbf123cf5a211c774d21fe0",
+    "20kW_steady_state_1000_2turn": "5944120c0588bc320500ee4ce48db9f85de68128f5e100cfbbf02e96ae670fb1",
+    "20kW_steady_state_1000_3turn": "257b1fb3a98d71060f5b9645c8742a091968b8bdcd73ba15e207d7e495ea6fb5",
+    "20kW_velocity_transient_1000_1turn": "25c9761f307f2557721c804fce6da17ca302d18e552d3229bc390325aefadc34",
+    "20kW_velocity_transient_1000_2turn": "83c23c640c99164ad65a783ac67996146d599db75aa4c61b425562fc5f889473",
+    "20kW_velocity_transient_1000_3turn": "154064f9d9ea670f20afb626ef535f6f705ecaeb278c74f6e898464b1ebaf58f"
+  },
+  "forbidden_zero_sequence_features": [
+    "zero_sequence_ratio",
+    "zero_sequence_rms"
+  ],
+  "label_only_mat_variables": [
+    "if_meas"
+  ],
+  "loaded_mat_variables": [
+    "ialbt_meas",
+    "if_meas",
+    "we"
+  ],
+  "main_endpoint_compatible_fraction_by_motor": {
+    "200W": 0.0,
+    "20kW": 0.0
+  },
+  "mat_io_version": "1.0.0",
+  "maximum_post_fault_seconds": 2.0,
+  "minimum_required_compatible_fraction_by_motor": 0.8,
+  "pre_fault_guard_seconds": 0.2,
+  "primary_post_fault_seconds": 1.0,
+  "qc_only_mat_variables": [
+    "we"
+  ],
+  "records_attempted": 21,
+  "records_main_endpoint_compatible": 0,
+  "records_parser_compatible": 0,
+  "scoring_mat_variables": [
+    "ialbt_meas"
+  ],
+  "selective_record_exclusion": false,
+  "window_seconds": 0.2
+}
