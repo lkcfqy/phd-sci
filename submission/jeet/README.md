@@ -20,6 +20,10 @@ Generated: 2026-08-21
 native-Word/human gates. Keep it with the working package, but do not upload it as a
 manuscript file.
 
+`Author_Input_Form_CN.md` is a Chinese-language intake sheet for the author-owned
+metadata that cannot be inferred safely. It is also an internal file and must not be
+uploaded.
+
 ## Remaining human-only gates
 
 - Confirm author names, order, affiliations, ORCIDs, corresponding author, CRediT roles,
@@ -28,8 +32,12 @@ manuscript file.
   disclosure, supplementary material, and cover letter.
 - Confirm the work is not under consideration elsewhere and obtain institutional
   permission to submit.
-- Recheck the live journal site on submission day. JEET currently uses double-blind
-  review and requests a separate title page.
+- Confirm the live submission route with the JEET office if Editorial Manager still
+  displays its implementation-mode warning. Both Springer and KIEE currently point to
+  `https://www.editorialmanager.com/eete`, while that destination says not to use it for
+  live manuscript submission. The KIEE contact is `jeet@kiee.or.kr`.
+- Recheck the live journal site on submission day. JEET uses double-blind review and
+  requests a separate title page.
 
 ## Rebuild
 

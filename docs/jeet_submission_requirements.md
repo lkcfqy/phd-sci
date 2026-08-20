@@ -2,7 +2,16 @@
 
 Checked: 2026-08-21
 
-Authoritative source: <https://link.springer.com/journal/42835/submission-guidelines>
+Authoritative sources:
+
+- Springer submission guidelines:
+  <https://link.springer.com/journal/42835/submission-guidelines>
+- Springer publishing options and current OA fee:
+  <https://link.springer.com/journal/42835/how-to-publish-with-us>
+- KIEE English submission page:
+  <https://www.kiee.or.kr/pages_submission/submission_info_en.vm>
+- KIEE April 2025 title-page/submission template page:
+  <https://www.kiee.or.kr/board/?_0000_method=view&ncode=a008&num=1758&page=1>
 
 ## Current journal requirements used for this package
 
@@ -10,7 +19,9 @@ Authoritative source: <https://link.springer.com/journal/42835/submission-guidel
   anonymized; author names, affiliations, contact details, acknowledgments, funding,
   and identity-revealing declarations belong on a separate title page.
 - The title page must contain the article title, all authors and affiliations,
-  corresponding-author e-mail, and available ORCIDs.
+  corresponding-author e-mail, and available ORCIDs. The KIEE April 2025 template also
+  centralizes acknowledgments and declarations there: funding, competing interests,
+  ethics approval, consent, data/materials/code availability, and author contributions.
 - An editable Word source is required. The guidance specifies plain 10-point Times
   Roman text, automatic page numbering, decimal headings with no more than three
   displayed levels, numeric square-bracket citations, and numbered references with DOI
@@ -28,6 +39,17 @@ Authoritative source: <https://link.springer.com/journal/42835/submission-guidel
   US$50 per page within six pages, US$60 per page for pages 7--12, and US$80 per page
   over 13 pages. The publisher determines production length, so the corresponding
   author must reconfirm the applicable charge before submission.
+- JEET is hybrid. Springer currently lists an optional OA APC of GBP 2,590 / USD 3,590 /
+  EUR 2,890 plus tax. The site does not resolve here whether page charges and the OA APC
+  can both apply, so invoice treatment must be confirmed before choosing the route.
+
+## Live submission-route conflict
+
+On 2026-08-21, Springer and KIEE both linked to
+`https://www.editorialmanager.com/eete`, but that landing page displayed: "Site under
+development. Do not use for live manuscript submission." This is a hard human gate,
+not a reason to upload elsewhere. If the warning remains, obtain the active route from
+the JEET office at `jeet@kiee.or.kr` before submitting.
 
 ## Package mapping
 
@@ -50,5 +72,7 @@ Authoritative source: <https://link.springer.com/journal/42835/submission-guidel
 - the completed title page has accidentally been merged into the anonymous manuscript;
 - the final files have not been opened and paged through in the exact Word/PDF viewers
   used for submission;
+- the active submission portal has not been confirmed while the implementation-mode
+  warning remains;
 - the live journal page has not been rechecked for indexing, fees, declarations, and
   upload-field changes.

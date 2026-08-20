@@ -76,6 +76,12 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
 模板、投稿信模板、8 页补充材料、匿名复现代码包以及 Fig1--Fig11 独立源文件均已就位。
 最终视觉与结构复核状态记录在 [`submission/jeet/QA_Report.md`](submission/jeet/QA_Report.md)；
 补齐作者信息后仍须由全体作者在最终提交所用 Word 版本中逐页复核并批准全部声明。
+截至 2026-08-21，Springer 与 KIEE 均指向同一 Editorial Manager 地址，但落地页仍显示
+“Site under development”并明确禁止正式投稿；若提交时该警告仍在，须先联系
+`jeet@kiee.or.kr` 确认有效入口。
+作者信息可直接按
+[`submission/jeet/Author_Input_Form_CN.md`](submission/jeet/Author_Input_Form_CN.md)
+填写或回复。
 
 提交前剩余的人工门槛和费用警告见
 [`submission/jeet/Submission_Checklist.md`](submission/jeet/Submission_Checklist.md)，

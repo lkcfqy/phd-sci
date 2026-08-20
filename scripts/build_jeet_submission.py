@@ -937,27 +937,39 @@ def build_title_page(output: Path) -> None:
 
     doc.add_paragraph("Acknowledgments", style="Heading 1")
     doc.add_paragraph("[List only contributors who consent to be acknowledged, or state 'None'.]")
-    doc.add_paragraph("Funding", style="Heading 1")
+    doc.add_paragraph("Statements and declarations", style="Heading 1")
+    doc.add_paragraph("Funding", style="Heading 2")
     doc.add_paragraph(
         "[Provide the full funding organization name and grant number, or state: "
         "'The authors received no specific funding for this work.']"
     )
-    doc.add_paragraph("Author contributions", style="Heading 1")
+    doc.add_paragraph("Author contributions", style="Heading 2")
     doc.add_paragraph(
         "[Use CRediT roles and verify every statement, for example: Conceptualization, "
         "Methodology, Software, Validation, Formal analysis, Investigation, Data curation, "
         "Writing - original draft, Writing - review and editing, Visualization, "
         "Supervision, Project administration, Funding acquisition.]"
     )
-    doc.add_paragraph("Competing interests", style="Heading 1")
+    doc.add_paragraph("Competing interests", style="Heading 2")
     doc.add_paragraph("The authors declare no financial or non-financial competing interests.")
-    doc.add_paragraph("Data availability", style="Heading 1")
+    doc.add_paragraph("Ethics approval", style="Heading 2")
+    doc.add_paragraph(
+        "Not applicable. This study reanalyzes public experimental machine-current "
+        "datasets and does not involve human participants, animals, or personal data."
+    )
+    doc.add_paragraph("Consent to participate", style="Heading 2")
+    doc.add_paragraph("Not applicable.")
+    doc.add_paragraph("Consent for publication", style="Heading 2")
+    doc.add_paragraph(
+        "Not applicable. No human participant or identifiable personal information is reported."
+    )
+    doc.add_paragraph("Data, materials, and code availability", style="Heading 2")
     doc.add_paragraph(
         "The study reanalyzes the public datasets identified by DOI in the anonymous "
         "manuscript. Online Resources 1 and 2 contain supplementary evidence and an "
         "anonymized reproducibility bundle."
     )
-    doc.add_paragraph("Generative AI assistance", style="Heading 1")
+    doc.add_paragraph("Generative AI assistance", style="Heading 2")
     doc.add_paragraph(
         "An LLM-based coding assistant was used under human direction for implementation "
         "support, automated consistency checks, and manuscript drafting and editing. "
@@ -996,6 +1008,14 @@ def build_cover_letter(output: Path) -> None:
         + JOURNAL
         + ". The study addresses permanent-magnet machines, motor-drive monitoring, sensor "
         "signal processing, and practical industrial reliability, all within the journal's scope.",
+    )
+    p = doc.add_paragraph()
+    add_inline_runs(
+        p,
+        "The most directly relevant JEET categories are B - Electric Machinery and Power "
+        "Electronics (Permanent Magnet Machines; Motor Drive and related applications) and "
+        "I - Practical Industrial Electric Applications (Industrial Electric System Control "
+        "Applications).",
     )
     p = doc.add_paragraph()
     add_inline_runs(
@@ -1205,6 +1225,10 @@ Generated: {today_iso()}
 native-Word/human gates. Keep it with the working package, but do not upload it as a
 manuscript file.
 
+`Author_Input_Form_CN.md` is a Chinese-language intake sheet for the author-owned
+metadata that cannot be inferred safely. It is also an internal file and must not be
+uploaded.
+
 ## Remaining human-only gates
 
 - Confirm author names, order, affiliations, ORCIDs, corresponding author, CRediT roles,
@@ -1213,8 +1237,12 @@ manuscript file.
   disclosure, supplementary material, and cover letter.
 - Confirm the work is not under consideration elsewhere and obtain institutional
   permission to submit.
-- Recheck the live journal site on submission day. JEET currently uses double-blind
-  review and requests a separate title page.
+- Confirm the live submission route with the JEET office if Editorial Manager still
+  displays its implementation-mode warning. Both Springer and KIEE currently point to
+  `https://www.editorialmanager.com/eete`, while that destination says not to use it for
+  live manuscript submission. The KIEE contact is `jeet@kiee.or.kr`.
+- Recheck the live journal site on submission day. JEET uses double-blind review and
+  requests a separate title page.
 
 ## Rebuild
 
@@ -1223,7 +1251,7 @@ command rebuilds the editable Word sources, figures, and anonymous code bundle; 
 second creates and audits the two review PDFs. Per-artifact SHA-256 values and PDF page
 audits are in `build_metadata.json`.
 """
-    checklist = """# JEET pre-submission checklist
+    checklist = f"""# JEET pre-submission checklist
 
 ## Automatically verified
 
@@ -1251,6 +1279,8 @@ audits are in `build_metadata.json`.
 - [ ] Review the AI-assistance disclosure for accuracy
 - [ ] Confirm public dataset licences and final anonymous data/code links
 - [ ] Recheck current JEET indexing, fees, and submission fields on the submission date
+- [ ] Confirm the active submission portal with `jeet@kiee.or.kr` if Editorial Manager
+      still displays "Site under development. Do not use for live manuscript submission."
 
 ## Cost warning
 
@@ -1258,6 +1288,18 @@ The JEET website currently states subscription-model page charges of US$50 per p
 within six pages, US$60 per page for pages 7-12, and US$80 per page over 13 pages. The
 publisher determines production page count; obtain supervisor/funder approval before
 submission. See https://link.springer.com/journal/42835/submission-guidelines.
+
+The journal is hybrid. The publisher currently lists an optional open-access APC of
+GBP 2,590 / USD 3,590 / EUR 2,890 plus applicable taxes. Do not assume whether the
+subscription page charges and the OA APC are cumulative; confirm the chosen route and
+invoice treatment with the journal before submission.
+
+## Submission-route warning ({today_iso()})
+
+Springer and KIEE both link to `https://www.editorialmanager.com/eete`, but the landing
+page currently states that the site is under development and must not be used for live
+submission. If that warning remains, contact `jeet@kiee.or.kr` and obtain the active
+submission route before uploading any file.
 """
     (OUT_DIR / "README.md").write_text(readme, encoding="utf-8")
     (OUT_DIR / "Submission_Checklist.md").write_text(checklist, encoding="utf-8")
@@ -1277,8 +1319,76 @@ funding: "REQUIRED: full funder and grant, or explicit no-funding statement"
 acknowledgments: "None, or names with permission"
 competing_interests: "The authors declare no financial or non-financial competing interests."
 author_contributions: "REQUIRED: verified CRediT roles"
+ethics_approval: >-
+  Not applicable. This study reanalyzes public experimental machine-current datasets
+  and does not involve human participants, animals, or personal data.
+consent_to_participate: "Not applicable."
+consent_for_publication: >-
+  Not applicable. No human participant or identifiable personal information is reported.
+data_materials_code_availability: >-
+  The study reanalyzes the public datasets identified by DOI in the anonymous manuscript.
+  Online Resources 1 and 2 contain supplementary evidence and an anonymized
+  reproducibility bundle.
+generative_ai_assistance: >-
+  An LLM-based coding assistant was used under human direction for implementation
+  support, automated consistency checks, and manuscript drafting and editing. All
+  authors must review this disclosure and approve the final submitted text.
 """
     (OUT_DIR / "author_metadata_REQUIRED.yaml").write_text(author_metadata, encoding="utf-8")
+    author_input_cn = """# JEET 作者信息填写单（不要上传此文件）
+
+请按以下字段回复，或直接填写同目录的 `author_metadata_REQUIRED.yaml`。姓名、作者顺序、
+导师署名、单位、基金和 CRediT 贡献都属于作者本人决定；未获得所有作者确认前不要投稿。
+
+## 1. 作者与顺序
+
+每位作者分别提供：
+
+- 英文全名（与护照/既有论文一致）：
+- 排名：
+- 单位编号（可多选）：
+- 有效邮箱：
+- ORCID（如有，完整 16 位 URL）：
+- 是否通讯作者：
+
+## 2. 单位
+
+请使用学校或机构确认过的官方英文写法，格式为：
+
+`Department/Institute, University/Organization, City, Country`
+
+不要根据中文名称自行猜译；学校、实验室或导师单位只有在作者确认后才能写入。
+
+## 3. Funding 与致谢
+
+- Funding：提供资助机构官方英文全称和 grant number；如无，明确写
+  `The authors received no specific funding for this work.`
+- Acknowledgments：写 `None`，或列出已同意被致谢者及其贡献。
+
+## 4. CRediT 作者贡献
+
+逐位作者从下列角色中选择真实承担的角色：Conceptualization; Methodology; Software;
+Validation; Formal analysis; Investigation; Resources; Data curation; Writing - original
+draft; Writing - review and editing; Visualization; Supervision; Project administration;
+Funding acquisition。不要为了凑角色而分配未实际完成的贡献。
+
+## 5. 需要全体作者确认的预填声明
+
+- Competing interests：`The authors declare no financial or non-financial competing interests.`
+- Ethics approval：不适用；本研究仅复用公开电机实验数据，无人类、动物或个人数据。
+- Consent to participate / publication：不适用。
+- Generative AI assistance：LLM 编码助手在人工指导下用于实现支持、自动一致性检查及
+  稿件起草/编辑；全部计算由作者对冻结结果和测试复核，最终责任归人类作者。
+
+如任何一项不准确，请给出替换文本，不要直接确认。
+
+## 6. 投稿入口人工门槛
+
+截至 2026-08-21，Springer 与 KIEE 指向的 Editorial Manager 页面仍显示
+`Site under development. Do not use for live manuscript submission.`。若提交时警告仍在，
+先联系 `jeet@kiee.or.kr` 获取有效入口。
+"""
+    (OUT_DIR / "Author_Input_Form_CN.md").write_text(author_input_cn, encoding="utf-8")
 
 
 def audit_sources() -> dict[str, object]:
@@ -1332,6 +1442,23 @@ def build() -> dict[str, object]:
     metadata: dict[str, object] = {
         "generated": today_iso(),
         "journal": JOURNAL,
+        "journal_requirements": {
+            "checked": today_iso(),
+            "official_kiee_template_page": (
+                "https://www.kiee.or.kr/board/?_0000_method=view&ncode=a008&num=1758&page=1"
+            ),
+            "springer_guidelines": (
+                "https://link.springer.com/journal/42835/submission-guidelines"
+            ),
+            "springer_fees": (
+                "https://link.springer.com/journal/42835/how-to-publish-with-us"
+            ),
+            "submission_portal": "https://www.editorialmanager.com/eete",
+            "submission_portal_warning_observed": (
+                "Site under development. Do not use for live manuscript submission."
+            ),
+            "journal_contact": "jeet@kiee.or.kr",
+        },
         "source_audit": source_audit,
         "manuscript": manuscript_meta,
         "supplement_intermediate": supplement_meta,

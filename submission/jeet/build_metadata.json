@@ -1,5 +1,5 @@
 {
-  "cover_letter_sha256": "9448a398251f18c5fab6174b79301c6097f99d4ab57c1cad448c144027c9a49d",
+  "cover_letter_sha256": "3ee3340557d378ceb940f436d9083d2482305db53fd2ac5ca3889db96c594ac6",
   "figures": [
     {
       "caption": "Motor holdout, sequential target-health split, and method flow",
@@ -147,11 +147,20 @@
   ],
   "generated": "2026-08-21",
   "journal": "Journal of Electrical Engineering & Technology",
+  "journal_requirements": {
+    "checked": "2026-08-21",
+    "journal_contact": "jeet@kiee.or.kr",
+    "official_kiee_template_page": "https://www.kiee.or.kr/board/?_0000_method=view&ncode=a008&num=1758&page=1",
+    "springer_fees": "https://link.springer.com/journal/42835/how-to-publish-with-us",
+    "springer_guidelines": "https://link.springer.com/journal/42835/submission-guidelines",
+    "submission_portal": "https://www.editorialmanager.com/eete",
+    "submission_portal_warning_observed": "Site under development. Do not use for live manuscript submission."
+  },
   "manuscript": {
     "citations": 34,
     "figures": 11,
     "output": "submission\\jeet\\Manuscript_Anonymous.docx",
-    "sha256": "1f1a3852de27dcbb02c672f9923603af0b1d0e833da9044f42b9dbe7f6c7a9bb",
+    "sha256": "f08c63bc37e93b3597151fe2a07d69eea8a31e21bd662437e4021684041d3198",
     "tables": 3
   },
   "pdfs": {
@@ -166,7 +175,7 @@
         792.0
       ],
       "pages": 17,
-      "sha256": "0520a3a0ff6dae1d0bb4b0ccce62e0111aad4043a23e0840965cc838ca2d3944",
+      "sha256": "17b2585639853a6efdff0347cd884f2faceb3713d78f52603d2bd06f3f9a2236",
       "tables": 3
     },
     "supplement": {
@@ -180,7 +189,7 @@
         612.0
       ],
       "pages": 8,
-      "sha256": "45ecadb2c654680b04ce6447f1ea27302b9c9f151b9f1be4cd0aea5ae94ba3fe",
+      "sha256": "22f1a5056a0e4e3b4a14422ef54573d8f1c255ae26ac3c5a7a07b9c7c025a5cb",
       "tables": 17
     }
   },
@@ -216,8 +225,8 @@
     "citations": 0,
     "figures": 0,
     "output": "tmp\\jeet_submission\\ESM_1_Supplementary_Material.docx",
-    "sha256": "8e7feee9d179c834a66b4e3fb63b812b3333985711ddb8f551a41258e1a3b31a",
+    "sha256": "27fbd4d61923a8e7f8a2232d0f7decc85f3080b1cdbcd2bec463b29ef079acfa",
     "tables": 17
   },
-  "title_page_sha256": "99f36954fdb01555a12a1bf60b218bc3983e85f2eef5c5c9f193a9b3fa7dc41b"
+  "title_page_sha256": "4de7187681e4783ca691bf89bd97671870bfab1ec8e601106e6ca8a1d1c07740"
 }

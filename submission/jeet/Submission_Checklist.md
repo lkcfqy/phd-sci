@@ -26,6 +26,8 @@
 - [ ] Review the AI-assistance disclosure for accuracy
 - [ ] Confirm public dataset licences and final anonymous data/code links
 - [ ] Recheck current JEET indexing, fees, and submission fields on the submission date
+- [ ] Confirm the active submission portal with `jeet@kiee.or.kr` if Editorial Manager
+      still displays "Site under development. Do not use for live manuscript submission."
 
 ## Cost warning
 
@@ -33,3 +35,15 @@ The JEET website currently states subscription-model page charges of US$50 per p
 within six pages, US$60 per page for pages 7-12, and US$80 per page over 13 pages. The
 publisher determines production page count; obtain supervisor/funder approval before
 submission. See https://link.springer.com/journal/42835/submission-guidelines.
+
+The journal is hybrid. The publisher currently lists an optional open-access APC of
+GBP 2,590 / USD 3,590 / EUR 2,890 plus applicable taxes. Do not assume whether the
+subscription page charges and the OA APC are cumulative; confirm the chosen route and
+invoice treatment with the journal before submission.
+
+## Submission-route warning (2026-08-21)
+
+Springer and KIEE both link to `https://www.editorialmanager.com/eete`, but the landing
+page currently states that the site is under development and must not be used for live
+submission. If that warning remains, contact `jeet@kiee.or.kr` and obtain the active
+submission route before uploading any file.

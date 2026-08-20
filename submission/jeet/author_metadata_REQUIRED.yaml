@@ -14,3 +14,17 @@ funding: "REQUIRED: full funder and grant, or explicit no-funding statement"
 acknowledgments: "None, or names with permission"
 competing_interests: "The authors declare no financial or non-financial competing interests."
 author_contributions: "REQUIRED: verified CRediT roles"
+ethics_approval: >-
+  Not applicable. This study reanalyzes public experimental machine-current datasets
+  and does not involve human participants, animals, or personal data.
+consent_to_participate: "Not applicable."
+consent_for_publication: >-
+  Not applicable. No human participant or identifiable personal information is reported.
+data_materials_code_availability: >-
+  The study reanalyzes the public datasets identified by DOI in the anonymous manuscript.
+  Online Resources 1 and 2 contain supplementary evidence and an anonymized
+  reproducibility bundle.
+generative_ai_assistance: >-
+  An LLM-based coding assistant was used under human direction for implementation
+  support, automated consistency checks, and manuscript drafting and editing. All
+  authors must review this disclosure and approve the final submitted text.

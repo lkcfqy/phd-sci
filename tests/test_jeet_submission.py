@@ -47,6 +47,7 @@ def test_package_contains_every_expected_submission_artifact() -> None:
         "ESM_1_Supplementary_Material.pdf",
         "ESM_2_Reproducibility_Code.zip",
         "Submission_Checklist.md",
+        "Author_Input_Form_CN.md",
         "author_metadata_REQUIRED.yaml",
         "build_metadata.json",
         "QA_Report.md",
@@ -107,6 +108,11 @@ def test_title_page_and_cover_letter_remain_explicit_human_input_templates() -> 
             "FULL NAME",
             "ORCID",
             "CRediT",
+            "Statements and declarations",
+            "Ethics approval",
+            "Consent to participate",
+            "Consent for publication",
+            "Data, materials, and code availability",
         ),
         "Cover_Letter_AUTHOR_INPUT_REQUIRED.docx": (
             "AUTHOR INPUT REQUIRED",
@@ -198,6 +204,10 @@ def test_build_metadata_matches_final_binary_artifacts() -> None:
     assert metadata["manuscript"]["figures"] == 11
     assert metadata["manuscript"]["tables"] == 3
     assert metadata["supplement_intermediate"]["tables"] == 17
+    assert metadata["journal_requirements"]["journal_contact"] == "jeet@kiee.or.kr"
+    assert "under development" in metadata["journal_requirements"][
+        "submission_portal_warning_observed"
+    ].lower()
     assert metadata["pdfs"]["manuscript"]["pages"] == 17
     assert metadata["pdfs"]["supplement"]["pages"] == 8
     assert metadata["manuscript"]["sha256"] == digest(SUBMISSION / "Manuscript_Anonymous.docx")
@@ -222,6 +232,11 @@ def test_human_only_gates_are_not_marked_complete() -> None:
         0
     ]
     assert "- [x]" not in human_section
-    assert human_section.count("- [ ]") == 10
+    assert human_section.count("- [ ]") == 11
+    assert "jeet@kiee.or.kr" in checklist
+    assert "Site under development" in checklist
     metadata_template = (SUBMISSION / "author_metadata_REQUIRED.yaml").read_text(encoding="utf-8")
     assert metadata_template.count("REQUIRED") >= 4
+    author_form = (SUBMISSION / "Author_Input_Form_CN.md").read_text(encoding="utf-8")
+    for required in ("英文全名", "ORCID", "Funding", "CRediT", "jeet@kiee.or.kr"):
+        assert required in author_form

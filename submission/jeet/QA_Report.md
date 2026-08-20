@@ -15,12 +15,18 @@ This is an internal handoff record. Do not upload it as a manuscript file.
   affiliation token.
 - The separate title page and cover letter deliberately retain conspicuous
   `AUTHOR_INPUT_REQUIRED` filenames, document metadata, and bracketed fields.
+- The separate title page follows the KIEE April 2025 declaration inventory: funding,
+  author contributions, competing interests, ethics approval, consent to participate,
+  consent for publication, data/materials/code availability, and generative-AI use are
+  grouped under `Statements and declarations`.
 - `Manuscript_Anonymous.pdf` has 17 portrait pages; all 17 pages were rendered at
   180 dpi and visually inspected for clipping, overlap, broken figure/caption pairs,
   missing-glyph boxes, table overflow, and unintended blank pages.
 - `ESM_1_Supplementary_Material.pdf` has eight landscape pages; all eight pages were
   rendered at 180 dpi and visually inspected for the same defects. Its 17 tables fit
   within their page frames, including the S9 compatibility, 12-method, and hash tables.
+- After the 2026-08-21 journal-compliance rebuild, all 25 newly rendered page-image
+  SHA-256 values matched the previously inspected final renders exactly.
 - S9 preserves the frozen `0/21` parser-compatibility failure separately from the
   post-reveal implicit-time repair; it does not present the 200 W sensitivity as a
   third confirmatory validation dataset.
@@ -59,3 +65,5 @@ page once more. That human Word check is still a submission gate.
 - funding/grant wording and acknowledgments;
 - all-author approval of the declarations, AI-assistance statement, and cover letter;
 - final journal-site, indexing, fee, and upload-field verification.
+- confirmation of the active submission route with `jeet@kiee.or.kr` while the linked
+  Editorial Manager page displays its implementation-mode warning.
