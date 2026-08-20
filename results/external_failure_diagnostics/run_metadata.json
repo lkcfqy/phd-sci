@@ -1,0 +1,184 @@
+{
+  "created_utc": "2026-08-20T14:39:27.892267+00:00",
+  "analysis_only": true,
+  "models_refit": false,
+  "thresholds_changed": false,
+  "frozen_methods": [
+    "target_ledoit",
+    "target_sample_covariance",
+    "source_covariance",
+    "entity_balanced_covariance",
+    "log_euclidean_entity_covariance",
+    "target_ocsvm_rbf",
+    "source_target_ocsvm_rbf",
+    "target_isolation_forest",
+    "source_target_isolation_forest",
+    "target_min_cov_det",
+    "source_target_min_cov_det"
+  ],
+  "proposed_method": "log_euclidean_entity_covariance",
+  "external_physical_motors": 1,
+  "fault_records": 48,
+  "health_test_records": 4,
+  "blocks_per_record": 8,
+  "horizons": {
+    "first_4_blocks": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "first_7_blocks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "all_8_blocks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "bootstrap": {
+    "unit": "complete fault record",
+    "strata": "fault_turns",
+    "iterations": 10000,
+    "seed": 711,
+    "ci": "unadjusted percentile 95% interval",
+    "p_value": "two-sided centered paired-record bootstrap",
+    "multiplicity": "Holm correction within each reported comparison family"
+  },
+  "rpm_proxy": "Median/min/max RPM from the matching-load healthy record and block; not a fault-record RPM measurement.",
+  "inference_boundary": "All intervals and comparisons are conditional on one external physical motor. Records and ordered blocks are not asserted independent.",
+  "inputs": [
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\aggregate_summary.csv",
+      "bytes": 3100,
+      "sha256": "d21ae9068e39ecfb0c3d4b597fdf150f490079ccd0739bfc4b14a79cdad38cfa"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_health_audit\\block_inventory.csv",
+      "bytes": 21264,
+      "sha256": "794f20fbcc202a89346affb56d56dca7c77dd4685bbcf706d3dfa4f0459bc826"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\target_ledoit\\system_block_predictions.csv",
+      "bytes": 68631,
+      "sha256": "e8fd6ad295abbea1370bb6de38c3b004feb56d9901e2541e1984a986d0a470fc"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\target_sample_covariance\\system_block_predictions.csv",
+      "bytes": 73515,
+      "sha256": "a51a88fa4e1e1929f563fe8570f7cc1409d61b361f4446d75039e51f923498e9"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\source_covariance\\system_block_predictions.csv",
+      "bytes": 70753,
+      "sha256": "9297941366155f9bcf746c1b8b7a9e54636ad2533da5436d9d132d1143bf23fe"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\entity_balanced_covariance\\system_block_predictions.csv",
+      "bytes": 74576,
+      "sha256": "e63f44d50cac9d23b6f4d20e0ec58b2a45509256dc647adfdc1d6bb09a60573c"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\log_euclidean_entity_covariance\\system_block_predictions.csv",
+      "bytes": 76595,
+      "sha256": "cfa44fb7ca770f8a73d3d2cfd9023222c61eaccac6be1222800fbc0e0268497f"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\target_ocsvm_rbf\\system_block_predictions.csv",
+      "bytes": 71630,
+      "sha256": "83e670a42fd19685421c784131778dacad40245141b159e69c6836326f5477c6"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\source_target_ocsvm_rbf\\system_block_predictions.csv",
+      "bytes": 74121,
+      "sha256": "61b3f20e2d5b834a1a451a7b018ea63853bdedede9d7d2ea195c36601144702f"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\target_isolation_forest\\system_block_predictions.csv",
+      "bytes": 73693,
+      "sha256": "eb34048fe9bfe4ee7443aee7cdb5b89062adf4d9d7174019e65037b6e703160e"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\source_target_isolation_forest\\system_block_predictions.csv",
+      "bytes": 76886,
+      "sha256": "a56f1102e444a2d48720fc3f22ef05e7ec9701a321e5b38afeeded4569f69a56"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\target_min_cov_det\\system_block_predictions.csv",
+      "bytes": 70828,
+      "sha256": "8121e47e91a06988748aba4793e5dcfe1f8ef8725af0a4b4f4df06fee5cb52c5"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\source_target_min_cov_det\\system_block_predictions.csv",
+      "bytes": 74183,
+      "sha256": "c4238c1c5bc451a4772b4f65af5df30b7b413236334beba2605af3da7b2b63ee"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\target_ledoit\\fault_record_summary.csv",
+      "bytes": 4828,
+      "sha256": "8ddeb71f4d81d8a6337a220abbedce2a755b030f4744cbf6254e8fd21c3d8e3d"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\target_sample_covariance\\fault_record_summary.csv",
+      "bytes": 4794,
+      "sha256": "6dedf88b7340b02a6b56e720c1ab17582b5597838ae19a2a18df3c72fbfbf571"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\source_covariance\\fault_record_summary.csv",
+      "bytes": 4886,
+      "sha256": "190d82177e109ea40f2d39f3e5d6cabfbcc959f9782591cbe63d69913f0d567e"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\entity_balanced_covariance\\fault_record_summary.csv",
+      "bytes": 4835,
+      "sha256": "842ee4bf919ccf6e91c40d3c075fa3baea4e90986cfc0c044c9b7d9430ea8bc4"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\log_euclidean_entity_covariance\\fault_record_summary.csv",
+      "bytes": 4841,
+      "sha256": "f3d445cd6bf4b3888198f62babc4c144ac828d1dad4c807bd8c33718b7a10447"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\target_ocsvm_rbf\\fault_record_summary.csv",
+      "bytes": 4939,
+      "sha256": "c5642bbfc14127c2149a8f485b9f6b567398d085ef5cf5de04723c57c32d6342"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\source_target_ocsvm_rbf\\fault_record_summary.csv",
+      "bytes": 4898,
+      "sha256": "eb740fd6817237fab79ab0982d937a8892a0ea5d74c8851b64aceffda8e75ae3"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\target_isolation_forest\\fault_record_summary.csv",
+      "bytes": 4876,
+      "sha256": "45fb45dbbd401d3d2f364a6cdab5230f72e89826c0a1bff827163ac0bf244935"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\source_target_isolation_forest\\fault_record_summary.csv",
+      "bytes": 4869,
+      "sha256": "5bd592c7353ce9b17a3c743c27787086151a11650776d81fdaea1c20abf415e6"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\target_min_cov_det\\fault_record_summary.csv",
+      "bytes": 4805,
+      "sha256": "466ca9894d79f40377a71a1faef69ca8731e562353d30d16cf58f6569fa1e6aa"
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\results\\external_pmsm_validation\\source_target_min_cov_det\\fault_record_summary.csv",
+      "bytes": 4846,
+      "sha256": "018d68d1dd63af906d8eb00662702bf63fa10b2ed9749b115b0fe6926f155745"
+    }
+  ]
+}

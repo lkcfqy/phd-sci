@@ -1,9 +1,9 @@
 {
-  "created_utc": "2026-08-20T14:09:00.829589+00:00",
+  "created_utc": "2026-08-20T14:26:55.684144+00:00",
   "source_features": "C:\\lkc\\phd sci\\data\\processed\\kaist_current_features.csv.gz",
   "source_features_sha256": "6276bfae67169f0e70a3b1bd3c4fdbf42c08631a4d4dcfd097ef8246ef970d20",
   "external_features": "C:\\lkc\\phd sci\\data\\processed\\external_dual_three_phase_health_features.csv.gz",
-  "external_features_sha256": "64fda281385645759af11936339655d83ca9605437a27f939f7543612e422d2b",
+  "external_features_sha256": "cef907bd7c7fef66170a87672df937827bd9a0e8c3f2083599ab277a19de9f0e",
   "scikit_learn": "1.9.0",
   "feature_arm": "scale_free",
   "feature_columns": [
@@ -111,7 +111,7 @@
   "ridge_fraction": 0.001,
   "log_ridge_fraction": 0.01,
   "primary_seed": 20260820,
-  "fault_reveal_required": false,
+  "fault_reveal_required": true,
   "source_diagnostics": {
     "parameters": {
       "1kW": {

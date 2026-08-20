@@ -1,0 +1,35 @@
+scope,check,passed,observed,expected
+global,exact_method_coverage,True,11,11
+target_ledoit,unique_record_block_grain,True,448,448
+target_ledoit,complete_fault_turn_load_grid,True,48,48
+target_ledoit,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose
+target_sample_covariance,unique_record_block_grain,True,448,448
+target_sample_covariance,complete_fault_turn_load_grid,True,48,48
+target_sample_covariance,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose
+source_covariance,unique_record_block_grain,True,448,448
+source_covariance,complete_fault_turn_load_grid,True,48,48
+source_covariance,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose
+entity_balanced_covariance,unique_record_block_grain,True,448,448
+entity_balanced_covariance,complete_fault_turn_load_grid,True,48,48
+entity_balanced_covariance,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose
+log_euclidean_entity_covariance,unique_record_block_grain,True,448,448
+log_euclidean_entity_covariance,complete_fault_turn_load_grid,True,48,48
+log_euclidean_entity_covariance,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose
+target_ocsvm_rbf,unique_record_block_grain,True,448,448
+target_ocsvm_rbf,complete_fault_turn_load_grid,True,48,48
+target_ocsvm_rbf,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose
+source_target_ocsvm_rbf,unique_record_block_grain,True,448,448
+source_target_ocsvm_rbf,complete_fault_turn_load_grid,True,48,48
+source_target_ocsvm_rbf,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose
+target_isolation_forest,unique_record_block_grain,True,448,448
+target_isolation_forest,complete_fault_turn_load_grid,True,48,48
+target_isolation_forest,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose
+source_target_isolation_forest,unique_record_block_grain,True,448,448
+source_target_isolation_forest,complete_fault_turn_load_grid,True,48,48
+source_target_isolation_forest,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose
+target_min_cov_det,unique_record_block_grain,True,448,448
+target_min_cov_det,complete_fault_turn_load_grid,True,48,48
+target_min_cov_det,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose
+source_target_min_cov_det,unique_record_block_grain,True,448,448
+source_target_min_cov_det,complete_fault_turn_load_grid,True,48,48
+source_target_min_cov_det,record_and_aggregate_reconciliation,True,all high-impact metrics match,exact/allclose

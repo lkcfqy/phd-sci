@@ -1,0 +1,19 @@
+{
+  "analysis_status": "POST-REVEAL SENSITIVITY; exploratory, not confirmatory",
+  "audit_conclusion": "current_features is already sample-rate parameterized; the existing TDMS iterator is not. A separate builder therefore filters each complete 120 s source record before applying the unchanged window feature extractor.",
+  "primary_table_preserved": true,
+  "native_features": "C:\\lkc\\phd sci\\data\\processed\\kaist_current_features.csv.gz",
+  "native_features_sha256": "6276bfae67169f0e70a3b1bd3c4fdbf42c08631a4d4dcfd097ef8246ef970d20",
+  "downsampled_features": "C:\\lkc\\phd sci\\data\\processed\\kaist_current_features_10khz.csv.gz",
+  "downsampled_features_sha256": "4d196d756b01ab43bd6431a2334a5922787eaf83df7836927c4f1d4d436b13ad",
+  "resampler": "scipy.signal.resample_poly",
+  "up": 1,
+  "down": 10,
+  "window": [
+    "kaiser",
+    5.0
+  ],
+  "padtype": "line",
+  "filtering_scope": "complete leading 120 s source record before windowing",
+  "external_data_read_by_feature_builder": false
+}

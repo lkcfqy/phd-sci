@@ -157,13 +157,44 @@ protocol explicitly requires the 48 sealed fault records to be revealed and repo
 even when H1 fails, so the result remains a valid OOD stress test rather than a hidden
 failed experiment.
 
+## 2026-08-20 — External fault reveal and Paper 1 pivot
+
+### Frozen outcome
+
+All 48 planned external fault files matched the committed filename, byte-count, and MD5
+manifest and passed the unchanged parser. The first and only primary scoring run found:
+
+- frozen Log-Euclidean detector: `1/32` healthy alarms, 25.00% fault-block detection
+  (95% turn-stratified record-bootstrap interval 21.09--29.43%), AUROC 0.6354, H1 fail;
+- target-only MinCovDet comparator: `0/32` healthy alarms, 70.05% detection
+  (65.36--75.26%), AUROC 0.9268, H1 pass;
+- paired target-MinCovDet minus frozen-detector detection: +45.05 percentage points
+  (40.63--49.48%);
+- frozen-detector alarms: `0/48` in blocks 0--2 and `48/48` in block 7; its only healthy
+  alarm was also in block 7;
+- detection declined from 56.25% at 0 N m to 12.50% at 35 N m;
+- target-only minus source+target MinCovDet: +39.84 points (35.42--44.27%), indicating
+  negative transfer under compound shift.
+
+The five-seed post-reveal sensitivity preserved target MinCovDet's rank among the four
+stochastic variants but not its exact operating point: detection ranged 65.36--77.08%,
+healthy alarms 0--2/32, and only 3/5 seeds passed H1.
+
+### Decision
+
+Paper 1 is no longer positioned as a Log-Euclidean method-superiority paper. It becomes
+a leakage-resistant cross-dataset evaluation and negative-transfer failure study. The
+frozen method remains the pre-reveal primary and MinCovDet remains a comparator; no
+post-reveal replacement is allowed. A speed/load-conditioned healthy-only detector is
+reserved for Paper 2 and requires a new unseen confirmation dataset.
+
 ## Open decisions after the strengthened pilot
 
 1. Verify exact current/vibration synchronization before any multimodal claim.
-2. Add any domain-adaptation baseline only if it can obey the same no-target-fault-label
-   deployment setting; do not force a mismatched supervised benchmark.
-3. Complete the primary dual-three-phase health audit and freeze an executable external
-   feature/scoring pipeline before downloading faults.
+2. Decide whether Paper 1 remains a two-dataset case study or adds a third data source;
+   do not delay the honest negative result merely to manufacture a method win.
+3. Complete operating-horizon, per-block AUROC, multiple-comparison, and feature-drift
+   diagnostics without changing any frozen prediction.
 4. Measure runtime before making online or embedded-deployment claims.
 5. Obtain new independent healthy sessions if a formal false-alarm coverage claim is
    desired; the current evidence supports empirical block-risk only.

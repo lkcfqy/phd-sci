@@ -1,0 +1,6 @@
+method,blocks,max_absolute_score_difference,max_absolute_p_value_difference,alarm_mismatches,invariant
+target_isolation_forest,448,0.0,0.0,0,True
+target_ledoit,448,0.0,0.0,0,True
+target_min_cov_det,448,0.0,0.0,0,True
+target_ocsvm_rbf,448,0.0,0.0,0,True
+target_sample_covariance,448,0.0,0.0,0,True

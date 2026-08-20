@@ -40,6 +40,9 @@ dual_three_phase_pmsm_itsc:
   role: primary_frozen_external_validation
   topology: dual_three_phase_pmsm
   staged_scope: all_8_independent_healthy_load_records_only
+  current_local_scope: all_8_healthy_plus_all_48_planned_fault_records
+  fault_reveal_status: completed_once_after_freeze
+  frozen_feature_sha256: cef907bd7c7fef66170a87672df937827bd9a0e8c3f2083599ab277a19de9f0e
   healthy_load_nm: [0, 5, 10, 15, 20, 25, 30, 35]
   healthy_files: 8
   healthy_bytes: 187111299

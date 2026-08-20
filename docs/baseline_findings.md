@@ -1,23 +1,23 @@
-# Paper 1 基线发现与证据边界（Exploratory Pilot）
+# Paper 1 基线发现与证据边界（Pilot + Frozen External Reveal）
 
 更新日期：2026-08-20
 
-## 1. 冻结题目与当前状态
+## 1. 当前题目与论文定位
 
-**Healthy-Only Cross-Capacity PMSM Stator-Fault Detection via Motor-Balanced
-Covariance Transfer and Block-Conformal Calibration**
+**When Healthy-Only Transfer Fails: A Leakage-Resistant Cross-Dataset Evaluation of
+PMSM Stator-Fault Detectors under Compound Speed, Load, and Topology Shift**
 
-中文工作题目：**基于电机实体平衡协方差迁移与健康样本块共形校准的跨容量 PMSM
-定子故障检测**。
+中文工作题目：**健康样本迁移何时失效：复合转速、负载与拓扑偏移下 PMSM 定子故障
+检测器的防泄漏跨数据集评估**。
 
 本文的目标不是证明一个对任意电机都成立的安全保证，而是回答一个可检验的问题：在
 目标电机故障标签为零（zero target-fault labels）的条件下，能否使用两台源电机和少量
 目标健康电流，建立对目标电机的块级异常分数并经验校准报警阈值。
 
-当前结果是 **exploratory pilot**，足以支持继续写作和补实验，但不能视为独立确认性
-验证，也不能保证 SCI 录用。方法开发期间已经查看同一数据集中的全部目标故障记录；
-因此，重新运行相同划分不能恢复“untouched confirmatory test”的地位。最终论文必须
-明确披露这一点，并优先增加冻结方法后的外部数据验证。
+KAIST 结果仍是 **exploratory pilot**，因为方法开发期间查看过其全部目标故障记录。
+双三相 PMSM 的 48 条故障记录则在协议、代码、健康阈值和 11 个比较器形成哈希提交后
+一次性揭盲。外部结果推翻了原方法优越叙事，因此 Paper 1 已转成跨数据集排名反转、
+负迁移与报警漂移研究。它可以继续形成 SCI/SCIE 稿件，但不能保证录用。
 
 ## 2. 数据审计与不可省略的披露
 
@@ -281,26 +281,97 @@ inter-turn -0.607；1.5 kW inter-coil -0.429、inter-turn +0.571；3.0 kW inter-
 不同宏块长度改变的是同一 120 s 记录被切出的行数，不会创造新的独立实验重复。
 敏感性表中的 Wilson 区间仅作描述，3 s/max 仍因健康自相关审计而保持预设主设置。
 
-## 12. 从 pilot 到可投稿稿件仍需完成
+## 12. 冻结外部故障揭盲结果
 
-1. 冻结当前 method、ridge、特征和阈值流程，在独立外部数据上验证；若数据域不同，明确
-   标为 out-of-domain stress test，而非与 KAIST 同分布复现。
-2. 适配预算与 block length/aggregation sensitivity 已完成；任何默认设置的选择都
-   不能依据目标故障结果。还需补充跨 session 的依赖稳健性证据。
-3. 一类强基线已完成；仍需在完全相同 LOMO/time-block protocol 下补充强时序与
-   domain-adaptation baselines。对深度/随机模型报告多 seed，而协方差方法本身是
-   确定性的。
-4. 报告每个 record/fault family 的失败案例，尤其是 1.5 kW 漏检与严重度非单调现象。
-5. 对普通 conformal exchangeability 不成立的风险给出理论假设和依赖敏感性讨论。
-6. 在 manuscript 中将当前表格标为 exploratory pilot；只有冻结后的新数据结果才能承担
-   confirmatory claim。
+外部数据为一台双三相 PMSM 的加速过程，包含 8 条健康负载记录与 48 条故障记录。
+48 条故障构成完整的 6 turns × 8 loads 条件网格；它们不是 48 台独立电机。所有文件
+均按预注册 `[12,36) s` 区间处理，无事后排除。
 
-当前可复核结果位于 `results/healthy_covariance_v0/aggregate_summary.csv`、
-`results/healthy_covariance_v0/summary.csv`、
-`results/healthy_covariance_v0/paired_record_bootstrap.csv`，ridge 选择位于
-`results/log_ridge_selection/selected_ridge.json`，适配预算结果位于
-`results/calibration_budget_sensitivity/aggregate_summary.csv`，宏块敏感性位于
-`results/block_sensitivity/aggregate_summary.csv`；一类基线、seed 敏感性及与 Proposed
-的配对比较位于 `results/oneclass_baselines/aggregate_summary.csv`、
-`results/oneclass_baselines/randomness_ranges.csv` 和
-`results/oneclass_baselines/comparison_to_proposed.csv`。
+| Method | Healthy FAR | Detection | 95% record-bootstrap CI | AUROC | H1 |
+|---|---:|---:|---:|---:|---|
+| Target MinCovDet | 0/32 | **70.05%** | [65.36, 75.26]% | **0.9268** | pass |
+| Target Isolation Forest | 3/32 | 59.90% | — | 0.8670 | fail |
+| Target sample covariance | 1/32 | 55.99% | — | 0.8757 | fail |
+| Balanced Isolation Forest | 2/32 | 50.52% | — | 0.8245 | fail |
+| Target Ledoit--Wolf | 1/32 | 36.72% | — | 0.7675 | fail |
+| Balanced MinCovDet | 1/32 | 30.21% | — | 0.7013 | fail |
+| Arithmetic entity covariance | 1/32 | 27.34% | — | 0.6972 | fail |
+| **Frozen Log-Euclidean** | **1/32** | **25.00%** | **[21.09, 29.43]%** | **0.6354** | **fail** |
+| Target OCSVM | 1/32 | 12.76% | — | 0.7209 | fail |
+| Balanced OCSVM | 1/32 | 12.76% | — | 0.6876 | fail |
+| Source covariance | 1/32 | 12.76% | — | 0.5747 | fail |
+
+Frozen Log-Euclidean 相对 target MinCovDet 低 45.05 个百分点，配对 CI 为
+`[-49.48, -40.63]`。不能在揭盲后把 MinCovDet 改称新 primary；可写的是预先实现的
+比较器发生排名反转。
+
+## 13. 报警漂移与负迁移
+
+- Frozen Log-Euclidean 在 fault block 0/1/2 上均为 `0/48` 报警，在 block 7 为
+  `48/48`；唯一健康误报也在 block 7。
+- block 近似中位转速从 218 rpm 上升到 2,214 rpm，健康与故障分数同时随 block 上升。
+- detection 从 0 N m 的 56.25% 降至 35 N m 的 12.50%；turn-count 方向也不单调。
+- `48/48 record-any alarm` 主要由最后升速块贡献，不能当作可靠早检。
+- target-only MinCovDet 为 70.05%，source+target MinCovDet 仅 30.21%；target-only
+  minus balanced 的配对差为 +39.84 pp `[35.42, 44.27]`，说明源域加入造成负迁移。
+- Frozen target-adapted transfer 仍比 pure source covariance 高 +12.24 pp
+  `[8.33, 16.41]`，所以结论不是“源信息永远无用”，而是复合 OOD 下无条件源几何损害
+  目标专用稳健模型。
+
+五个预设 seed 下，target MinCovDet 仍始终高于其余三类随机模型，但 detection 为
+65.36%--77.08%、FAR 为 0--2/32，只有 3/5 seeds 通过 H1。因此其外部排序优势较稳定，
+具体 `70.05% / 0 FAR` 运行点并不稳定。
+
+冻结 precision geometry 的 post-reveal 对称贡献分摊进一步发现：
+
+- `fundamental_hz` 的 same-block matched AUROC 仅 0.5038、Hedges g 约 0，却占 fault
+  与 held-out health 绝对分数贡献的 18.07% 与 38.54%；block 7 分别达到 39.63% 与
+  89.31%；
+- `harmonic_3_ratio_max/mean` 的 AUROC 为 0.9266/0.9255、效应量约 1.02/1.01，
+  但 fault 贡献只有 0.352%/0.240%；
+- `rms_ratio_a` 同时具有 AUROC 0.8145 与 21.62% fault 贡献；
+- family-level fault 贡献为 current-shape 49.79%、sequence/imbalance 24.91%、
+  speed proxy 18.07%、harmonics/sidebands 6.53%、entropy 0.70%。
+
+这支持“冻结几何过度响应速度方向、低权重处理部分故障敏感谐波”的机制解释。它没有
+拟合新模型或改变阈值，但仍属于揭盲后、单电机、健康条件重复配对的描述性诊断。
+
+采样率单因素敏感性将 45 条 KAIST 电流记录在切窗前由 100 kHz 通过抗混叠 polyphase
+方法降至 10 kHz，并机械复用原特征、0.2 s 窗、3 s block、ridge 与外部协议。10 kHz
+arm 在 KAIST 内部仍得到 91.96% detection / 0.9947 AUROC，说明提取器未整体失效；
+但外部 Frozen Log-Euclidean 由 25.00%/0.6354 变为 24.74%/0.6331，FAR 仍为 1/32，
+48 条 fault records 中 47 条不变、1 条变差、0 条改善。因而采样率差异可能影响个别
+特征，但不支持为当前负迁移的主因。
+
+## 14. 当前可写与不可写的外部结论
+
+允许：
+
+- 冻结外部揭盲发现同数据集高性能不能推出跨拓扑、变速、变负载泛化；
+- target-only robust covariance 在当前外部电机上明显优于 source-augmented 版本；
+- 报警阈值与升速轨迹混杂，必须同时报告 chronological block coverage 和健康 FAR；
+- 当前结果是 single-motor conditional evidence 和可复现 case study。
+
+禁止：
+
+- 把 H1 fail 写成“真实 FAR 已被证明超过 5%”；
+- 把 48 fault records 写成 48 个独立 motor replicates；
+- 用 AUPRC 0.958 做主证据，因为 384/416 blocks 本身就是故障，prevalence baseline
+  已约 0.923；
+- 事后把 target MinCovDet 改成预注册主方法或称稳定 SOTA；
+- 在本外部数据上开发速度条件化方法后仍称它得到独立确认。
+
+## 15. 投稿前剩余工作
+
+1. Early-horizon、first-alarm、per-block AUROC、Holm 校正和同算法 target-only vs
+   source+target 诊断已完成；需把精确统计表整合为投稿正文/补充材料。
+2. Cross-dataset failure/evaluation 主线、题目与摘要已改；仍需做完整英文语言和引用审计。
+3. 增加相关工作的负迁移、跨实验室评估与 operating-condition confounding 文献。
+4. 若只使用当前两个数据源，选择 case-study/measurement 取向期刊；若要恢复方法论文，
+   必须开发只依赖健康数据的条件化模型并在另一个完全未见数据集冻结确认。
+
+关键可复核结果位于 `results/healthy_covariance_v0/`、
+`results/oneclass_baselines/`、`results/external_pmsm_validation/`、
+`results/external_pmsm_analysis/`、`results/external_failure_diagnostics/` 与
+`results/external_seed_sensitivity/`；一次性揭盲证据位于
+`docs/fault_reveal_log.md`。

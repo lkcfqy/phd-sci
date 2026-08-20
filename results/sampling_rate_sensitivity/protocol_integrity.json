@@ -1,0 +1,31 @@
+{
+  "analysis_status": "POST-REVEAL SENSITIVITY; exploratory, not confirmatory",
+  "external_fault_outcomes_used_for_tuning": false,
+  "intended_change": "KAIST source current anti-aliased from 100 kHz to 10 kHz",
+  "frozen_field_matches": {
+    "external_features_sha256": true,
+    "feature_arm": true,
+    "feature_columns": true,
+    "analysis_time_seconds": true,
+    "window_seconds": true,
+    "block_seconds": true,
+    "block_score": true,
+    "source_motors": true,
+    "source_covariance_blocks": true,
+    "source_balanced_blocks": true,
+    "external_adaptation_load_nm": true,
+    "external_adaptation_blocks": true,
+    "external_calibration_load_nm": true,
+    "external_health_test_load_nm": true,
+    "analysis_blocks": true,
+    "alpha": true,
+    "ridge_fraction": true,
+    "log_ridge_fraction": true,
+    "primary_seed": true,
+    "fault_reveal_required": true
+  },
+  "all_frozen_fields_match": true,
+  "native_source_features_sha256": "6276bfae67169f0e70a3b1bd3c4fdbf42c08631a4d4dcfd097ef8246ef970d20",
+  "polyphase_source_features_sha256": "4d196d756b01ab43bd6431a2334a5922787eaf83df7836927c4f1d4d436b13ad",
+  "external_features_sha256": "cef907bd7c7fef66170a87672df937827bd9a0e8c3f2083599ab277a19de9f0e"
+}

@@ -1,16 +1,16 @@
-# Healthy-Only Cross-Capacity PMSM Stator-Fault Detection
+# When Healthy-Only Transfer Fails: PMSM Cross-Dataset Evaluation
 
 本仓库服务于博士主线：**科学机器学习 × 工业数字孪生 × 电驱动健康管理**。
 
-首篇论文已经收敛为一个能用公开真实试验数据立即验证、且结论可证伪的问题：
+首篇论文已经收敛为一个由冻结外部实验直接证伪、但更具科学价值的问题：
 
-> **Healthy-Only Cross-Capacity PMSM Stator-Fault Detection via Motor-Balanced
-> Covariance Transfer and Block-Conformal Calibration**
+> **When Healthy-Only Transfer Fails: A Leakage-Resistant Cross-Dataset Evaluation
+> of PMSM Stator-Fault Detectors under Compound Speed, Load, and Topology Shift**
 
-核心目标是在完全不使用目标电机故障样本的条件下，仅用少量目标电机健康信号，
-将源电机与目标健康数据形成的异常评分校准到预设误报风险，并检测不同严重度的
-匝间/线圈间短路。主方法在对称正定协方差流形上对每台电机等权，避免长记录或某一
-功率等级主导健康分布。
+核心问题不再是包装某个新算法优越，而是检验：同数据集内近乎满分的健康样本迁移，
+在电机拓扑、采样率、转速轨迹和负载同时变化时是否仍成立。仓库保留冻结主方法的失败，
+Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名反转、负迁移和报警漂移
+作为 Paper 1 的主要发现。
 
 ## 当前可复现的先导结果
 
@@ -32,32 +32,64 @@
 - 在提交 `fddf2f7` 冻结后，独立双三相 PMSM 的健康阶段得到 `1/32` 误报；点 FAR
   为 `0.03125`，但描述性 Wilson 上界为 `0.1574`，超过预设外部 H1 的 `0.12`，
   因此该闸门按失败报告，方法和阈值不作事后调整。
+- 48 条外部故障记录在协议与阈值冻结后一次性揭盲。原方法的 fault-block detection
+  仅 `0.2500`（95% record-bootstrap CI `[0.2109, 0.2943]`），AUROC `0.6354`；
+  预先实现的 target-only MinCovDet 达到 `0.7005`（`[0.6536, 0.7526]`）、
+  AUROC `0.9268`，且健康误报为 `0/32`。
+- 原方法在外部故障 block 0--2 上均为 `0/48` 报警，而 block 7 为 `48/48`；唯一健康
+  误报也位于 block 7。检出率还从 0 N m 的 `0.5625` 降至 35 N m 的 `0.1250`，
+  显示分数与升速/负载轨迹强烈共变。
+- target-only MinCovDet 比 source+target MinCovDet 高 `39.84` 个百分点
+  （95% CI `[35.42, 44.27]`），构成该外部电机与冻结协议下的条件性负迁移证据；它仍只是预设比较器，不能在
+  揭盲后改称“原主方法”。
+- 原方法前 4/7/8 blocks 的 detection 仅 `2.60% / 14.29% / 25.00%`，record-any
+  alarm 却从 `10.42% / 52.08%` 跳到 `100%`；中位首次报警约在 block 6、
+  1,643 rpm。逐 block 匹配位置后平均 AUROC 为 `0.8047`，高于 pooled `0.6354`，
+  说明仍有故障排序信息，但固定阈值被工况漂移淹没。
+- 五个预设 seed 下 target MinCovDet 的外部检测为 `0.6536--0.7708`、FAR 为
+  `0--2/32`，只有 `3/5` seed 通过 H1；其比较器排名较稳，但单次 `0.7005/0 FAR`
+  不能包装成稳定保证。
+- 冻结几何的 post-reveal 贡献审计发现：`fundamental_hz` 的 direction-free AUROC 仅
+  `0.5038`，在选定对称分解下却占外部 fault/health-test 绝对分数贡献的 `18.07%/38.54%`；三次谐波
+  max/mean 的 AUROC 为 `0.9266/0.9255`，合计贡献却不足 `0.6%`。这支持“速度方向被
+  过度加权、故障敏感谐波被低权重”的具体失败机制，但不构成跨电机因果结论。
+- 将全部 KAIST 电流先抗混叠降采样至 10 kHz，再机械复用冻结协议后，原方法外部
+  detection `0.2500→0.2474`、AUROC `0.6354→0.6331`、FAR 仍为 `1/32`；因此
+  `100 kHz→10 kHz` 差异不支持为外部负迁移的主因。
 
-这些结果说明课题具备继续投稿开发的价值，但仍属于已查看同一数据集后的探索性
-证据，不是独立确认，也不构成录用保证。精确结果与失败项见
-[`docs/baseline_findings.md`](docs/baseline_findings.md)。
+这些结果把论文从“新方法精度论文”转成“防泄漏跨数据集评估与负迁移失败研究”。
+它具备继续形成 SCI/SCIE 稿件的价值，但单台外部电机仍限制总体推断，也不构成录用
+保证。精确结果与失败项见 [`docs/fault_reveal_log.md`](docs/fault_reveal_log.md) 和
+[`results/external_pmsm_analysis/`](results/external_pmsm_analysis/)。
 
-## 为什么选择它作为 Paper 1
+## 为什么仍把它作为 Paper 1
 
 - 数据来自 1.0、1.5、3.0 kW 三台真实 PMSM，可做严格的整机留出验证；
-- 研究对象同时覆盖跨电机分布偏移、少样本在线校准和可信报警；
-- 主要贡献不是更换网络模块，而是目标域无故障标签、时间块防泄漏和风险校准；
-- 即使深度模型不胜出，强信号基线与严谨评估仍能形成有价值的负结果或基准结论。
+- 研究对象同时覆盖跨电机分布偏移、少样本在线校准、可信报警与真实负迁移；
+- 主要贡献不是更换网络模块，而是目标域无故障标签、文件/整机防泄漏、冻结揭盲和
+  失败机制诊断；
+- 结果展示了同数据集高 AUROC、record-any alarm 与随机窗口划分为何会夸大可部署性；
+- 这个失败自然导向 Paper 2：只用健康数据的转速/负载条件化模型，并在新数据上再次
+  冻结确认。
 
 详细假设、划分、指标、止损条件见
 [`docs/research_protocol.md`](docs/research_protocol.md)，论文结构见
-[`paper/outline.md`](paper/outline.md)。
+[`paper/outline.md`](paper/outline.md)，当前 SCI/SCIE 期刊梯度与投稿硬门槛见
+[`docs/submission_strategy.md`](docs/submission_strategy.md)，博士三篇论文与昌原本地合作
+路线见 [`docs/phd_roadmap.md`](docs/phd_roadmap.md)。原始文献缺口与禁止主张见
+[`docs/literature_gap.md`](docs/literature_gap.md)，机械生成的 S1--S8 补充材料见
+[`paper/supplementary_material.md`](paper/supplementary_material.md)。
 
 ## 数据轨道
 
-### 主轨：跨电机定子故障可信评估
+### 探索主轨：同系列跨容量定子故障
 
 - 数据 DOI：`10.17632/rgn5brrgrn.5`，CC BY 4.0；
 - 三台电机、两类短路、每类健康状态加 7 个故障严重度；
 - 三相电流 100 kHz，单轴振动 25.6 kHz，每段记录 120 s；
 - 主实验为三轮 leave-one-motor-out，原始记录和连续时间块不可跨集合。
 
-### 冻结外部验证：双三相 PMSM
+### 冻结外部验证：双三相 PMSM（已完成揭盲）
 
 - Zenodo `10.5281/zenodo.13889418`，CC BY 4.0；8 条健康负载记录和 48 条 ITSC
   记录，10 kHz、双三相电流；
@@ -65,7 +97,8 @@
 - 0 Nm 仅作 12 s 目标适配，10/20/30 Nm 产生 24 个系统校准块，
   5/15/25/35 Nm 产生 32 个完全不同文件的健康 FAR 测试块；
 - 两个三相子系统分别计分，再取系统 maximum 并用同一系统分数校准；
-- 48 条故障文件只有在协议、代码、环境与健康阈值形成带哈希提交后才允许一次性下载。
+- 48 条故障文件在协议、代码、环境与健康阈值形成带哈希提交后一次性下载并校验；
+  完整 6 turns × 8 loads 网格已按冻结 `[12,36) s` 协议运行，无文件事后排除。
 
 完整揭盲规则见 [`docs/external_validation_protocol.md`](docs/external_validation_protocol.md)。
 
@@ -127,13 +160,32 @@ $python = "C:\Users\lkcfq\.cache\codex-runtimes\codex-primary-runtime\dependenci
 & .\.venv\Scripts\python.exe scripts\download_kaist_faults.py --motors 1.0kW
 ```
 
-外部故障揭盲不是普通 quickstart 步骤。只有满足预注册第 6 节的冻结条件后，才运行：
+外部故障揭盲不是普通 quickstart 步骤。只有满足冻结协议第 6 节的条件后，才运行：
 
 ```powershell
 & .\.venv\Scripts\python.exe scripts\download_external_pmsm_validation.py `
     --datasets dual_three_phase_fault_reveal
 & .\.venv\Scripts\python.exe scripts\build_external_pmsm_health_features.py
 & .\.venv\Scripts\python.exe scripts\run_external_pmsm_validation.py --require-faults
+& .\.venv\Scripts\python.exe scripts\analyze_external_pmsm_results.py
+& .\.venv\Scripts\python.exe scripts\analyze_external_failure_diagnostics.py
+& .\.venv\Scripts\python.exe scripts\analyze_external_feature_drift.py
+& .\.venv\Scripts\python.exe scripts\make_external_validation_figures.py
+
+# Post-reveal 采样率敏感性：不会覆盖原100 kHz特征或冻结外部结果。
+& .\.venv\Scripts\python.exe scripts\build_kaist_10khz_features.py
+& .\.venv\Scripts\python.exe scripts\run_healthy_covariance_baseline.py `
+    --features data\processed\kaist_current_features_10khz.csv.gz `
+    --results-dir results\sampling_rate_sensitivity\kaist_10khz_covariance `
+    --feature-arms scale_free --ridge-fraction 0.001 --log-ridge-fraction 0.01
+& .\.venv\Scripts\python.exe scripts\run_oneclass_baselines.py `
+    --features data\processed\kaist_current_features_10khz.csv.gz `
+    --results-dir results\sampling_rate_sensitivity\kaist_10khz_oneclass
+& .\.venv\Scripts\python.exe scripts\run_external_pmsm_validation.py `
+    --source-features data\processed\kaist_current_features_10khz.csv.gz `
+    --results-dir results\sampling_rate_sensitivity\external_10khz_source `
+    --require-faults
+& .\.venv\Scripts\python.exe scripts\summarize_sampling_rate_sensitivity.py
 ```
 
 ## 复现红线
@@ -154,7 +206,7 @@ $python = "C:\Users\lkcfq\.cache\codex-runtimes\codex-primary-runtime\dependenci
 - `docs/`：研究协议、数据清单和决策记录
 - `paper/`：论文结构和逐步形成的正文
 - `references/`：核心文献 BibTeX
-- `data/`、`results/`：本地数据和实验产物，不提交 Git
+- `data/`、`results/`：本地数据和实验产物；仅提交复现论文所需的小型审计摘要
 
 本项目的目标是形成可投稿、可复现、经强基线验证的 SCI 论文；任何研究设计都不能
 保证期刊录用，因此预先定义成功门槛和失败后的改题条件。

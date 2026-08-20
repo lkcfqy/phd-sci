@@ -1,0 +1,3 @@
+feature_arm,rows,physical_records,motors,healthy_records,fault_records,windows_per_record_min,windows_per_record_max,blocks_per_record_min,blocks_per_record_max,duplicate_window_keys,nonfinite_numeric_values
+native_100khz,27000,45,3,3,42,600,600,40,40,0,0
+polyphase_10khz,27000,45,3,3,42,600,600,40,40,0,0

@@ -1,0 +1,63 @@
+{
+  "created_utc": "2026-08-20T14:32:51.317685+00:00",
+  "source_validation_dir": "C:\\lkc\\phd sci\\results\\external_pmsm_validation",
+  "analysis_only": true,
+  "models_refit": false,
+  "thresholds_changed": false,
+  "methods": [
+    "target_ledoit",
+    "target_sample_covariance",
+    "source_covariance",
+    "entity_balanced_covariance",
+    "log_euclidean_entity_covariance",
+    "target_ocsvm_rbf",
+    "source_target_ocsvm_rbf",
+    "target_isolation_forest",
+    "source_target_isolation_forest",
+    "target_min_cov_det",
+    "source_target_min_cov_det"
+  ],
+  "method_count": 11,
+  "proposed_method": "log_euclidean_entity_covariance",
+  "external_motor_id": "external_dual_three_phase",
+  "independent_external_motor_count": 1,
+  "fault_records": 48,
+  "blocks_per_fault_record": 8,
+  "fault_turn_strata": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "records_per_fault_turn": 8,
+  "loads_nm": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35
+  ],
+  "paired_bootstrap": {
+    "unit": "complete fault record",
+    "stratification": "fault_turns",
+    "iterations": 10000,
+    "seed": 711,
+    "interval": "unadjusted percentile 95% CI"
+  },
+  "data_validation": {
+    "assessment": "Share with caveats",
+    "checks_passed": 34,
+    "checks_failed": 0,
+    "record_block_key_unique": true,
+    "method_populations_identical": true,
+    "saved_record_and_aggregate_metrics_reconciled": true
+  },
+  "inference_boundary": "All 48 fault records are operating-condition records from one physical external dual-three-phase PMSM, not 48 independent motors. Bootstrap intervals quantify record variation conditional on this motor and the six observed fault-turn strata; they do not support a cross-motor population claim or prove record independence.",
+  "design_caveat": "Fault phase and fault turns are confounded by the available file design; no independent phase-effect inference is made.",
+  "score_caveat": "Raw score scales are method-specific. Score summaries are suitable for within-method block-position diagnosis, not direct cross-method magnitude comparison."
+}

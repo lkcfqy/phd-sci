@@ -1,0 +1,12 @@
+method,equal_weight_mean_block_auroc,minimum_block_auroc,maximum_block_auroc,pooled_block_auroc,interpretation
+target_ledoit,0.9134114583333333,0.38541666666666663,1.0,0.7674967447916666,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."
+target_sample_covariance,0.9622395833333333,0.84375,1.0,0.8756510416666666,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."
+source_covariance,0.9427083333333334,0.703125,1.0,0.5747070312499999,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."
+entity_balanced_covariance,0.9381510416666667,0.5885416666666667,1.0,0.6971842447916666,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."
+log_euclidean_entity_covariance,0.8046875,0.453125,1.0,0.6354166666666666,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."
+target_ocsvm_rbf,0.8899739583333333,0.4635416666666667,1.0,0.720947265625,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."
+source_target_ocsvm_rbf,0.8893229166666666,0.46354166666666663,1.0,0.6875813802083334,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."
+target_isolation_forest,0.884765625,0.453125,1.0,0.8670247395833333,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."
+source_target_isolation_forest,0.8971354166666667,0.5052083333333333,1.0,0.8245442708333334,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."
+target_min_cov_det,0.9505208333333334,0.7552083333333334,1.0,0.9267578125,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."
+source_target_min_cov_det,0.9368489583333334,0.6979166666666667,1.0,0.7012532552083334,"Equal weighting describes discrimination at matched acceleration positions; it is post-reveal diagnostic, not a replacement primary metric."

@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-08-20T14:52:18.543025+00:00",
+  "analysis_status": "POST-REVEAL SENSITIVITY; exploratory",
+  "external_fault_outcomes_used_for_tuning": false,
+  "output_files": [
+    "feature_table_integrity.csv",
+    "feature_distribution_shift.csv",
+    "external_method_comparison.csv",
+    "target_only_invariance_checks.csv",
+    "proposed_record_differences.csv",
+    "kaist_internal_method_comparison.csv",
+    "protocol_integrity.json",
+    "extractor_audit.json",
+    "INTERPRETATION.md"
+  ]
+}

@@ -1,0 +1,5 @@
+method,primary_seed,block_rows,max_absolute_score_difference,max_absolute_p_value_difference,alarm_mismatches,passed
+target_isolation_forest,20260820,448,0.0,0.0,0,True
+source_target_isolation_forest,20260820,448,0.0,0.0,0,True
+target_min_cov_det,20260820,448,1.4551915228366852e-11,0.0,0,True
+source_target_min_cov_det,20260820,448,7.275957614183426e-12,0.0,0,True

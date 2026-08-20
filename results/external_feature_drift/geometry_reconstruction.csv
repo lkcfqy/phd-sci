@@ -1,0 +1,3 @@
+subsystem,features,adaptation_windows,ridge_fraction,covariance_rank,covariance_condition_number,max_window_contribution_sum_error,center_matches_frozen,scale_matches_frozen
+SubSys1,27,60,0.01,27,309.53438701251525,2.9103830456733704e-11,True,True
+SubSys2,27,60,0.01,27,300.10548410144514,7.275957614183426e-11,True,True

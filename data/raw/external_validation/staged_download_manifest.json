@@ -79,5 +79,437 @@
     "bytes": 24343441,
     "md5": "8d6c9e847d6ea60413d5564c52101a77",
     "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt0z_35NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt1zu_0NM.mat",
+    "bytes": 22214879,
+    "md5": "bb198e29517117d1c24fc825e6e3554a",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt1zu_0NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt1zu_5NM.mat",
+    "bytes": 22697244,
+    "md5": "194aad87167a69ad11f340778c97e80f",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt1zu_5NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt1zu_10NM.mat",
+    "bytes": 23191605,
+    "md5": "13d1648312329a83600f4dda7172f3d7",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt1zu_10NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt1zu_15NM.mat",
+    "bytes": 23494930,
+    "md5": "afba121ecf895352376a428a362e26d4",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt1zu_15NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt1zu_20NM.mat",
+    "bytes": 23823385,
+    "md5": "8d7213c6d669df3bbbaedec153e01172",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt1zu_20NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt1zu_25NM.mat",
+    "bytes": 24007329,
+    "md5": "267f6d6830960bca977cfb2e1c81b2c9",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt1zu_25NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt1zu_30NM.mat",
+    "bytes": 24223820,
+    "md5": "f3fa0bd752fbb78f39110e28caa120a9",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt1zu_30NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt1zu_35NM.mat",
+    "bytes": 24432504,
+    "md5": "84534953068705edc83355faf6babc1d",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt1zu_35NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt2zv_0NM.mat",
+    "bytes": 22188808,
+    "md5": "abf0147f9c9d48bea62da16726f4bd96",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt2zv_0NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt2zv_5NM.mat",
+    "bytes": 22798693,
+    "md5": "4ac02190ab33ddf9979efc0ae606ba13",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt2zv_5NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt2zv_10NM.mat",
+    "bytes": 23280090,
+    "md5": "0961875cfb6c3b71f82a31f6ced0b68b",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt2zv_10NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt2zv_15NM.mat",
+    "bytes": 23597084,
+    "md5": "6230b816f3b92249aa0483692c386fb4",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt2zv_15NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt2zv_20NM.mat",
+    "bytes": 23892585,
+    "md5": "986963b31170a85631bd7843f0a61c26",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt2zv_20NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt2zv_25NM.mat",
+    "bytes": 24101861,
+    "md5": "6b22c97a161c1692e9fa274158acb467",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt2zv_25NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt2zv_30NM.mat",
+    "bytes": 24328461,
+    "md5": "c91d5604a8cfcbf3ca8edfa39ec56b1c",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt2zv_30NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt2zv_35NM.mat",
+    "bytes": 24542317,
+    "md5": "89707290de2769b3d3c5934b268d06c7",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt2zv_35NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt3zu_0NM.mat",
+    "bytes": 22300306,
+    "md5": "6cf22782cd540c2d907b17f6bae61495",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt3zu_0NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt3zu_5NM.mat",
+    "bytes": 22879267,
+    "md5": "24fb325e9a2bec52a43e072f44f400e0",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt3zu_5NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt3zu_10NM.mat",
+    "bytes": 23321135,
+    "md5": "728ddd9cd4e6d5dcff021a3e994a8eee",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt3zu_10NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt3zu_15NM.mat",
+    "bytes": 23665820,
+    "md5": "8ea5c757de0497089b855dd4664b6390",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt3zu_15NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt3zu_20NM.mat",
+    "bytes": 23956814,
+    "md5": "0c788eb0235d02fee3fba76f63894598",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt3zu_20NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt3zu_25NM.mat",
+    "bytes": 24168362,
+    "md5": "3fe2f5a1c3e5ae6978f1feb64e3fd67d",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt3zu_25NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt3zu_30NM.mat",
+    "bytes": 24397179,
+    "md5": "f8356e746e123d32a87210c6ebbc79e1",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt3zu_30NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt3zu_35NM.mat",
+    "bytes": 24578838,
+    "md5": "406112847d274da0f2c085b0bca5e526",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt3zu_35NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt4zv_0NM.mat",
+    "bytes": 22235891,
+    "md5": "823457acb1fdc8f6fc5c8ab12d2bfc9a",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt4zv_0NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt4zv_5NM.mat",
+    "bytes": 22884322,
+    "md5": "4a26b27b01a955c537b0cf6c0221ecac",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt4zv_5NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt4zv_10NM.mat",
+    "bytes": 23337217,
+    "md5": "10e1139f37643e2c35b2d9a8168dc6e5",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt4zv_10NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt4zv_15NM.mat",
+    "bytes": 23679565,
+    "md5": "5149b86bfdd793e858d6c7df6f653677",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt4zv_15NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt4zv_20NM.mat",
+    "bytes": 23953844,
+    "md5": "9cd818494ed977509e0a6a0e826f5ab9",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt4zv_20NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt4zv_25NM.mat",
+    "bytes": 24186339,
+    "md5": "021238206c4a8308b7e6685673d8523a",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt4zv_25NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt4zv_30NM.mat",
+    "bytes": 24415967,
+    "md5": "7b515e7c63d4920ce21c34f204f10e0f",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt4zv_30NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt4zv_35NM.mat",
+    "bytes": 24640530,
+    "md5": "0c24a8142d3ae3ae3adf47cc4bdc2e7c",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt4zv_35NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt5zu_0NM.mat",
+    "bytes": 22213989,
+    "md5": "a3b08737fb70b1b86fdcbfebaba34f66",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt5zu_0NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt5zu_5NM.mat",
+    "bytes": 22857940,
+    "md5": "7a0d30d78591e916fe72d28da449574e",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt5zu_5NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt5zu_10NM.mat",
+    "bytes": 23349554,
+    "md5": "97acd1969a09573049fe9ca55f0a36f0",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt5zu_10NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt5zu_15NM.mat",
+    "bytes": 23713188,
+    "md5": "e3d76b9c644d2010432379f89133aa84",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt5zu_15NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt5zu_20NM.mat",
+    "bytes": 24011117,
+    "md5": "c3a53f330b7e084df82529b716cfe53d",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt5zu_20NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt5zu_25NM.mat",
+    "bytes": 24257415,
+    "md5": "a851aec17aeb24b20ffd05a70a4058ed",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt5zu_25NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt5zu_30NM.mat",
+    "bytes": 24476318,
+    "md5": "b2cccce8acfcdfdf7bb028ff82fe32da",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt5zu_30NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt5zu_35NM.mat",
+    "bytes": 24684124,
+    "md5": "80c42389e795c1a39f1a50f829e3a74b",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt5zu_35NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt6zu_0NM.mat",
+    "bytes": 22223615,
+    "md5": "e06e88341a920627f024a1fe8b1f1003",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt6zu_0NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt6zu_5NM.mat",
+    "bytes": 22869379,
+    "md5": "700a2130acdba1f0875dd1a0a045b80f",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt6zu_5NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt6zu_10NM.mat",
+    "bytes": 23365318,
+    "md5": "2d1934ab600448237b85209bcb56b21f",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt6zu_10NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt6zu_15NM.mat",
+    "bytes": 23744847,
+    "md5": "a97485fed7c54cc11307799b9a2a07e2",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt6zu_15NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt6zu_20NM.mat",
+    "bytes": 24023745,
+    "md5": "020d396e3168d1bc0936cb653fc026ee",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt6zu_20NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt6zu_25NM.mat",
+    "bytes": 24279617,
+    "md5": "b05b4a89ba7dbf0ea816919e24d24a84",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt6zu_25NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt6zu_30NM.mat",
+    "bytes": 24489604,
+    "md5": "be3455d86e8f1b977ffa7fa20b4cd28c",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt6zu_30NM.mat/content"
+  },
+  {
+    "dataset": "dual_three_phase_fault_reveal",
+    "doi": "10.5281/zenodo.13889418",
+    "license": "CC BY 4.0",
+    "file": "spd10-5000rpm_flt6zu_35NM.mat",
+    "bytes": 24715749,
+    "md5": "5ecafe3a0bf450025c7b2ef3a75a90e0",
+    "source_url": "https://zenodo.org/api/records/13889418/files/spd10-5000rpm_flt6zu_35NM.mat/content"
   }
 ]

@@ -1,0 +1,51 @@
+{
+  "created_utc": "2026-08-20T14:37:26.661848+00:00",
+  "analysis_label": "post-reveal stochastic robustness sensitivity",
+  "not_for_model_or_protocol_selection": true,
+  "frozen_results_dir": "C:\\lkc\\phd sci\\results\\external_pmsm_validation",
+  "source_features_sha256": "6276bfae67169f0e70a3b1bd3c4fdbf42c08631a4d4dcfd097ef8246ef970d20",
+  "external_features_sha256": "cef907bd7c7fef66170a87672df937827bd9a0e8c3f2083599ab277a19de9f0e",
+  "scikit_learn": "1.9.0",
+  "methods": [
+    "target_isolation_forest",
+    "source_target_isolation_forest",
+    "target_min_cov_det",
+    "source_target_min_cov_det"
+  ],
+  "seeds": [
+    20260820,
+    1201,
+    2402,
+    3603,
+    4804
+  ],
+  "primary_seed": 20260820,
+  "isolation_forest_trees": 500,
+  "feature_arm": "scale_free",
+  "alpha": 0.05,
+  "adaptation_load_nm": 0,
+  "adaptation_blocks": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "calibration_load_nm": [
+    10,
+    20,
+    30
+  ],
+  "calibration_blocks_per_seed": 24,
+  "health_test_load_nm": [
+    5,
+    15,
+    25,
+    35
+  ],
+  "health_test_blocks_per_seed": 32,
+  "threshold_policy": "For each random seed, mechanically recompute the split-conformal threshold from that model's scores on the same frozen 24 healthy calibration blocks at alpha=0.05. No fault score affects a threshold.",
+  "models_or_features_selected_from_sensitivity": false,
+  "primary_seed_reproduced_frozen_result": true,
+  "inference_boundary": "This is a post-reveal robustness analysis on the same single external dual-three-phase motor. Seed ranges are descriptive and cannot convert the 48 operating-condition records into independent motor replications.",
+  "stability_gate": "No formal seed-stability pass/fail threshold was preregistered; report the full detection and FAR ranges without using them to change the main result."
+}

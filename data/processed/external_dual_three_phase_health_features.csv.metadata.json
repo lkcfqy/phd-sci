@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-08-20T14:07:25.700636+00:00",
+  "created_utc": "2026-08-20T14:26:28.433201+00:00",
   "python": "3.12.13",
   "numpy": "2.5.2",
   "pandas": "3.0.5",
@@ -47,8 +47,8 @@
   "window_seconds": 0.2,
   "stride_seconds": 0.2,
   "block_seconds": 3.0,
-  "physical_records": 8,
-  "record_subsystem_streams": 16,
+  "physical_records": 56,
+  "record_subsystem_streams": 112,
   "windows_per_record_subsystem_stream": 120,
   "blocks_per_record_subsystem_stream": 8,
   "files": [
@@ -211,11 +211,971 @@
       ],
       "windows_per_subsystem": 120,
       "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt1zu_0NM.mat",
+      "filename": "spd10-5000rpm_flt1zu_0NM.mat",
+      "bytes": 22214879,
+      "sha256": "7bad141224b7a6df2b10189c13795deeb263ead3acd59b3389f05b83c01de301",
+      "load_nm": 0.0,
+      "fault_turns": 1,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt1zu_5NM.mat",
+      "filename": "spd10-5000rpm_flt1zu_5NM.mat",
+      "bytes": 22697244,
+      "sha256": "ac29c594ce7f56bb70200568d9f201cdbab07df76ac7cfc033be0bb4328d3c01",
+      "load_nm": 5.0,
+      "fault_turns": 1,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt1zu_10NM.mat",
+      "filename": "spd10-5000rpm_flt1zu_10NM.mat",
+      "bytes": 23191605,
+      "sha256": "6f853d9ff874d7d1b82d66ebaa54b80cb59b5243783204364cf28bdb6a9ce04d",
+      "load_nm": 10.0,
+      "fault_turns": 1,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt1zu_15NM.mat",
+      "filename": "spd10-5000rpm_flt1zu_15NM.mat",
+      "bytes": 23494930,
+      "sha256": "151defde0140cadd3369aa6ff10d393239a7a0fa721f7808c8e593054b9c0885",
+      "load_nm": 15.0,
+      "fault_turns": 1,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt1zu_20NM.mat",
+      "filename": "spd10-5000rpm_flt1zu_20NM.mat",
+      "bytes": 23823385,
+      "sha256": "409d0a9f4ba161002b667bf46676be448f85db1d58bd27db245b22297baf103c",
+      "load_nm": 20.0,
+      "fault_turns": 1,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt1zu_25NM.mat",
+      "filename": "spd10-5000rpm_flt1zu_25NM.mat",
+      "bytes": 24007329,
+      "sha256": "30e9163ac05c16e4bc4707dfe04a900dfe9f4a2c4f0a04b6ce35e6d19c227884",
+      "load_nm": 25.0,
+      "fault_turns": 1,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt1zu_30NM.mat",
+      "filename": "spd10-5000rpm_flt1zu_30NM.mat",
+      "bytes": 24223820,
+      "sha256": "f23b00eebaf015a7b375a6dba6e1e3f12c188a45c0a3d332b6f8626a338ef997",
+      "load_nm": 30.0,
+      "fault_turns": 1,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt1zu_35NM.mat",
+      "filename": "spd10-5000rpm_flt1zu_35NM.mat",
+      "bytes": 24432504,
+      "sha256": "a644d5eb6abc6a54157a9d417569fa1d540bb2ad5b422da0a5e242e83ec2ad86",
+      "load_nm": 35.0,
+      "fault_turns": 1,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt2zv_0NM.mat",
+      "filename": "spd10-5000rpm_flt2zv_0NM.mat",
+      "bytes": 22188808,
+      "sha256": "8156be071bf27ddf0aaf4e4da3db6c8a11cbba2c5085f3b02abd3f2470297e00",
+      "load_nm": 0.0,
+      "fault_turns": 2,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt2zv_5NM.mat",
+      "filename": "spd10-5000rpm_flt2zv_5NM.mat",
+      "bytes": 22798693,
+      "sha256": "75c98ad0c0f481f72affe35c3d1cb04f69c26ab198a210092e8707a920959707",
+      "load_nm": 5.0,
+      "fault_turns": 2,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt2zv_10NM.mat",
+      "filename": "spd10-5000rpm_flt2zv_10NM.mat",
+      "bytes": 23280090,
+      "sha256": "c20c32298eadfb6c4258a235ecdf84e9503558eae7c6beee05dca9f919609a2d",
+      "load_nm": 10.0,
+      "fault_turns": 2,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt2zv_15NM.mat",
+      "filename": "spd10-5000rpm_flt2zv_15NM.mat",
+      "bytes": 23597084,
+      "sha256": "264d09f979fe712ab8f09e620a0134eb0eedaaccfefedf1a842da8dcf0c0b47a",
+      "load_nm": 15.0,
+      "fault_turns": 2,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt2zv_20NM.mat",
+      "filename": "spd10-5000rpm_flt2zv_20NM.mat",
+      "bytes": 23892585,
+      "sha256": "6623f839175e6ef6ddaf58843500de743b6da0128a43eee625e6b9182bdf0be0",
+      "load_nm": 20.0,
+      "fault_turns": 2,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt2zv_25NM.mat",
+      "filename": "spd10-5000rpm_flt2zv_25NM.mat",
+      "bytes": 24101861,
+      "sha256": "6dfe1867fb43685dc4308c319f6dd0196e3b43add127221637d44688d03a91a5",
+      "load_nm": 25.0,
+      "fault_turns": 2,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt2zv_30NM.mat",
+      "filename": "spd10-5000rpm_flt2zv_30NM.mat",
+      "bytes": 24328461,
+      "sha256": "74bba23e658069155bb2175607044f762d28d56c3722c48a4e76fdc4fac53e39",
+      "load_nm": 30.0,
+      "fault_turns": 2,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt2zv_35NM.mat",
+      "filename": "spd10-5000rpm_flt2zv_35NM.mat",
+      "bytes": 24542317,
+      "sha256": "0bad298198e592e48cf59d21b17ea6b6d583e49f64a4d41846347b9f7689533b",
+      "load_nm": 35.0,
+      "fault_turns": 2,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt3zu_0NM.mat",
+      "filename": "spd10-5000rpm_flt3zu_0NM.mat",
+      "bytes": 22300306,
+      "sha256": "4c73e0b90b0b6092f7ab3791408d28d8f00587d31816f294719b9eac460a410e",
+      "load_nm": 0.0,
+      "fault_turns": 3,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt3zu_5NM.mat",
+      "filename": "spd10-5000rpm_flt3zu_5NM.mat",
+      "bytes": 22879267,
+      "sha256": "610101e665f63dd0aa110420af65733a08f17c541ac24d17def30eefb47658ba",
+      "load_nm": 5.0,
+      "fault_turns": 3,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt3zu_10NM.mat",
+      "filename": "spd10-5000rpm_flt3zu_10NM.mat",
+      "bytes": 23321135,
+      "sha256": "4fcd8768a5b61bd5c636297b77d82db55355a137050dc863530bc65c2aff52fb",
+      "load_nm": 10.0,
+      "fault_turns": 3,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt3zu_15NM.mat",
+      "filename": "spd10-5000rpm_flt3zu_15NM.mat",
+      "bytes": 23665820,
+      "sha256": "b6c1eb67e9fc5606a56a30001d9a77fe6b3160c11f1332430e871362b2b5edab",
+      "load_nm": 15.0,
+      "fault_turns": 3,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt3zu_20NM.mat",
+      "filename": "spd10-5000rpm_flt3zu_20NM.mat",
+      "bytes": 23956814,
+      "sha256": "9041be3c6df8efdc6126716a611265f88e30c749fb4f0673cb926e85885f4a12",
+      "load_nm": 20.0,
+      "fault_turns": 3,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt3zu_25NM.mat",
+      "filename": "spd10-5000rpm_flt3zu_25NM.mat",
+      "bytes": 24168362,
+      "sha256": "790860d538edf433ab28e1529d5fed620a5f6f63d5e984b047425d12073edcd5",
+      "load_nm": 25.0,
+      "fault_turns": 3,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt3zu_30NM.mat",
+      "filename": "spd10-5000rpm_flt3zu_30NM.mat",
+      "bytes": 24397179,
+      "sha256": "959fb3e9a7b2bf89649c1ef5127f93fdf55856299e55c578df5e927550120286",
+      "load_nm": 30.0,
+      "fault_turns": 3,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt3zu_35NM.mat",
+      "filename": "spd10-5000rpm_flt3zu_35NM.mat",
+      "bytes": 24578838,
+      "sha256": "9f447194c6e57509ebfd8da1703af944feb9ab94bcd528b028434ad479f34c94",
+      "load_nm": 35.0,
+      "fault_turns": 3,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt4zv_0NM.mat",
+      "filename": "spd10-5000rpm_flt4zv_0NM.mat",
+      "bytes": 22235891,
+      "sha256": "07f36ccdc44d5be409580d14fdb38fb3f533db2fb4892b1c1e3e86be62009e98",
+      "load_nm": 0.0,
+      "fault_turns": 4,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt4zv_5NM.mat",
+      "filename": "spd10-5000rpm_flt4zv_5NM.mat",
+      "bytes": 22884322,
+      "sha256": "9f1ea692bd2a9d2a40d75d775230ebe2a0a0be00cc097093ec985e2e1015d9d2",
+      "load_nm": 5.0,
+      "fault_turns": 4,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt4zv_10NM.mat",
+      "filename": "spd10-5000rpm_flt4zv_10NM.mat",
+      "bytes": 23337217,
+      "sha256": "9cde19a0b564e618ba066f9a4111465abaa3ebd75d9177e7cf66054f094c2ebe",
+      "load_nm": 10.0,
+      "fault_turns": 4,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt4zv_15NM.mat",
+      "filename": "spd10-5000rpm_flt4zv_15NM.mat",
+      "bytes": 23679565,
+      "sha256": "06fba94c03b471360bd50b47f1e41aa7f7ceca4ffb558c8a3373caceff0d9baa",
+      "load_nm": 15.0,
+      "fault_turns": 4,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt4zv_20NM.mat",
+      "filename": "spd10-5000rpm_flt4zv_20NM.mat",
+      "bytes": 23953844,
+      "sha256": "71344b0580fe86ccffc1689a2e92be680a96cdb93b204032e8c1e0d03922169e",
+      "load_nm": 20.0,
+      "fault_turns": 4,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt4zv_25NM.mat",
+      "filename": "spd10-5000rpm_flt4zv_25NM.mat",
+      "bytes": 24186339,
+      "sha256": "b6d72a68c3f84fc71a982c3d2fe8c0dae02fd0b9be875ed922bed490698e46af",
+      "load_nm": 25.0,
+      "fault_turns": 4,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt4zv_30NM.mat",
+      "filename": "spd10-5000rpm_flt4zv_30NM.mat",
+      "bytes": 24415967,
+      "sha256": "28e8a4c0793c3c3dc44583b715d6371d3f415c08d0ba12eb56821c9e67890da8",
+      "load_nm": 30.0,
+      "fault_turns": 4,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt4zv_35NM.mat",
+      "filename": "spd10-5000rpm_flt4zv_35NM.mat",
+      "bytes": 24640530,
+      "sha256": "812fe2a9f9e870424eccfc373b6672ca00145e1d4c8d9341fd7fc7f4848f28fe",
+      "load_nm": 35.0,
+      "fault_turns": 4,
+      "fault_phase": "v",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt5zu_0NM.mat",
+      "filename": "spd10-5000rpm_flt5zu_0NM.mat",
+      "bytes": 22213989,
+      "sha256": "f68330d2f9588b79c57852169aae1ebc57ae4437dfd6a3ffe7262add036cb4d7",
+      "load_nm": 0.0,
+      "fault_turns": 5,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt5zu_5NM.mat",
+      "filename": "spd10-5000rpm_flt5zu_5NM.mat",
+      "bytes": 22857940,
+      "sha256": "d165b0c696ffa6c958d500690d63a71bcb8f07e1f20e166a480571ddf7db1c00",
+      "load_nm": 5.0,
+      "fault_turns": 5,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt5zu_10NM.mat",
+      "filename": "spd10-5000rpm_flt5zu_10NM.mat",
+      "bytes": 23349554,
+      "sha256": "eea36a2b43285894e7acea95caedf700292fa52e274949b62599dbdbac6f8f4b",
+      "load_nm": 10.0,
+      "fault_turns": 5,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt5zu_15NM.mat",
+      "filename": "spd10-5000rpm_flt5zu_15NM.mat",
+      "bytes": 23713188,
+      "sha256": "248332378f316d7f8f8a4a065fb86cb56663dc0321c8f18dcca1baabf9dcaf78",
+      "load_nm": 15.0,
+      "fault_turns": 5,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt5zu_20NM.mat",
+      "filename": "spd10-5000rpm_flt5zu_20NM.mat",
+      "bytes": 24011117,
+      "sha256": "6d80076a67ed9cee5b5e6496ffed72150fb792f57e1cda5faff1c8bd1e509351",
+      "load_nm": 20.0,
+      "fault_turns": 5,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt5zu_25NM.mat",
+      "filename": "spd10-5000rpm_flt5zu_25NM.mat",
+      "bytes": 24257415,
+      "sha256": "b69d764c70005c0f5b1ca849b5ce4e0c76dbaf2f66e9a3688e54534a5f31200a",
+      "load_nm": 25.0,
+      "fault_turns": 5,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt5zu_30NM.mat",
+      "filename": "spd10-5000rpm_flt5zu_30NM.mat",
+      "bytes": 24476318,
+      "sha256": "5ac5c2995a16b5a053c1be6d2479704be7fafb353141d89161c967ac067e4c05",
+      "load_nm": 30.0,
+      "fault_turns": 5,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt5zu_35NM.mat",
+      "filename": "spd10-5000rpm_flt5zu_35NM.mat",
+      "bytes": 24684124,
+      "sha256": "0b4b6b9a9e3e5991c146efd865cf99b4e17038dc5724fa56f3ed7077c875bc01",
+      "load_nm": 35.0,
+      "fault_turns": 5,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt6zu_0NM.mat",
+      "filename": "spd10-5000rpm_flt6zu_0NM.mat",
+      "bytes": 22223615,
+      "sha256": "1c83559a722059b8d370bc741e352c9ed5e50c6aed5fd22834a753b42c939f96",
+      "load_nm": 0.0,
+      "fault_turns": 6,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt6zu_5NM.mat",
+      "filename": "spd10-5000rpm_flt6zu_5NM.mat",
+      "bytes": 22869379,
+      "sha256": "71bc4503b867b2013e84e340ecbe4cd25264d6361c064b3425ed596ffc46c7e7",
+      "load_nm": 5.0,
+      "fault_turns": 6,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt6zu_10NM.mat",
+      "filename": "spd10-5000rpm_flt6zu_10NM.mat",
+      "bytes": 23365318,
+      "sha256": "66a9687dff620292c59caea546aa583294875fb2fbc687aa0e7d78f9dbf4194c",
+      "load_nm": 10.0,
+      "fault_turns": 6,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt6zu_15NM.mat",
+      "filename": "spd10-5000rpm_flt6zu_15NM.mat",
+      "bytes": 23744847,
+      "sha256": "546d909a147307155b7e508cdeb6415d19fdebb41fba914031a70b3842d8cacf",
+      "load_nm": 15.0,
+      "fault_turns": 6,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt6zu_20NM.mat",
+      "filename": "spd10-5000rpm_flt6zu_20NM.mat",
+      "bytes": 24023745,
+      "sha256": "a4972ad29f5ac4da6333638e98193ded56c3b196814ae0e865db05cb08caeb27",
+      "load_nm": 20.0,
+      "fault_turns": 6,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt6zu_25NM.mat",
+      "filename": "spd10-5000rpm_flt6zu_25NM.mat",
+      "bytes": 24279617,
+      "sha256": "1fc54fe8dce5deb9244a7c99dcddc98406f2424fb7441120f8a45b28979cdd87",
+      "load_nm": 25.0,
+      "fault_turns": 6,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt6zu_30NM.mat",
+      "filename": "spd10-5000rpm_flt6zu_30NM.mat",
+      "bytes": 24489604,
+      "sha256": "27f9a8934c90f47380a8a4e731c92382ecd786f34469697d87b841633425546c",
+      "load_nm": 30.0,
+      "fault_turns": 6,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
+    },
+    {
+      "path": "C:\\lkc\\phd sci\\data\\raw\\external_validation\\dual_three_phase_health\\spd10-5000rpm_flt6zu_35NM.mat",
+      "filename": "spd10-5000rpm_flt6zu_35NM.mat",
+      "bytes": 24715749,
+      "sha256": "de48422215bedf0af15afa795ecf2ee41967e427ce1b07063354afaa0dd051c4",
+      "load_nm": 35.0,
+      "fault_turns": 6,
+      "fault_phase": "u",
+      "is_healthy": false,
+      "samples": 415001,
+      "sample_rate_hz": 10000.000000023307,
+      "time_start_s": 0.0,
+      "time_stop_s": 41.5,
+      "subsystems": [
+        "SubSys1",
+        "SubSys2"
+      ],
+      "windows_per_subsystem": 120,
+      "macroblocks_per_subsystem": 8
     }
   ],
   "health_files": 8,
-  "fault_files": 0,
-  "rows": 1920,
+  "fault_files": 48,
+  "rows": 13440,
   "columns": [
     "source_filename",
     "source_path",
