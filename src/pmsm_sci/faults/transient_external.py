@@ -255,11 +255,58 @@ def _as_data_candidate(
     return None
 
 
+def _scalar_property(properties: dict[object, object], name: str) -> object:
+    if name not in properties:
+        raise ValueError(f"uniform time metadata is missing {name}")
+    value = np.asarray(properties[name]).squeeze()
+    if value.ndim != 0:
+        raise ValueError(f"uniform time metadata {name} is not scalar")
+    return value.item()
+
+
+def _implicit_uniform_time(
+    opaque: MatlabOpaque, sample_rate_hz: float
+) -> tuple[str, NDArray[np.float64]]:
+    """Reconstruct a time vector from frozen MATLAB uniform-time metadata."""
+
+    if not isinstance(opaque.properties, dict) or "TimeInfo" not in opaque.properties:
+        raise ValueError("timeseries has no TimeInfo object")
+    time_info = _unwrap_scalar_opaque(opaque.properties["TimeInfo"])
+    if str(time_info.classname).casefold() != "tsdata.timemetadata":
+        raise TypeError(f"Unexpected time metadata class: {time_info.classname!r}")
+    if not isinstance(time_info.properties, dict):
+        raise TypeError("TimeInfo properties are not a mapping")
+    properties = time_info.properties
+    units = str(_scalar_property(properties, "Units"))
+    if units.casefold() != "seconds":
+        raise ValueError(f"uniform time units must be seconds, found {units!r}")
+    if not bool(_scalar_property(properties, "Initialized")):
+        raise ValueError("uniform time metadata is not initialized")
+    start = float(_scalar_property(properties, "Start_"))
+    increment = float(_scalar_property(properties, "Increment_"))
+    length_float = float(_scalar_property(properties, "Length"))
+    length = round(length_float)
+    if length < 3 or not np.isclose(length_float, length):
+        raise ValueError(f"uniform time Length is invalid: {length_float}")
+    if not np.isfinite(start) or not np.isfinite(increment) or increment <= 0:
+        raise ValueError("uniform time start/increment is invalid")
+    rate = 1.0 / increment
+    if not np.isclose(rate, sample_rate_hz, rtol=1e-3, atol=1e-6):
+        raise ValueError(f"uniform time metadata has unexpected sample rate: {rate}")
+    explicit = np.asarray(properties.get("Time_", np.empty(0)))
+    outer_explicit = np.asarray(opaque.properties.get("Time_", np.empty(0)))
+    if explicit.size or outer_explicit.size:
+        raise ValueError("implicit-time repair refuses non-empty Time_ storage")
+    time = start + np.arange(length, dtype=np.float64) * increment
+    return "TimeInfo/Start_+Increment_+Length", time
+
+
 def extract_timeseries(
     value: object,
     *,
     expected_columns: int,
     sample_rate_hz: float = EXPECTED_SAMPLE_RATE_HZ,
+    allow_implicit_uniform_time: bool = False,
 ) -> TimeseriesData:
     """Recover time/data arrays by a frozen semantic and shape-based rule."""
 
@@ -272,17 +319,22 @@ def extract_timeseries(
         candidate = _as_time_candidate(values, sample_rate_hz)
         if candidate is not None:
             time_candidates.append((_path_score(path, "time"), path, candidate))
-    if not time_candidates:
+    if time_candidates:
+        best_time_score = max(item[0] for item in time_candidates)
+        best_times = [item for item in time_candidates if item[0] == best_time_score]
+        if len(best_times) != 1:
+            raise ValueError("timeseries time candidate is ambiguous")
+        _, time_path, time = best_times[0]
+        time_property_path = "/".join(time_path)
+    elif allow_implicit_uniform_time:
+        time_property_path, time = _implicit_uniform_time(opaque, sample_rate_hz)
+        time_path = ()
+    else:
         raise ValueError("timeseries has no 10 kHz monotonic time candidate")
-    best_time_score = max(item[0] for item in time_candidates)
-    best_times = [item for item in time_candidates if item[0] == best_time_score]
-    if len(best_times) != 1:
-        raise ValueError("timeseries time candidate is ambiguous")
-    _, time_path, time = best_times[0]
 
     data_candidates: list[tuple[int, tuple[str, ...], NDArray[np.float64]]] = []
     for path, values in leaves:
-        if path == time_path:
+        if time_path and path == time_path:
             continue
         candidate = _as_data_candidate(values, expected_columns, len(time))
         if candidate is not None:
@@ -297,22 +349,37 @@ def extract_timeseries(
     return TimeseriesData(
         time=time,
         data=data,
-        time_property_path="/".join(time_path),
+        time_property_path=time_property_path,
         data_property_path="/".join(data_path),
     )
 
 
 def parse_loaded_transient_record(
-    metadata: TransientMetadata, loaded: dict[str, object]
+    metadata: TransientMetadata,
+    loaded: dict[str, object],
+    *,
+    allow_implicit_uniform_time: bool = False,
 ) -> TransientRecord:
     """Validate and join the three whitelisted loaded timeseries variables."""
 
     missing = sorted(set(LOAD_VARIABLES).difference(loaded))
     if missing:
         raise ValueError(f"MAT file is missing whitelisted variables: {missing}")
-    scoring = extract_timeseries(loaded[SCORING_VARIABLE], expected_columns=2)
-    onset = extract_timeseries(loaded[ONSET_VARIABLE], expected_columns=1)
-    speed = extract_timeseries(loaded[QC_VARIABLE], expected_columns=1)
+    scoring = extract_timeseries(
+        loaded[SCORING_VARIABLE],
+        expected_columns=2,
+        allow_implicit_uniform_time=allow_implicit_uniform_time,
+    )
+    onset = extract_timeseries(
+        loaded[ONSET_VARIABLE],
+        expected_columns=1,
+        allow_implicit_uniform_time=allow_implicit_uniform_time,
+    )
+    speed = extract_timeseries(
+        loaded[QC_VARIABLE],
+        expected_columns=1,
+        allow_implicit_uniform_time=allow_implicit_uniform_time,
+    )
     if not (
         np.array_equal(scoring.time, onset.time)
         and np.array_equal(scoring.time, speed.time)
@@ -353,7 +420,9 @@ def parse_loaded_transient_record(
     )
 
 
-def load_transient_record(path: str | Path) -> TransientRecord:
+def load_transient_record(
+    path: str | Path, *, allow_implicit_uniform_time: bool = False
+) -> TransientRecord:
     """Load exactly the frozen scoring, onset-label, and QC variables."""
 
     metadata = parse_transient_record_path(path)
@@ -362,7 +431,11 @@ def load_transient_record(path: str | Path) -> TransientRecord:
         variable_names=list(LOAD_VARIABLES),
         raw_data=True,
     )
-    return parse_loaded_transient_record(metadata, loaded)
+    return parse_loaded_transient_record(
+        metadata,
+        loaded,
+        allow_implicit_uniform_time=allow_implicit_uniform_time,
+    )
 
 
 def pseudo_three_phase(alpha_beta: ArrayLike) -> NDArray[np.float64]:

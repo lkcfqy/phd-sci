@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import importlib.metadata
 import json
+from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -153,6 +154,9 @@ def discover_official_records(input_dir: Path) -> list[TransientMetadata]:
 
 def build_dataset(
     input_dir: Path,
+    *,
+    record_loader: Callable[[Path], TransientRecord] = load_transient_record,
+    parser_mode: str = "explicit_time_primary",
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict[str, Any]]:
     """Reveal and process all 21 official records without selective exclusion."""
 
@@ -173,7 +177,7 @@ def build_dataset(
         file_hashes[metadata.record_id] = file_sha256(metadata.path)
         status = metadata_fields(metadata)
         try:
-            record = load_transient_record(metadata.path)
+            record = record_loader(metadata.path)
             rows, diagnostics = build_record_features(record)
             feature_rows.extend(rows)
             diagnostic_rows.append(diagnostics)
@@ -226,6 +230,7 @@ def build_dataset(
         "label_only_mat_variables": ["if_meas"],
         "qc_only_mat_variables": ["we"],
         "mat_io_version": importlib.metadata.version("mat-io"),
+        "parser_mode": parser_mode,
         "file_sha256": file_hashes,
         "selective_record_exclusion": False,
     }

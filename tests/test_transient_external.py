@@ -108,6 +108,40 @@ def test_extract_timeseries_rejects_ambiguous_data_candidates() -> None:
         extract_timeseries(opaque, expected_columns=1)
 
 
+def test_post_reveal_implicit_uniform_time_is_opt_in_and_shape_checked() -> None:
+    samples = 1_001
+    time_info = MatlabOpaque(
+        properties={
+            "Initialized": np.array([[True]]),
+            "Start_": np.array([[0.0]]),
+            "Increment_": np.array([[0.0001]]),
+            "Length": np.array([[float(samples)]]),
+            "Units": np.array(["seconds"]),
+            "Time_": np.empty((0, 0)),
+        },
+        classname="tsdata.timemetadata",
+    )
+    opaque = MatlabOpaque(
+        properties={
+            "Data_": np.ones((2, 1, samples), dtype=np.float32),
+            "Time_": np.empty((0, 0)),
+            "TimeInfo": time_info,
+        },
+        classname="timeseries",
+    )
+    with pytest.raises(ValueError, match="no 10 kHz monotonic time"):
+        extract_timeseries(opaque, expected_columns=2)
+    extracted = extract_timeseries(
+        opaque,
+        expected_columns=2,
+        allow_implicit_uniform_time=True,
+    )
+    assert extracted.data.shape == (samples, 2)
+    assert extracted.time[0] == 0
+    assert extracted.time[-1] == pytest.approx(0.1)
+    assert extracted.time_property_path == "TimeInfo/Start_+Increment_+Length"
+
+
 def test_parse_official_inventory_and_loaded_whitelist(tmp_path) -> None:
     records = []
     conditions = ("load_transient", "steady_state", "velocity_transient")
