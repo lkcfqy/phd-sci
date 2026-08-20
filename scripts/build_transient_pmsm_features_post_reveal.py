@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 
 from build_transient_pmsm_features import build_dataset, file_sha256
+
 from pmsm_sci.faults.transient_external import load_transient_record
 
 
