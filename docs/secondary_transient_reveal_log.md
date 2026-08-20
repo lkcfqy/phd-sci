@@ -93,3 +93,39 @@ Frozen first-reveal SHA-256 values are:
 This is a parser-compatibility failure, not evidence that any detector succeeds or
 fails. Any inspection of the now-revealed MCOS property tree or parser repair must be
 versioned separately as post-reveal sensitivity and cannot replace these outputs.
+
+## Post-reveal implicit-time sensitivity
+
+Structural diagnosis found that all records store uniform time implicitly in the
+`tsdata.timemetadata` object (`Start_=0`, `Increment_=0.0001 s`, `Length=120001`,
+`Units=seconds`) while both public and internal `Time_` arrays are empty. Signal arrays
+are stored under `Data_`. Commit `df31a5a` added an opt-in parser for exactly this case;
+the primary parser default and all primary failure artifacts remain unchanged.
+
+The separate post-reveal builder attempted all 21 records and produced:
+
+```text
+POST-REVEAL implicit-time sensitivity: attempted=21, main-compatible=16, feature rows=384
+```
+
+- 200 W: `12/12` records satisfied the fixed onset, guard and 1 s endpoint;
+- 20 kW: `4/9` satisfied it; the other five were rejected because measured fault
+  current crossed the frozen onset rule inside the initial 0.5 s baseline;
+- the 20 kW compatible fraction `4/9 = 44.44%` fails the predeclared 80% motor gate;
+- therefore the two-motor quantitative validation remains infeasible and no selective
+  20 kW time shift or threshold change is allowed.
+
+Post-reveal artifact SHA-256 values are:
+
+- `record_compatibility.csv`:
+  `315d0887fc8db78d87f6ac8db3c120bc91977b4ee4b4e42a8b65748a5c7172a0`;
+- `onset_diagnostics.csv`:
+  `a495a24658fc9769ac3346a8c9a7979d988b0f1a63c280196073922acc1f23ac`;
+- `run_metadata.json`:
+  `2e8b3e11d49e5a9da02f5340f5e5870cbeab922fd1e47f1a1222454794a0b637`;
+- feature table:
+  `92fea2691ea737319dd43469130b0275bce596bab1e98f0bc4c391f109899ad1`.
+
+The 296 rows from the twelve compatible 200 W records contain no non-finite numeric
+features. A 200 W-only method run is permitted only as a separately labeled
+post-reveal single-motor sensitivity; it cannot reinstate the failed two-motor claim.

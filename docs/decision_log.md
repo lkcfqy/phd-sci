@@ -242,3 +242,15 @@ The immutable failure table and metadata are preserved under
 not an algorithm result. A subsequent structure-based parser repair is permitted only
 as labeled post-reveal sensitivity, with separate outputs and without overwriting the
 primary reveal evidence.
+
+### Post-reveal structural sensitivity
+
+The data use implicit uniform `timeseries` metadata rather than an explicit time vector.
+An opt-in, separately versioned repair reconstructed time from `Start_`, `Increment_`
+and `Length` without changing onset or scoring rules. It made all 12 records of the
+200 W motor structurally usable, but only 4/9 records of the 20 kW motor: five 20 kW
+records already contained sustained measured fault current inside the frozen 0.5 s
+baseline. Because 44.44% is below the predeclared 80% gate, the planned two-motor
+quantitative extension remains infeasible. No 20 kW window or onset adjustment will be
+made. A 200 W-only score run may be reported only as post-reveal single-motor
+sensitivity.
