@@ -321,7 +321,7 @@ def evaluate_system_scores(
         ci_lower, ci_upper = stratified_record_bootstrap_interval(
             records,
             value_column="block_alarm_rate",
-            strata_column="fault_phase",
+            strata_column="fault_turns",
             iterations=10_000,
             seed=711,
         )
