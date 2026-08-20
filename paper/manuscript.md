@@ -7,10 +7,13 @@ bibliography: ../references/key_papers.bib
 link-citations: true
 ---
 
-> Development draft, 2026-08-20. The KAIST study is exploratory because its target-
+> Development draft, 2026-08-21. The KAIST study is exploratory because its target-
 > fault records were inspected during method development. The independent-laboratory
 > fault files were opened only after the protocol, code, environment, healthy
 > calibration scores, and primary threshold had been frozen in hash-addressed commits.
+> A separately preregistered transient-set audit is non-confirmatory: its frozen
+> parser failed before scoring, and the repaired 200 W analysis is explicitly
+> post-reveal.
 
 ## Abstract
 
@@ -345,6 +348,27 @@ manifest, and processed once over the unchanged [12, 36) s interval. The run yie
 complete 6 fault-turn counts by 8 loads grid (384 system blocks). The chronological
 reveal log and hash-addressed commits are retained as audit evidence.
 
+### 5.3 Prospectively frozen secondary transient-set audit
+
+A secondary stress test used a public 10 kHz dataset containing 12 records from one
+200 W PMSM and nine from one 20 kW PMSM [@zezula2024transientpmsm]. Every record
+transitions from prefault operation to an interturn short circuit under steady-state,
+load-transient, or speed-transient operation; there are no independent healthy-only
+records. Before loading any signal values, we froze the archive hash, full-record
+inclusion rule, parser contract, channel whitelist, onset rule, method set, thresholds,
+and outputs. Only measured alpha-beta current entered the 26-feature score; fault
+current located onset and electrical speed was retained for quality control only.
+
+The primary endpoint used non-overlapping 0.2 s windows, a 0.2 s prefault guard, and
+the first 1 s after the frozen causal onset. Within each motor, one complete record was
+held out while the remaining records were assigned by hash to healthy-reference fitting
+or calibration. At least 19 calibration windows and at least 80% compatible records per
+motor were required. Parser incompatibility and failure of this motor-level gate were
+predeclared reportable outcomes: no record, time interval, or onset could be manually
+substituted after reveal. Because prefault segments and fault segments occur within the
+same records, this audit was designated a secondary transient stress test rather than a
+third independent health-cohort validation.
+
 ## 6. Results
 
 ### 6.1 Cross-capacity detection and empirical false-alarm risk
@@ -601,6 +625,29 @@ transfer detector increased from 45.05 to 45.31 points. The sampling-rate mismat
 affect individual features, but this controlled sensitivity does not support it as the
 primary explanation for the observed negative transfer.
 
+### 6.11 Secondary transient-set compatibility and null sensitivity
+
+The frozen primary parser attempted all 21 official records and accepted none. The
+MATLAB `timeseries` objects contained empty explicit time arrays even though uniform
+10 kHz timing was encoded in their metadata, whereas the frozen parser required an
+explicit monotonic time vector. Consequently, the primary run produced no features,
+scores, or detector comparison; this is a prospective compatibility failure, not a
+fault-detection result.
+
+An opt-in post-reveal structural repair reconstructed time only from the stored
+start, increment, and length metadata without changing signals, features, or onset
+rules. It made 12/12 records from the 200 W motor and 4/9 from the 20 kW motor
+compatible. The other five 20 kW onsets overlapped the frozen 0.5 s baseline, so that
+motor failed the 80% gate (44.44%) and was not selectively reanalyzed. A descriptive
+leave-one-record-out sensitivity on the single 200 W motor then produced 0/60 alarms
+in the primary first-second fault windows for every one of 12 detectors, and 0/120
+across the full 2 s post-onset horizon. Held-out prefault alarms ranged from 7/176 to
+13/176. Proposed produced 8/176 (4.55%) with mean record AUROC 0.541; Target MinCovDet
+produced 9/176 (5.11%) with AUROC 0.564. With no standalone healthy sessions, zero
+thresholded detection, and only one analyzed motor, this post-reveal result neither
+confirms generalization nor identifies positive or negative transfer. Full compatibility,
+method, and hash tables are reported in Online Resource 1, Section S9.
+
 ## 7. Discussion
 
 The central result is the external ranking reversal, not the near-ceiling KAIST AUROC.
@@ -641,20 +688,32 @@ units. In this study those units are ordered blocks from a few continuous record
 independent sessions; the resulting Wilson intervals and p-values are descriptive under
 a stationarity/mixing interpretation. They are not machine-level safety guarantees.
 
-Five limitations dominate the claims. First, each KAIST motor has only one unique
+The secondary transient audit adds a different failure mode: a validation can fail
+before model comparison if file-time semantics or available prefault baselines do not
+meet the frozen contract. Reconstructing documented implicit time made analysis
+possible, but it did not restore confirmatory status. The 200 W null sensitivity is
+consistent with cross-record healthy heterogeneity overwhelming the short post-onset
+change under these thresholds; because this interpretation followed reveal, it is a
+design diagnostic rather than evidence for a revised detector.
+
+Six limitations dominate the claims. First, each KAIST motor has only one unique
 healthy record, so its calibration and later-time evaluation are not independent
 sessions. Second, all KAIST machines share manufacturer and fixed operating condition.
 Third, the KAIST target faults were inspected during development and are exploratory.
 Fourth, the external 48-record grid comes from one physical dual-three-phase motor;
 record bootstrap quantifies variability across its recorded conditions, not across a
 population of motors. Fifth, the external shift is compound, so this experiment cannot
-causally separate topology, sampling rate, controller, speed, and load effects.
+causally separate topology, sampling rate, controller, speed, and load effects. Sixth,
+the secondary transient dataset has no independent healthy records; its frozen parser
+failed, only four of nine 20 kW records passed the repaired baseline gate, and the
+reported 200 W sensitivity is post-reveal and conditional on one motor.
 
 The next method study should use only healthy data to condition scores on electrical
 frequency and load, include a target-only MinCovDet primary comparator, harmonize
 sampling-rate sensitivity, and freeze early-trajectory detection and FAR criteria before
 evaluation on another unseen motor or independent laboratory. Multiple genuinely
-independent healthy sessions are required before session-level risk can be estimated.
+independent healthy sessions, documented time semantics, and adequate prefault duration
+are required before session-level risk can be estimated.
 
 ## 8. Conclusion
 
@@ -668,7 +727,9 @@ with load, and source-augmented variants underperformed target-only counterparts
 motor. The contribution is
 therefore not a claim of a universally superior detector, but a reproducible account of
 ranking reversal and conditional negative transfer that preserves the frozen primary
-failure. Reliable
+failure. A prospectively logged secondary audit likewise did not supply confirmatory
+evidence: its primary parser was incompatible with the stored time representation, and
+all methods missed the first second in the repaired single-motor sensitivity. Reliable
 deployment requires operating-condition-aware target-health modeling, independent
 healthy sessions, and a new untouched confirmation; the present evidence does not
 establish unrestricted machine generalization, severity estimation, prognosis, or a
@@ -676,17 +737,20 @@ safety guarantee.
 
 ## Data and code availability
 
-The KAIST source dataset is available from Mendeley Data and the independent
-dual-three-phase PMSM dataset from Zenodo, both under CC BY 4.0
-[@jung2022pmsmfaultdataset; @kozovsky2024dualthreephasepmsm]. The project contains
+The KAIST source dataset is available from Mendeley Data; the independent
+dual-three-phase PMSM dataset and the secondary 200 W/20 kW transient dataset are
+available from Zenodo. All three are under CC BY 4.0
+[@jung2022pmsmfaultdataset; @kozovsky2024dualthreephasepmsm;
+@zezula2024transientpmsm]. The project contains
 resumable checksummed downloads, archive and MAT audits, duplicate removal, feature
 extraction, motor/file-level evaluation, paired bootstrap, sensitivity analyses,
 automated tests, and figure generation. Raw data remain excluded from version control;
-the reveal manifest, protocol, selected derived results, and audit metadata are retained
-for exact reconstruction. Detailed partitions, thresholds, comparator results,
-post-reveal diagnostics, sampling-rate controls, and file hashes are provided in Online
-Resource 1. The anonymized code, automated tests, protocols, and selected derived
-outputs needed to rerun the reported analyses are provided in Online Resource 2.
+the reveal manifests, protocols, selected derived results, and audit metadata are
+retained for exact reconstruction. Detailed partitions, thresholds, comparator results,
+post-reveal diagnostics, sampling-rate controls, transient-set compatibility outcomes,
+and file hashes are provided in Online Resource 1. The anonymized code, automated tests,
+protocols, and selected derived outputs needed to rerun the reported analyses are
+provided in Online Resource 2.
 
 ## Statements and declarations
 

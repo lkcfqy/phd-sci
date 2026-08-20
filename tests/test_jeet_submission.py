@@ -125,8 +125,8 @@ def test_title_page_and_cover_letter_remain_explicit_human_input_templates() -> 
 
 def test_review_pdfs_have_anonymous_metadata_and_expected_page_counts() -> None:
     expected = {
-        "Manuscript_Anonymous.pdf": 16,
-        "ESM_1_Supplementary_Material.pdf": 6,
+        "Manuscript_Anonymous.pdf": 17,
+        "ESM_1_Supplementary_Material.pdf": 8,
     }
     for name, pages in expected.items():
         data = (SUBMISSION / name).read_bytes()
@@ -145,6 +145,15 @@ def test_reproducibility_bundle_is_installable_shaped_hash_locked_and_anonymous(
         assert "pyproject.toml" in names
         assert "src/pmsm_sci/faults/external_validation.py" in names
         assert "docs/external_validation_protocol.md" in names
+        assert "docs/secondary_transient_validation_protocol.md" in names
+        assert "docs/secondary_transient_reveal_log.md" in names
+        assert (
+            "results/transient_feature_build/record_compatibility.csv" in names
+        )
+        assert (
+            "results/transient_pmsm_validation_post_reveal_200w/aggregate_summary.csv"
+            in names
+        )
         assert "MANIFEST_SHA256.json" in names
         assert not any(name.startswith("data/raw/") for name in names)
         assert not any(name.startswith("data/processed/") for name in names)
@@ -164,7 +173,16 @@ def test_reproducibility_bundle_is_installable_shaped_hash_locked_and_anonymous(
             if name.endswith("/"):
                 continue
             data = archive.read(name).lower()
-            for forbidden in (b"c:\\users", b"c:/users", b"lkcfq", b"changwon national"):
+            for forbidden in (
+                b"c:\\users",
+                b"c:\\\\users",
+                b"c:/users",
+                b"c:\\lkc\\phd sci",
+                b"c:\\\\lkc\\\\phd sci",
+                b"c:/lkc/phd sci",
+                b"lkcfq",
+                b"changwon national",
+            ):
                 assert forbidden not in data
 
 
@@ -172,16 +190,16 @@ def test_build_metadata_matches_final_binary_artifacts() -> None:
     metadata = json.loads((SUBMISSION / "build_metadata.json").read_text(encoding="utf-8"))
     assert metadata["source_audit"] == {
         "abstract_words": 247,
-        "cited_bibliography_entries": 33,
+        "cited_bibliography_entries": 34,
         "figure_citations": list(range(1, 12)),
         "keywords": 6,
         "table_citations": [1, 2, 3],
     }
     assert metadata["manuscript"]["figures"] == 11
     assert metadata["manuscript"]["tables"] == 3
-    assert metadata["supplement_intermediate"]["tables"] == 14
-    assert metadata["pdfs"]["manuscript"]["pages"] == 16
-    assert metadata["pdfs"]["supplement"]["pages"] == 6
+    assert metadata["supplement_intermediate"]["tables"] == 17
+    assert metadata["pdfs"]["manuscript"]["pages"] == 17
+    assert metadata["pdfs"]["supplement"]["pages"] == 8
     assert metadata["manuscript"]["sha256"] == digest(SUBMISSION / "Manuscript_Anonymous.docx")
     assert metadata["reproducibility_bundle"]["sha256"] == digest(
         SUBMISSION / "ESM_2_Reproducibility_Code.zip"

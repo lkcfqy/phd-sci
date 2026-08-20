@@ -24,9 +24,24 @@ METHOD_ORDER = (
     "target_min_cov_det",
     "source_target_min_cov_det",
 )
+TRANSIENT_METHOD_ORDER = (
+    "target_ledoit",
+    "target_sample_covariance",
+    "target_log_covariance",
+    "source_covariance",
+    "entity_balanced_covariance",
+    PROPOSED,
+    "target_ocsvm_rbf",
+    "source_target_ocsvm_rbf",
+    "target_isolation_forest",
+    "source_target_isolation_forest",
+    "target_min_cov_det",
+    "source_target_min_cov_det",
+)
 METHOD_LABELS = {
     "target_ledoit": "Target Ledoit–Wolf",
     "target_sample_covariance": "Target sample covariance",
+    "target_log_covariance": "Target Log-Euclidean covariance",
     "source_covariance": "Source covariance",
     "entity_balanced_covariance": "Entity-balanced covariance",
     PROPOSED: "Proposed: Log-Euclidean entity covariance",
@@ -146,6 +161,25 @@ def load_sources(root: Path) -> dict[str, Any]:
         "sampling_records": (
             "results/sampling_rate_sensitivity/proposed_record_differences.csv"
         ),
+        "transient_compatibility_primary": (
+            "results/transient_feature_build/record_compatibility.csv"
+        ),
+        "transient_compatibility_post": (
+            "results/transient_feature_build_post_reveal_implicit_time/"
+            "record_compatibility.csv"
+        ),
+        "transient_aggregate": (
+            "results/transient_pmsm_validation_post_reveal_200w/"
+            "aggregate_summary.csv"
+        ),
+        "transient_per_record": (
+            "results/transient_pmsm_validation_post_reveal_200w/"
+            "per_record_summary.csv"
+        ),
+        "transient_predictions": (
+            "results/transient_pmsm_validation_post_reveal_200w/"
+            "window_predictions.csv.gz"
+        ),
     }
     json_paths = {
         "external_metadata": "results/external_pmsm_validation/run_metadata.json",
@@ -154,6 +188,16 @@ def load_sources(root: Path) -> dict[str, Any]:
         "drift_metadata": "results/external_feature_drift/run_metadata.json",
         "sampling_protocol": "results/sampling_rate_sensitivity/protocol_integrity.json",
         "sampling_extractor": "results/sampling_rate_sensitivity/extractor_audit.json",
+        "transient_primary_metadata": (
+            "results/transient_feature_build/run_metadata.json"
+        ),
+        "transient_post_metadata": (
+            "results/transient_feature_build_post_reveal_implicit_time/"
+            "run_metadata.json"
+        ),
+        "transient_validation_metadata": (
+            "results/transient_pmsm_validation_post_reveal_200w/run_metadata.json"
+        ),
     }
     sources: dict[str, Any] = {
         name: pd.read_csv(root / relative) for name, relative in csv_paths.items()
@@ -304,6 +348,114 @@ def validate_sources(root: Path, sources: dict[str, Any]) -> None:
     _require(
         sources["seed_metadata"]["not_for_model_or_protocol_selection"] is True,
         "Seed sensitivity was used for model selection",
+    )
+
+    transient_primary = sources["transient_compatibility_primary"]
+    transient_post = sources["transient_compatibility_post"]
+    _require(
+        len(transient_primary) == 21
+        and transient_primary.groupby("motor_id").size().to_dict()
+        == {"200W": 12, "20kW": 9}
+        and not transient_primary["main_endpoint_compatible"].astype(bool).any(),
+        "Frozen transient parser outcome changed",
+    )
+    _require(
+        transient_primary["incompatible_reason"].eq(
+            "ValueError: timeseries has no 10 kHz monotonic time candidate"
+        ).all(),
+        "Frozen transient parser failure reason changed",
+    )
+    post_counts = (
+        transient_post.groupby(["motor_id", "main_endpoint_compatible"])
+        .size()
+        .to_dict()
+    )
+    _require(
+        len(transient_post) == 21
+        and post_counts == {("200W", True): 12, ("20kW", False): 5, ("20kW", True): 4},
+        "Post-reveal transient compatibility changed",
+    )
+    rejected_20kw = transient_post.loc[
+        (transient_post["motor_id"] == "20kW")
+        & ~transient_post["main_endpoint_compatible"].astype(bool)
+    ]
+    _require(
+        rejected_20kw["incompatible_reason"].eq(
+            "ValueError: detected onset overlaps the frozen baseline interval"
+        ).all(),
+        "20 kW transient baseline-gate failure changed",
+    )
+
+    primary_metadata = sources["transient_primary_metadata"]
+    post_metadata = sources["transient_post_metadata"]
+    validation_metadata = sources["transient_validation_metadata"]
+    _require(
+        primary_metadata["records_attempted"] == 21
+        and primary_metadata["records_main_endpoint_compatible"] == 0
+        and primary_metadata["feature_rows"] == 0,
+        "Frozen transient primary metadata changed",
+    )
+    _require(
+        post_metadata["records_attempted"] == 21
+        and post_metadata["records_main_endpoint_compatible"] == 16
+        and post_metadata["feature_rows"] == 384
+        and post_metadata["status"] == "post_reveal_sensitivity_not_primary_reveal"
+        and post_metadata["main_endpoint_compatible_fraction_by_motor"]
+        == {"200W": 1.0, "20kW": 4 / 9},
+        "Post-reveal transient metadata changed",
+    )
+    transient_feature_path = (
+        root
+        / "data/processed/transient_pmsm_features_post_reveal_implicit_time.csv.gz"
+    )
+    _require(
+        file_sha256(transient_feature_path) == post_metadata["feature_table_sha256"]
+        == validation_metadata["target_features_sha256"],
+        "Post-reveal transient feature hash changed",
+    )
+
+    transient = sources["transient_aggregate"]
+    primary_seed = int(validation_metadata["primary_seed"])
+    transient_primary_seed = transient.loc[transient["seed"] == primary_seed].copy()
+    _require(
+        len(transient_primary_seed) == 12
+        and set(transient_primary_seed["method"].astype(str))
+        == set(TRANSIENT_METHOD_ORDER),
+        "Transient method family changed",
+    )
+    _require(
+        transient_primary_seed["records"].eq(12).all()
+        and transient_primary_seed["motors"].eq(1).all()
+        and transient_primary_seed["healthy_windows"].eq(176).all()
+        and transient_primary_seed["record_macro_detection_rate"].eq(0).all()
+        and transient_primary_seed["fault_record_any_alarm_rate"].eq(0).all()
+        and transient_primary_seed["false_alarms"].between(7, 13).all(),
+        "Transient primary-seed denominators or null result changed",
+    )
+    per_record = sources["transient_per_record"]
+    per_record_primary = per_record.loc[per_record["seed"] == primary_seed]
+    _require(
+        len(per_record_primary) == 144
+        and per_record_primary["record_id"].nunique() == 12
+        and per_record_primary["primary_fault_windows"].eq(5).all()
+        and per_record_primary["detected_fault_windows"].eq(0).all(),
+        "Transient record-level primary endpoint changed",
+    )
+    predictions = sources["transient_predictions"]
+    predictions_primary = predictions.loc[predictions["seed"] == primary_seed]
+    pre_counts = predictions_primary.loc[
+        predictions_primary["segment"] == "pre_fault"
+    ].groupby("method").size()
+    post = predictions_primary.loc[predictions_primary["segment"] == "post_fault"]
+    post_counts_by_method = post.groupby("method").size()
+    first_second = post.loc[post["primary_post_window"].astype(bool)]
+    first_counts_by_method = first_second.groupby("method").size()
+    _require(
+        pre_counts.eq(176).all()
+        and post_counts_by_method.eq(120).all()
+        and first_counts_by_method.eq(60).all()
+        and not post["alarm"].astype(bool).any(),
+        "Transient prediction horizons or zero-alarm result changed",
     )
 
 
@@ -1008,6 +1160,187 @@ population-level effect.
 """
 
 
+def render_s9(root: Path, sources: dict[str, Any]) -> str:
+    primary = sources["transient_compatibility_primary"]
+    post = sources["transient_compatibility_post"]
+    compatibility_rows: list[list[object]] = []
+    for stage, table in (
+        ("Frozen primary parser", primary),
+        ("Post-reveal implicit-time repair", post),
+    ):
+        for motor in ("200W", "20kW"):
+            motor_rows = table.loc[table["motor_id"] == motor]
+            compatible = int(motor_rows["main_endpoint_compatible"].astype(bool).sum())
+            total = len(motor_rows)
+            if stage == "Frozen primary parser":
+                interpretation = "no features or scores"
+            elif motor == "200W":
+                interpretation = "descriptive sensitivity only"
+            else:
+                interpretation = "44.44%; failed the frozen 80% gate"
+            compatibility_rows.append(
+                [
+                    stage,
+                    motor,
+                    f"{compatible}/{total}",
+                    percent(compatible / total),
+                    interpretation,
+                ]
+            )
+    compatibility_table = markdown_table(
+        ["Stage", "Motor", "Compatible records", "Fraction (%)", "Use"],
+        compatibility_rows,
+    )
+
+    metadata = sources["transient_validation_metadata"]
+    primary_seed = int(metadata["primary_seed"])
+    aggregate = sources["transient_aggregate"]
+    aggregate = aggregate.loc[aggregate["seed"] == primary_seed].set_index("method")
+    predictions = sources["transient_predictions"]
+    predictions = predictions.loc[predictions["seed"] == primary_seed]
+    method_rows = []
+    for method in TRANSIENT_METHOD_ORDER:
+        summary = aggregate.loc[method]
+        method_predictions = predictions.loc[predictions["method"] == method]
+        post_predictions = method_predictions.loc[
+            method_predictions["segment"] == "post_fault"
+        ]
+        first_second = post_predictions.loc[
+            post_predictions["primary_post_window"].astype(bool)
+        ]
+        method_rows.append(
+            [
+                method_label(method),
+                f"{int(summary['false_alarms'])}/{int(summary['healthy_windows'])}",
+                f"{int(first_second['alarm'].astype(bool).sum())}/{len(first_second)}",
+                (
+                    f"{int(summary['fault_record_any_alarm_rate'] * summary['records'])}/"
+                    f"{int(summary['records'])}"
+                ),
+                (
+                    f"{int(post_predictions['alarm'].astype(bool).sum())}/"
+                    f"{len(post_predictions)}"
+                ),
+                f"{float(summary['mean_record_auroc']):.3f}",
+            ]
+        )
+    method_table = markdown_table(
+        [
+            "Method",
+            "Held-out prefault alarms",
+            "First 1 s fault alarms",
+            "Record-any alarms",
+            "Full 2 s fault alarms",
+            "Mean record AUROC",
+        ],
+        method_rows,
+    )
+
+    hash_artifacts = [
+        ("preregistered protocol", "docs/secondary_transient_validation_protocol.md"),
+        ("chronological reveal log", "docs/secondary_transient_reveal_log.md"),
+        (
+            "frozen parser compatibility",
+            "results/transient_feature_build/record_compatibility.csv",
+        ),
+        (
+            "post-reveal compatibility",
+            (
+                "results/transient_feature_build_post_reveal_implicit_time/"
+                "record_compatibility.csv"
+            ),
+        ),
+        (
+            "post-reveal features",
+            "data/processed/transient_pmsm_features_post_reveal_implicit_time.csv.gz",
+        ),
+        (
+            "200 W method summary",
+            "results/transient_pmsm_validation_post_reveal_200w/aggregate_summary.csv",
+        ),
+        (
+            "200 W record summary",
+            "results/transient_pmsm_validation_post_reveal_200w/per_record_summary.csv",
+        ),
+        (
+            "200 W predictions",
+            (
+                "results/transient_pmsm_validation_post_reveal_200w/"
+                "window_predictions.csv.gz"
+            ),
+        ),
+    ]
+    hash_table = markdown_table(
+        ["Role", "Artifact", "SHA-256"],
+        [
+            [role, f"`{relative}`", file_sha256(root / relative)]
+            for role, relative in hash_artifacts
+        ],
+    )
+
+    per_record = sources["transient_per_record"]
+    per_record = per_record.loc[per_record["seed"] == primary_seed]
+    fit_min = int(per_record["fit_record_count"].min())
+    fit_max = int(per_record["fit_record_count"].max())
+    fit_count = str(fit_min) if fit_min == fit_max else f"{fit_min}-{fit_max}"
+    calibration_records = sorted(per_record["calibration_record_count"].unique())
+    calibration_min = int(per_record["calibration_windows"].min())
+    calibration_max = int(per_record["calibration_windows"].max())
+    proposed = aggregate.loc[PROPOSED]
+    min_cov = aggregate.loc["target_min_cov_det"]
+    return f"""## S9. Prospectively logged secondary transient-set audit
+
+This audit used Zenodo 10.5281/zenodo.15631383: 12 records from one 200 W
+PMSM and nine records from one 20 kW PMSM, all sampled at 10 kHz and all
+containing a transition from prefault operation to an interturn short circuit. It has
+no separate healthy-only records. Signal values remained sealed until the parser,
+onset rule, whole-record split, 80% motor-compatibility gate, detector family, and
+outputs had been frozen.
+
+### S9.1. Compatibility gate and preserved primary failure
+
+{compatibility_table}
+
+The frozen primary parser required an explicit monotonic 10 kHz time candidate.
+All 21 MATLAB `timeseries` objects instead stored uniform timing in `TimeInfo` while
+their explicit `Time_` arrays were empty. The run therefore stopped before feature
+extraction and produced no detector scores. After that failure was committed, a
+separate opt-in parser reconstructed time from the stored start, increment, and length.
+Five 20 kW records then remained incompatible because detected onset overlapped the
+frozen 0.5 s baseline. No alternative baseline or record subset was selected, so the
+20 kW motor has no quantitative endpoint.
+
+### S9.2. Post-reveal 200 W single-motor sensitivity
+
+Each of 12 200 W records was held out in turn. Depending on the hash split,
+{fit_count} other records supplied prefault fit windows and
+{calibration_records[0]} records supplied {calibration_min}-{calibration_max}
+calibration windows; the held-out record supplied 176 prefault test windows, five
+primary first-second windows, and ten windows over the full 2 s post-onset horizon.
+
+{method_table}
+
+Every method produced zero thresholded alarms in both post-onset horizons. Held-out
+prefault alarms ranged from 7/176 to 13/176. Proposed produced
+{int(proposed['false_alarms'])}/176 prefault alarms and mean record AUROC
+{float(proposed['mean_record_auroc']):.3f}; Target MinCovDet produced
+{int(min_cov['false_alarms'])}/176 and AUROC
+{float(min_cov['mean_record_auroc']):.3f}. Because all 12 methods tie at zero detection,
+paired thresholded transfer comparisons are uninformative; score-ranking differences
+do not rescue the missed early alarms. This analysis is post-reveal, contains one
+physical motor, and reuses prefault and fault segments from the same transition
+records. It cannot confirm cross-capacity transfer or support population inference.
+
+### S9.3. Audit hashes
+
+{hash_table}
+
+The immutable frozen parser failure and the opt-in repaired analysis are stored in
+separate result directories. The repaired feature-table hash is checked against both
+the extractor and validation metadata before this section is generated.
+"""
+
+
 def build_supplementary(root: Path) -> str:
     sources = load_sources(root)
     validate_sources(root, sources)
@@ -1016,6 +1349,8 @@ def build_supplementary(root: Path) -> str:
 > Submission draft generated mechanically from hash-locked CSV/JSON artifacts. The
 > frozen external experiment uses one physical motor. Sections S3–S7 are
 > explicitly post-reveal diagnostics and did not select a new model or threshold.
+> Section S9 preserves a prospectively logged parser failure and labels the repaired
+> 200 W analysis as post-reveal sensitivity.
 
 ## Technical summary
 
@@ -1028,6 +1363,9 @@ detection. The apparent performance increase late in each record is coupled to t
 shared acceleration ramp. Five-seed, feature-geometry, and 100 kHz-to-10 kHz
 sensitivity analyses did not change the frozen primary result. All external
 intervals and post-reveal comparisons remain conditional on a single physical motor.
+The secondary 21-record transient audit did not supply confirmatory evidence: the
+frozen parser accepted 0/21 records, the repaired 20 kW arm failed its compatibility
+gate, and all methods had zero first-second detection in the repaired 200 W sensitivity.
 """
     sections = [
         render_s1(sources),
@@ -1038,6 +1376,7 @@ intervals and post-reveal comparisons remain conditional on a single physical mo
         render_s6(sources),
         render_s7(sources),
         render_s8(root, sources),
+        render_s9(root, sources),
     ]
     return summary.rstrip() + "\n\n" + "\n\n".join(section.strip() for section in sections) + "\n"
 

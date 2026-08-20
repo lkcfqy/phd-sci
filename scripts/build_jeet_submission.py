@@ -99,6 +99,8 @@ ANONYMOUS_BUNDLE_PATHS = [
     Path("docs/research_protocol.md"),
     Path("docs/external_validation_protocol.md"),
     Path("docs/fault_reveal_log.md"),
+    Path("docs/secondary_transient_validation_protocol.md"),
+    Path("docs/secondary_transient_reveal_log.md"),
     Path("docs/data_sources.yaml"),
     Path("results/external_pmsm_validation"),
     Path("results/external_pmsm_analysis"),
@@ -106,6 +108,9 @@ ANONYMOUS_BUNDLE_PATHS = [
     Path("results/external_seed_sensitivity"),
     Path("results/external_feature_drift"),
     Path("results/sampling_rate_sensitivity"),
+    Path("results/transient_feature_build"),
+    Path("results/transient_feature_build_post_reveal_implicit_time"),
+    Path("results/transient_pmsm_validation_post_reveal_200w"),
 ]
 
 
@@ -1053,6 +1058,37 @@ def iter_bundle_files() -> Iterable[tuple[Path, Path]]:
             yield path, path.relative_to(ROOT)
 
 
+def anonymize_bundle_data(data: bytes, relative: Path) -> bytes:
+    """Replace task-local absolute roots in text artifacts without altering sources."""
+    text_suffixes = {
+        ".cfg",
+        ".csv",
+        ".ini",
+        ".json",
+        ".md",
+        ".py",
+        ".toml",
+        ".txt",
+        ".yaml",
+        ".yml",
+    }
+    if relative.suffix.lower() not in text_suffixes:
+        return data
+    text = data.decode("utf-8")
+    root_windows = str(ROOT)
+    for local_root in sorted(
+        {
+            root_windows.replace("\\", "\\\\"),
+            root_windows,
+            root_windows.replace("\\", "/"),
+        },
+        key=len,
+        reverse=True,
+    ):
+        text = text.replace(local_root, ".")
+    return text.encode("utf-8")
+
+
 def build_reproducibility_zip(output: Path) -> dict[str, object]:
     entries: list[dict[str, str]] = []
     readme = """# Anonymous reproducibility bundle
@@ -1077,9 +1113,11 @@ ruff check .
 The public raw files are not redistributed. Primary dataset identifiers, licenses,
 download locations, and expected hashes are in `docs/data_sources.yaml`; the locked
 split and one-time external-reveal rules are in `docs/research_protocol.md`,
-`docs/external_validation_protocol.md`, and `docs/fault_reveal_log.md`. Selected frozen
-outputs are included under `results/`. Every archived file covered by the internal
-manifest can be checked against `MANIFEST_SHA256.json`.
+`docs/external_validation_protocol.md`, `docs/fault_reveal_log.md`,
+`docs/secondary_transient_validation_protocol.md`, and
+`docs/secondary_transient_reveal_log.md`. Selected frozen outputs are included under
+`results/`. Every archived file covered by the internal manifest can be checked against
+`MANIFEST_SHA256.json`.
 """
     output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
@@ -1090,8 +1128,19 @@ manifest can be checked against `MANIFEST_SHA256.json`.
             archive.writestr(info, readme_data)
             entries.append({"path": readme_name, "sha256": hashlib.sha256(readme_data).hexdigest()})
         for source, relative in iter_bundle_files():
-            data = source.read_bytes()
-            if b"C:\\Users\\lkcfq" in data or b"C:/Users/lkcfq" in data:
+            data = anonymize_bundle_data(source.read_bytes(), relative)
+            lowered = data.lower()
+            if any(
+                token in lowered
+                for token in (
+                    b"c:\\users",
+                    b"c:\\\\users",
+                    b"c:/users",
+                    b"c:\\lkc\\phd sci",
+                    b"c:\\\\lkc\\\\phd sci",
+                    b"c:/lkc/phd sci",
+                )
+            ):
                 raise ValueError(f"Local identity-bearing path found in bundle input: {relative}")
             arcname = relative.as_posix()
             info = zipfile.ZipInfo(arcname, (2026, 8, 20, 0, 0, 0))

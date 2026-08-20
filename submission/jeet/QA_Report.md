@@ -6,7 +6,7 @@ This is an internal handoff record. Do not upload it as a manuscript file.
 
 ## Completed checks
 
-- The anonymous manuscript source has a 247-word abstract, six keywords, 33 cited
+- The anonymous manuscript source has a 247-word abstract, six keywords, 34 cited
   bibliography entries, three consecutively cited tables, and eleven consecutively
   cited figures.
 - `Manuscript_Anonymous.docx` contains three Word tables, eleven embedded figures with
@@ -15,28 +15,36 @@ This is an internal handoff record. Do not upload it as a manuscript file.
   affiliation token.
 - The separate title page and cover letter deliberately retain conspicuous
   `AUTHOR_INPUT_REQUIRED` filenames, document metadata, and bracketed fields.
-- `Manuscript_Anonymous.pdf` has 16 portrait pages; all 16 pages were rendered at
-  144 dpi and visually inspected for clipping, overlap, broken figure/caption pairs,
+- `Manuscript_Anonymous.pdf` has 17 portrait pages; all 17 pages were rendered at
+  180 dpi and visually inspected for clipping, overlap, broken figure/caption pairs,
   missing-glyph boxes, table overflow, and unintended blank pages.
-- `ESM_1_Supplementary_Material.pdf` has six landscape pages; all six pages were
-  rendered at 144 dpi and visually inspected for the same defects. Its 14 tables fit
-  within their page frames, and multiline limitation bullets remain intact.
+- `ESM_1_Supplementary_Material.pdf` has eight landscape pages; all eight pages were
+  rendered at 180 dpi and visually inspected for the same defects. Its 17 tables fit
+  within their page frames, including the S9 compatibility, 12-method, and hash tables.
+- S9 preserves the frozen `0/21` parser-compatibility failure separately from the
+  post-reveal implicit-time repair; it does not present the 200 W sensitivity as a
+  third confirmatory validation dataset.
 - Both review PDFs report `Anonymous` as the PDF author and passed page-size,
   extractable-text, near-blank-page, and identity-token audits.
+- The document-skill accessibility audit reported zero high-, medium-, or low-severity
+  findings for the anonymous manuscript, title-page template, cover-letter template,
+  and intermediate supplementary DOCX.
 - The reproducibility ZIP has an installable project shape, excludes raw/processed
-  datasets, Git history, local paths, submission-build utilities, and submission-only
-  tests, and contains an internal SHA-256 manifest covering every archived file except
-  the manifest itself.
+  datasets, Git history, task-local absolute paths, submission-build utilities, and
+  submission-only tests. It includes both secondary transient-audit protocols and the
+  selected frozen/post-reveal result directories, and contains an internal SHA-256
+  manifest covering every archived file except the manifest itself.
 - The final binary hashes and PDF page audits are recorded in `build_metadata.json`.
 
 ## Renderer boundary
 
-The workstation did not contain Microsoft Word or LibreOffice, so a native Word-engine
-render of the three DOCX files was not available. The manuscript and supplement review
-PDFs were generated directly from the same frozen Markdown, BibTeX, figure, caption,
-and citation-order sources and received full page-by-page visual inspection. The DOCX
-files received OOXML structure, metadata, content, figure-count, table-count, style,
-page-field, and anonymity checks instead.
+The workstation did not contain Microsoft Word or LibreOffice. The canonical DOCX
+renderer was invoked and stopped with the expected missing-executable error, so a native
+Word-engine render of the three final DOCX files was not available. The manuscript and
+supplement review PDFs were generated directly from the same frozen Markdown, BibTeX,
+figure, caption, and citation-order sources and received full page-by-page visual
+inspection. The DOCX files received OOXML structure, metadata, content, figure-count,
+table-count, style, page-field, anonymity, and accessibility checks instead.
 
 After authorship fields are completed, the corresponding author must open the final
 DOCX files in the exact Word version used for upload, update fields, and inspect every

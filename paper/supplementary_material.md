@@ -3,6 +3,8 @@
 > Submission draft generated mechanically from hash-locked CSV/JSON artifacts. The
 > frozen external experiment uses one physical motor. Sections S3–S7 are
 > explicitly post-reveal diagnostics and did not select a new model or threshold.
+> Section S9 preserves a prospectively logged parser failure and labels the repaired
+> 200 W analysis as post-reveal sensitivity.
 
 ## Technical summary
 
@@ -15,6 +17,9 @@ detection. The apparent performance increase late in each record is coupled to t
 shared acceleration ramp. Five-seed, feature-geometry, and 100 kHz-to-10 kHz
 sensitivity analyses did not change the frozen primary result. All external
 intervals and post-reveal comparisons remain conditional on a single physical motor.
+The secondary 21-record transient audit did not supply confirmatory evidence: the
+frozen parser accepted 0/21 records, the repaired 20 kW arm failed its compatibility
+gate, and all methods had zero first-second detection in the repaired 200 W sensitivity.
 
 ## S1. Data, experimental units, and locked splits
 
@@ -343,3 +348,81 @@ independent external motors, preferably with stationary speed/load segments as w
 as ramps. Until that experiment, external uncertainty is conditional on the single
 observed motor and the failure of source balancing should not be generalized as a
 population-level effect.
+
+## S9. Prospectively logged secondary transient-set audit
+
+This audit used Zenodo 10.5281/zenodo.15631383: 12 records from one 200 W
+PMSM and nine records from one 20 kW PMSM, all sampled at 10 kHz and all
+containing a transition from prefault operation to an interturn short circuit. It has
+no separate healthy-only records. Signal values remained sealed until the parser,
+onset rule, whole-record split, 80% motor-compatibility gate, detector family, and
+outputs had been frozen.
+
+### S9.1. Compatibility gate and preserved primary failure
+
+| Stage | Motor | Compatible records | Fraction (%) | Use |
+| --- | --- | --- | --- | --- |
+| Frozen primary parser | 200W | 0/12 | 0.00 | no features or scores |
+| Frozen primary parser | 20kW | 0/9 | 0.00 | no features or scores |
+| Post-reveal implicit-time repair | 200W | 12/12 | 100.00 | descriptive sensitivity only |
+| Post-reveal implicit-time repair | 20kW | 4/9 | 44.44 | 44.44%; failed the frozen 80% gate |
+
+The frozen primary parser required an explicit monotonic 10 kHz time candidate.
+All 21 MATLAB `timeseries` objects instead stored uniform timing in `TimeInfo` while
+their explicit `Time_` arrays were empty. The run therefore stopped before feature
+extraction and produced no detector scores. After that failure was committed, a
+separate opt-in parser reconstructed time from the stored start, increment, and length.
+Five 20 kW records then remained incompatible because detected onset overlapped the
+frozen 0.5 s baseline. No alternative baseline or record subset was selected, so the
+20 kW motor has no quantitative endpoint.
+
+### S9.2. Post-reveal 200 W single-motor sensitivity
+
+Each of 12 200 W records was held out in turn. Depending on the hash split,
+6 other records supplied prefault fit windows and
+5 records supplied 67-88
+calibration windows; the held-out record supplied 176 prefault test windows, five
+primary first-second windows, and ten windows over the full 2 s post-onset horizon.
+
+| Method | Held-out prefault alarms | First 1 s fault alarms | Record-any alarms | Full 2 s fault alarms | Mean record AUROC |
+| --- | --- | --- | --- | --- | --- |
+| Target Ledoit–Wolf | 7/176 | 0/60 | 0/12 | 0/120 | 0.280 |
+| Target sample covariance | 11/176 | 0/60 | 0/12 | 0/120 | 0.562 |
+| Target Log-Euclidean covariance | 11/176 | 0/60 | 0/12 | 0/120 | 0.546 |
+| Source covariance | 9/176 | 0/60 | 0/12 | 0/120 | 0.532 |
+| Entity-balanced covariance | 13/176 | 0/60 | 0/12 | 0/120 | 0.559 |
+| Proposed: Log-Euclidean entity covariance | 8/176 | 0/60 | 0/12 | 0/120 | 0.541 |
+| Target OC-SVM (RBF) | 9/176 | 0/60 | 0/12 | 0/120 | 0.389 |
+| Source+target OC-SVM (RBF) | 8/176 | 0/60 | 0/12 | 0/120 | 0.161 |
+| Target Isolation Forest | 11/176 | 0/60 | 0/12 | 0/120 | 0.447 |
+| Source+target Isolation Forest | 12/176 | 0/60 | 0/12 | 0/120 | 0.524 |
+| Target MinCovDet | 9/176 | 0/60 | 0/12 | 0/120 | 0.564 |
+| Source+target MinCovDet | 9/176 | 0/60 | 0/12 | 0/120 | 0.539 |
+
+Every method produced zero thresholded alarms in both post-onset horizons. Held-out
+prefault alarms ranged from 7/176 to 13/176. Proposed produced
+8/176 prefault alarms and mean record AUROC
+0.541; Target MinCovDet produced
+9/176 and AUROC
+0.564. Because all 12 methods tie at zero detection,
+paired thresholded transfer comparisons are uninformative; score-ranking differences
+do not rescue the missed early alarms. This analysis is post-reveal, contains one
+physical motor, and reuses prefault and fault segments from the same transition
+records. It cannot confirm cross-capacity transfer or support population inference.
+
+### S9.3. Audit hashes
+
+| Role | Artifact | SHA-256 |
+| --- | --- | --- |
+| preregistered protocol | `docs/secondary_transient_validation_protocol.md` | d5f072dd6b494e6b09c1ec6c8956c5d0e60310fc724711d4a66792a78b1b8a08 |
+| chronological reveal log | `docs/secondary_transient_reveal_log.md` | 2620b53b6a6ef16d093d74f9b7522fd937dff8c3d61f6bef2ecbb515ad374801 |
+| frozen parser compatibility | `results/transient_feature_build/record_compatibility.csv` | b2f737ca6d2dfbd20f211b1e083dd7a045954658f21f7a7553bcf8fb93aa219e |
+| post-reveal compatibility | `results/transient_feature_build_post_reveal_implicit_time/record_compatibility.csv` | 315d0887fc8db78d87f6ac8db3c120bc91977b4ee4b4e42a8b65748a5c7172a0 |
+| post-reveal features | `data/processed/transient_pmsm_features_post_reveal_implicit_time.csv.gz` | 92fea2691ea737319dd43469130b0275bce596bab1e98f0bc4c391f109899ad1 |
+| 200 W method summary | `results/transient_pmsm_validation_post_reveal_200w/aggregate_summary.csv` | aa4904f52069c94e3d5ddf885b63fffa54cd35b71671fc5ab85cc9ee1bede41b |
+| 200 W record summary | `results/transient_pmsm_validation_post_reveal_200w/per_record_summary.csv` | b73c1260342d09d1d52546d6fbded7106e352127e80e6dacc67538d556447ad8 |
+| 200 W predictions | `results/transient_pmsm_validation_post_reveal_200w/window_predictions.csv.gz` | 4c474ac9da88f2b34daff2bb2151939ccc2b77b004ea3e4dfb959fe5da19e3d6 |
+
+The immutable frozen parser failure and the opt-in repaired analysis are stored in
+separate result directories. The repaired feature-table hash is checked against both
+the extractor and validation metadata before this section is generated.

@@ -1,5 +1,5 @@
 {
-  "cover_letter_sha256": "769dd1b41366018e84376c2f85126e34dfe521d88d86a26243f0e5b9f176f36e",
+  "cover_letter_sha256": "9448a398251f18c5fab6174b79301c6097f99d4ab57c1cad448c144027c9a49d",
   "figures": [
     {
       "caption": "Motor holdout, sequential target-health split, and method flow",
@@ -148,16 +148,16 @@
   "generated": "2026-08-21",
   "journal": "Journal of Electrical Engineering & Technology",
   "manuscript": {
-    "citations": 33,
+    "citations": 34,
     "figures": 11,
     "output": "submission\\jeet\\Manuscript_Anonymous.docx",
-    "sha256": "7c7de0098b9db8312921822285bf7c1c8ec7236662895cb889291aa5cf16e7aa",
+    "sha256": "1f1a3852de27dcbb02c672f9923603af0b1d0e833da9044f42b9dbe7f6c7a9bb",
     "tables": 3
   },
   "pdfs": {
     "manuscript": {
       "author": "Anonymous",
-      "citations": 33,
+      "citations": 34,
       "figures": 11,
       "minimum_extracted_characters_per_page": 587,
       "output": "submission\\jeet\\Manuscript_Anonymous.pdf",
@@ -165,33 +165,33 @@
         612.0,
         792.0
       ],
-      "pages": 16,
-      "sha256": "7f64f662a68ca71f62dcf11023c82bf60137887ff2808f0112455019bbce1035",
+      "pages": 17,
+      "sha256": "0520a3a0ff6dae1d0bb4b0ccce62e0111aad4043a23e0840965cc838ca2d3944",
       "tables": 3
     },
     "supplement": {
       "author": "Anonymous",
       "citations": 0,
       "figures": 0,
-      "minimum_extracted_characters_per_page": 2964,
+      "minimum_extracted_characters_per_page": 1534,
       "output": "submission\\jeet\\ESM_1_Supplementary_Material.pdf",
       "page_size_points": [
         792.0,
         612.0
       ],
-      "pages": 6,
-      "sha256": "8581a6973af0681d20a9eba09b4b564eb5b8a4c46f51f4c217e7546e1989e735",
-      "tables": 14
+      "pages": 8,
+      "sha256": "45ecadb2c654680b04ce6447f1ea27302b9c9f151b9f1be4cd0aea5ae94ba3fe",
+      "tables": 17
     }
   },
   "reproducibility_bundle": {
-    "bytes": 3243809,
-    "files": 345,
-    "sha256": "c5eb731336939d3ca4e9b1c590bf72932a169482ac37fa686382cc1bd1f5c617"
+    "bytes": 4309451,
+    "files": 371,
+    "sha256": "88124a3524ca164c8c09c2cbd577b60d488c0b06fabf9f584cbb8b72abde28a6"
   },
   "source_audit": {
     "abstract_words": 247,
-    "cited_bibliography_entries": 33,
+    "cited_bibliography_entries": 34,
     "figure_citations": [
       1,
       2,
@@ -216,8 +216,8 @@
     "citations": 0,
     "figures": 0,
     "output": "tmp\\jeet_submission\\ESM_1_Supplementary_Material.docx",
-    "sha256": "5086dae9a3f4103a6626399e5bd3727ec12b86b9f65d6a67455f5963ae9a8ef4",
-    "tables": 14
+    "sha256": "8e7feee9d179c834a66b4e3fb63b812b3333985711ddb8f551a41258e1a3b31a",
+    "tables": 17
   },
-  "title_page_sha256": "4a5b2cc0a3e7d75f0c5ff9ce7438ca28bbb7a36c6352619be6f80804369d70f5"
+  "title_page_sha256": "99f36954fdb01555a12a1bf60b218bc3983e85f2eef5c5c9f193a9b3fa7dc41b"
 }

@@ -56,19 +56,26 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
 - 将全部 KAIST 电流先抗混叠降采样至 10 kHz，再机械复用冻结协议后，原方法外部
   detection `0.2500→0.2474`、AUROC `0.6354→0.6331`、FAR 仍为 `1/32`；因此
   `100 kHz→10 kHz` 差异不支持为外部负迁移的主因。
+- 在另一套含 200 W/20 kW 两台 PMSM、21 条瞬态记录的数据上，预注册主解析器因
+  MATLAB `timeseries` 仅以元数据保存隐式时间而得到 `0/21` 兼容记录；该失败在计分前
+  原样冻结，不能算检测结果。
+- 事后仅修复时间重建后，200 W 为 `12/12` 可用，20 kW 仅 `4/9`，未过预设 `80%`
+  兼容性门槛。200 W 单电机敏感性中，12 种方法在前 1 s 的 `60` 个故障窗和完整 2 s
+  的 `120` 个故障窗上均为零告警；该结果只用于暴露数据/协议边界，不作为第三个确认集。
 
 这些结果把论文从“新方法精度论文”转成“防泄漏跨数据集评估与负迁移失败研究”。
 它具备继续形成 SCI/SCIE 稿件的价值，但单台外部电机仍限制总体推断，也不构成录用
-保证。精确结果与失败项见 [`docs/fault_reveal_log.md`](docs/fault_reveal_log.md) 和
-[`results/external_pmsm_analysis/`](results/external_pmsm_analysis/)。
+保证。精确结果与失败项见 [`docs/fault_reveal_log.md`](docs/fault_reveal_log.md)、
+[`results/external_pmsm_analysis/`](results/external_pmsm_analysis/) 和
+[`docs/secondary_transient_reveal_log.md`](docs/secondary_transient_reveal_log.md)。
 
 ## JEET 投稿包状态
 
 面向 *Journal of Electrical Engineering & Technology* 的双盲投稿包已经生成在
-[`submission/jeet/`](submission/jeet/)：匿名 Word 正文、16 页审稿 PDF、独立标题页
-模板、投稿信模板、6 页补充材料、匿名复现代码包以及 Fig1--Fig11 独立源文件均已就位。
-22 个 PDF 页面已完成视觉检查，DOCX 已完成 OOXML 结构与匿名性检查；由于当前工作站
-没有 Word/LibreOffice，补齐作者信息后仍须在最终提交所用 Word 版本中逐页复核。
+[`submission/jeet/`](submission/jeet/)：匿名 Word 正文、17 页审稿 PDF、独立标题页
+模板、投稿信模板、8 页补充材料、匿名复现代码包以及 Fig1--Fig11 独立源文件均已就位。
+最终视觉与结构复核状态记录在 [`submission/jeet/QA_Report.md`](submission/jeet/QA_Report.md)；
+补齐作者信息后仍须由全体作者在最终提交所用 Word 版本中逐页复核并批准全部声明。
 
 提交前剩余的人工门槛和费用警告见
 [`submission/jeet/Submission_Checklist.md`](submission/jeet/Submission_Checklist.md)，
@@ -90,7 +97,7 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
 [`paper/outline.md`](paper/outline.md)，当前 SCI/SCIE 期刊梯度与投稿硬门槛见
 [`docs/submission_strategy.md`](docs/submission_strategy.md)，博士三篇论文与昌原本地合作
 路线见 [`docs/phd_roadmap.md`](docs/phd_roadmap.md)。原始文献缺口与禁止主张见
-[`docs/literature_gap.md`](docs/literature_gap.md)，机械生成的 S1--S8 补充材料见
+[`docs/literature_gap.md`](docs/literature_gap.md)，机械生成的 S1--S9 补充材料见
 [`paper/supplementary_material.md`](paper/supplementary_material.md)。
 
 ## 数据轨道
@@ -114,6 +121,19 @@ Log-Euclidean 方法、不在揭盲后偷换主方法，并把跨数据集排名
   完整 6 turns × 8 loads 网格已按冻结 `[12,36) s` 协议运行，无文件事后排除。
 
 完整揭盲规则见 [`docs/external_validation_protocol.md`](docs/external_validation_protocol.md)。
+
+### 预注册副验证：200 W/20 kW 瞬态 ITSC（非确认性）
+
+- Zenodo `10.5281/zenodo.15631383`，CC BY 4.0；200 W 电机 12 条、20 kW 电机 9 条，
+  每条均含健康到故障的转变，没有独立健康文件；
+- 归档、解析器、通道白名单、起点算法、整记录留出和 `80%` 电机兼容门槛均在读取
+  信号值前冻结；
+- 主解析器失败与事后隐式时间修复分目录保存；20 kW 不过门槛，200 W 结果仅作单电机
+  post-reveal 敏感性，不提升为跨容量验证。
+
+完整协议与揭盲时间线见
+[`docs/secondary_transient_validation_protocol.md`](docs/secondary_transient_validation_protocol.md)
+和 [`docs/secondary_transient_reveal_log.md`](docs/secondary_transient_reveal_log.md)。
 
 ### 副轨 A：几何到转矩波形代理
 
