@@ -73,6 +73,12 @@ transient_cross_capacity_pmsm_itsc:
   limitation: no_independent_healthy_files; each_record_transitions_from_health_to_fault
   structural_audit_status: 21_of_21_MAT_metadata_verified_without_signal_loading
   parser_status: frozen_mat_io_1_0_MCOS_whitelist_pending_signal_reveal
+  primary_reveal_status: parser_incompatible_0_of_21_explicit_time_rule
+  post_reveal_implicit_time_status:
+    compatible_200W: 12_of_12
+    compatible_20kW: 4_of_9
+    two_motor_gate: failed
+    200W_only_first_second_detection: 0_of_60_for_all_12_methods
 
 pmsg_long_record_itsc:
   title: Permanent-magnet synchronous generator fault dataset

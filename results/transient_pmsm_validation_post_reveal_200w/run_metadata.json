@@ -1,0 +1,2249 @@
+{
+  "alpha": 0.05,
+  "arithmetic_ridge": 0.001,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 20260821,
+  "compatibility_sha256": "3c4e65af28a4f5c4e4a2d341f16fd91cfb996eb7bf5f3548cd1fa06a3489b4fc",
+  "created_utc": "2026-08-20T17:02:29.872153+00:00",
+  "feature_columns": [
+    "fundamental_hz",
+    "sequence_unbalance",
+    "fundamental_amplitude_cv",
+    "phase_rms_cv",
+    "clarke_radius_cv",
+    "spectral_entropy",
+    "sideband_lower_ratio",
+    "sideband_upper_ratio",
+    "harmonic_2_ratio_mean",
+    "harmonic_2_ratio_max",
+    "harmonic_3_ratio_mean",
+    "harmonic_3_ratio_max",
+    "harmonic_4_ratio_mean",
+    "harmonic_4_ratio_max",
+    "harmonic_5_ratio_mean",
+    "harmonic_5_ratio_max",
+    "thd_2_to_5_mean",
+    "rms_ratio_a",
+    "crest_a",
+    "kurtosis_a",
+    "rms_ratio_b",
+    "crest_b",
+    "kurtosis_b",
+    "rms_ratio_c",
+    "crest_c",
+    "kurtosis_c"
+  ],
+  "feature_count": 26,
+  "fit_diagnostics": {
+    "200W|200W_load_transient_1000_4turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 90,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 90,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1000_4turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 90,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 90,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 90,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1000_4turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 90,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 90,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1000_4turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 90,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 90,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1000_4turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 360,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 90,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 90,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 90,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_2turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 82,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 82,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_2turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 82,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 82,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 82,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_2turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 82,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 82,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_2turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 82,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 82,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_2turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 328,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 82,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 82,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 82,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_4turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 79,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 79,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_4turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 79,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 79,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 79,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_4turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 79,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 79,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_4turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 79,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 79,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_4turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 316,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 79,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 79,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 79,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_6turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 91,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 91,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_6turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 91,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 91,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 91,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_6turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 91,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 91,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_6turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 91,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 91,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_load_transient_1200_6turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 364,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 91,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 91,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 91,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1000_4turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 89,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 89,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1000_4turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 89,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 89,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 89,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1000_4turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 89,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 89,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1000_4turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 89,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 89,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1000_4turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 356,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 89,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 89,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 89,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_2turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 81,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 81,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_2turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 81,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 81,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 81,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_2turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 81,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 81,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_2turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 81,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 81,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_2turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 324,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 81,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 81,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 81,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_4turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 77,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 77,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_4turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 77,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 77,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 77,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_4turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 77,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 77,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_4turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 77,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 77,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_4turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 308,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 77,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 77,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 77,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_6turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 98,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 98,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_6turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 98,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 98,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 98,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_6turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 98,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 98,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_6turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 98,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 98,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_steady_state_1200_6turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 392,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 98,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 98,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 98,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1000_4turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 85,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1000_4turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1000_4turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 85,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1000_4turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 85,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1000_4turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 85,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_2turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 87,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 87,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_2turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 87,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 87,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 87,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_2turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 87,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 87,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_2turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 87,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 87,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_2turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 348,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 87,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 87,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 87,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_4turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 78,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 78,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_4turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 78,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 78,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 78,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_4turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 78,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 78,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_4turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 78,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 78,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_4turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 312,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 78,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 78,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 78,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_6turn|1201": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 85,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_6turn|20260820": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_ocsvm_rbf": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_6turn|2402": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 85,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_6turn|3603": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 85,
+        "training_scope": "target"
+      }
+    },
+    "200W|200W_velocity_transient_1200_6turn|4804": {
+      "source_target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "source_target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 340,
+        "training_scope": "source_target_balanced"
+      },
+      "target_isolation_forest": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 26,
+        "training_rows": 85,
+        "training_scope": "target"
+      },
+      "target_min_cov_det": {
+        "balanced_rows_per_entity": 85,
+        "fit_warnings": [],
+        "retained_features": 25,
+        "training_rows": 85,
+        "training_scope": "target"
+      }
+    }
+  },
+  "fold_summaries": 336,
+  "inference_boundary": "Record-level intervals are descriptive for two physical motors; continuous windows and repeated conditions are not independent machines.",
+  "isolation_trees": 500,
+  "log_ridge": 0.01,
+  "minimum_calibration_windows": 19,
+  "predictions": 8288,
+  "primary_post_fault_seconds": 1.0,
+  "primary_post_fault_windows": 5,
+  "primary_seed": 20260820,
+  "scikit_learn": "1.9.0",
+  "sensitivity_seeds": [
+    20260820,
+    1201,
+    2402,
+    3603,
+    4804
+  ],
+  "source_diagnostics": {
+    "robust_parameters": {
+      "1.5kW": {
+        "center": [
+          200.0,
+          0.6522014559425426,
+          0.092544296210047,
+          0.0945108276055176,
+          0.4181610298742265,
+          0.1589723828199865,
+          0.0067773647939903,
+          0.0069054303060944,
+          0.0155798379318858,
+          0.0215532153852875,
+          0.00945119490766905,
+          0.01409203590018335,
+          0.01467647006586135,
+          0.021839585687355598,
+          0.03510331123632595,
+          0.038116162297436945,
+          0.04376397334670815,
+          0.866566486326959,
+          1.9675669737021901,
+          1.5619872653492266,
+          1.0582069212654013,
+          2.034293236960046,
+          1.5399067705663958,
+          1.0757686978689043,
+          2.085507626564023,
+          1.560921956958871
+        ],
+        "scale": [
+          1.0,
+          0.005665287394368954,
+          0.003924439750943702,
+          0.00314783441197214,
+          0.004328585658111304,
+          0.00452252019771495,
+          0.002799534385391343,
+          0.003549199298251941,
+          0.002648185966919953,
+          0.003246550166006739,
+          0.002387207557744195,
+          0.004341490843871838,
+          0.0019381520486980986,
+          0.0029927309922328765,
+          0.004251023162527688,
+          0.00416277109718236,
+          0.0037235275499766045,
+          0.0044404200190075,
+          0.08954764228614243,
+          0.028093782586339662,
+          0.004019676005254574,
+          0.15277299096589764,
+          0.02620549825359245,
+          0.004133147585058248,
+          0.12509052886689562,
+          0.022507401842408053
+        ]
+      },
+      "1kW": {
+        "center": [
+          200.0,
+          0.02310125440579425,
+          0.011608348688072801,
+          0.013699501245511999,
+          0.07756406396134075,
+          0.15479568560329443,
+          0.00638924875677065,
+          0.0086691099761773,
+          0.03665930356966375,
+          0.05229128348086655,
+          0.01495536716688085,
+          0.02190308951242385,
+          0.0296711051350896,
+          0.0384351997346982,
+          0.0083246576934318,
+          0.012169412093886351,
+          0.05166663348452185,
+          0.9838821101145734,
+          1.6952498489053451,
+          1.5426660789226672,
+          1.0170401883721134,
+          1.8121837584620155,
+          1.5532447247184846,
+          0.9990852640405454,
+          1.6714006090676485,
+          1.4874938024776228
+        ],
+        "scale": [
+          1.0,
+          0.002450068911829019,
+          0.0019970068878142873,
+          0.0016184814403411099,
+          0.006502496074031601,
+          0.0011351730064546421,
+          0.0021725168766203048,
+          0.0014670948458265526,
+          0.0015345758489542618,
+          0.0023904961688348356,
+          0.0011475919818558443,
+          0.0018781389633591545,
+          0.0013013978931856035,
+          0.00170247963656416,
+          0.0012360787730237696,
+          0.0017200999761192571,
+          0.0014874273823689992,
+          0.0021663472945990954,
+          0.10531739836549017,
+          0.010770105935783203,
+          0.002352925536402196,
+          0.061495167431709984,
+          0.008301333420882958,
+          0.0019641197947482514,
+          0.0587407618318956,
+          0.007307880954310276
+        ]
+      },
+      "3kW": {
+        "center": [
+          200.0,
+          0.6582925670040544,
+          0.0968278304748888,
+          0.09593331572730596,
+          0.3972434789566977,
+          0.1561593904853058,
+          0.0064340049538407496,
+          0.0053221831295357,
+          0.0252151003630957,
+          0.033463038065891404,
+          0.0043625818124193,
+          0.0064528905565509505,
+          0.02239456864272355,
+          0.0260447976648878,
+          0.04211196489196605,
+          0.04590026986190575,
+          0.0543573215980767,
+          0.8650769968162169,
+          1.9749399773811973,
+          1.5552191146815564,
+          1.0544007226612078,
+          2.0704031967403482,
+          1.5541585736883914,
+          1.0802818674502097,
+          2.0476167925432787,
+          1.545125269308859
+        ],
+        "scale": [
+          1.0,
+          0.00899904337194075,
+          0.004506853223502439,
+          0.0046799686192887675,
+          0.010763189953804726,
+          0.0030224545750929498,
+          0.0016393542106006688,
+          0.0015238147654905933,
+          0.0016633836028723703,
+          0.002996466044881937,
+          0.0012373574225139701,
+          0.001694105489935701,
+          0.0014792849424554984,
+          0.0020431753079094197,
+          0.0036423029196270915,
+          0.0056650819402194325,
+          0.003191655719897231,
+          0.006620094043681683,
+          0.22641468703639744,
+          0.05896576647715252,
+          0.0031403478599668056,
+          0.23223144926077038,
+          0.05191635097856595,
+          0.003695178211290263,
+          0.25734730934056094,
+          0.051497510669383115
+        ]
+      }
+    },
+    "rows_by_motor": {
+      "1.5kW": 360,
+      "1kW": 360,
+      "3kW": 360
+    }
+  },
+  "source_features": "C:\\lkc\\phd sci\\data\\processed\\kaist_current_features_10khz.csv.gz",
+  "source_features_sha256": "4d196d756b01ab43bd6431a2334a5922787eaf83df7836927c4f1d4d436b13ad",
+  "source_motors": [
+    "1kW",
+    "1.5kW",
+    "3kW"
+  ],
+  "source_reference_blocks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "split": "leave-one-record-out; whole-record hash fit/calibration",
+  "split_salt": "20260821",
+  "target_compatible_fraction_by_motor": {
+    "200W": 1.0
+  },
+  "target_fault_rows_used_for_calibration": 0,
+  "target_fault_rows_used_for_fit": 0,
+  "target_features": "C:\\lkc\\phd sci\\data\\processed\\transient_pmsm_features_post_reveal_implicit_time.csv.gz",
+  "target_features_sha256": "92fea2691ea737319dd43469130b0275bce596bab1e98f0bc4c391f109899ad1"
+}

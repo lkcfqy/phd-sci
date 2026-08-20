@@ -254,3 +254,14 @@ baseline. Because 44.44% is below the predeclared 80% gate, the planned two-moto
 quantitative extension remains infeasible. No 20 kW window or onset adjustment will be
 made. A 200 W-only score run may be reported only as post-reveal single-motor
 sensitivity.
+
+The permitted 200 W-only run used all 12 compatible records, record-disjoint fit and
+calibration, 67--88 calibration windows per fold, the frozen twelve methods, and five
+seeds. Every method raised zero alarms in all 60 first-second fault windows and in all
+120 available windows through 2 s, while primary-seed held-out pre-fault false alarms
+ranged from 7/176 to 13/176. The frozen Log-Euclidean detector was 8/176 health alarms,
+0/60 detection, and mean record AUROC 0.541; target MinCovDet was 9/176, 0/60, and
+0.564. This is evidence that the calibrated score did not separate the short-time fault
+transition from cross-record healthy variation on this motor; it cannot support a
+directional transfer comparison because all five thresholded method-pair differences
+were zero.

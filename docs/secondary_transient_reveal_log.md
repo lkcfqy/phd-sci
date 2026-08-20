@@ -129,3 +129,41 @@ Post-reveal artifact SHA-256 values are:
 The 296 rows from the twelve compatible 200 W records contain no non-finite numeric
 features. A 200 W-only method run is permitted only as a separately labeled
 post-reveal single-motor sensitivity; it cannot reinstate the failed two-motor claim.
+
+### 200 W-only score sensitivity
+
+The 12 fully compatible 200 W records were then evaluated with the already frozen
+leave-one-record-out scorer. Every held-out record used five or six different records
+for target-health fitting and the complementary five records for calibration; each
+calibration set contained 67--88 complete 0.2 s windows, well above the 19-window
+arithmetic minimum. No held-out record contributed to its fit or threshold.
+
+All twelve methods detected `0/60` first-second fault windows and `0/12` records with
+any first-second alarm. Detection also remained zero over all `120` available
+post-onset windows through 2 s. This was not caused by an infinite or unresolved
+threshold: the post-onset p-values were far above 0.05 (the minimum across covariance
+methods ranged from about 0.28 to 0.39). Across 176 held-out pre-fault windows, primary-
+seed false alarms ranged from `7/176` to `13/176`.
+
+The original Log-Euclidean detector produced `8/176 = 4.55%` pre-fault alarms,
+`0/60` first-second detections, and mean record AUROC 0.541. Target MinCovDet produced
+`9/176 = 5.11%`, `0/60`, and mean record AUROC 0.564. All five candidate-minus-target
+transfer contrasts were exactly zero on the thresholded detection endpoint, so this
+sensitivity does not identify positive or negative transfer. The result instead shows
+that cross-record healthy heterogeneity dominated the fault-onset score under this
+representation and calibration rule.
+
+Key score-output SHA-256 values are:
+
+- `aggregate_summary.csv`:
+  `aa4904f52069c94e3d5ddf885b63fffa54cd35b71671fc5ab85cc9ee1bede41b`;
+- `per_record_summary.csv`:
+  `b73c1260342d09d1d52546d6fbded7106e352127e80e6dacc67538d556447ad8`;
+- `window_predictions.csv.gz`:
+  `4c474ac9da88f2b34daff2bb2151939ccc2b77b004ea3e4dfb959fe5da19e3d6`;
+- `run_metadata.json`:
+  `86651d982f3cde7437c59e874ff277ed4ac2a2181da47ad89fad71323220c249`.
+
+These outputs are a post-reveal, single-physical-motor sensitivity. They do not replace
+the primary compatibility failure and are not used to claim a confirmatory third
+dataset, a population false-alarm rate, or universal detector failure.
