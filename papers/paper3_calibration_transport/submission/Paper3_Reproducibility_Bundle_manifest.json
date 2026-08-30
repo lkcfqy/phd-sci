@@ -1,0 +1,23 @@
+{
+  "bytes": 10730502,
+  "categories": {
+    "bibliography": 1,
+    "documentation": 7,
+    "environment": 1,
+    "figure": 10,
+    "module": 22,
+    "paper": 6,
+    "processed_metadata": 2,
+    "result": 30,
+    "script": 19,
+    "submission": 4,
+    "test": 18
+  },
+  "path": "papers/paper3_calibration_transport/submission/Paper3_Reproducibility_Bundle.zip",
+  "processed_signal_features_included": false,
+  "raw_signal_data_included": false,
+  "sha256": "e5c754bf20856196e90e66682c69ba1abc32e4a05d4c950945cbd3a7222a2b3e",
+  "source_file_count": 120,
+  "source_manifest_sha256": "c838331e78a77fd88985754eb871ce2f27a17220a842e23de343ba893a7e80d5",
+  "status": "built"
+}

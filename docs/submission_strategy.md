@@ -120,9 +120,9 @@ SCI/SCIE 投稿，但不能保证录用。它不适合再包装成“Log-Euclide
 - 代码、环境、下载哈希、揭盲日志、主要派生结果与图形可复现；
 - 投稿当天再次在期刊官网/Clarivate Master Journal List 核对索引和费用。
 
-## Paper 2 与博士主线
+## Paper 3 与博士主线
 
-Paper 2 不应在已揭盲外部数据上调出一个“更好方法”后直接投稿。正确路线是：
+Paper 3 不应在已揭盲外部数据上调出一个“更好方法”后直接投稿。正确路线是：
 
 1. 只用健康数据学习 speed/load-conditioned reference 或 residual score；
 2. 将 target-only MinCovDet 设为预声明主要比较器；

@@ -236,9 +236,9 @@ motor-balanced OCSVM 的区间跨 0。论文不得声称 Proposed 全面优于�
 
 ## 9. 后续博士路线
 
-- Paper 2：20 参数 PMSM 几何到周期转矩波形的 shift-aware surrogate 与曲线级 UQ；
-- Paper 3：Pyleecan/FEMM + CREATOR Case 的仿真到真实健康校准；
-- Paper 4：电磁—热—振动多物理状态更新与在线拒判。
+- Paper 2：20 参数 PMSM 几何到周期转矩波形的整曲线校准 UQ 与支持域拒判；
+- Paper 3：只用健康数据的速度/负载条件化故障残差与新电机冻结确认；
+- Paper 4：跨电机电热状态更新、LPTN 物理基线与在线拒判。
 
 目前没有公开数据同时覆盖“多电机完整几何 + 多物理场 + 故障实测 + 在线退化”。
 长期课题采用参数化仿真预训练与真实健康数据校准的组合路线。

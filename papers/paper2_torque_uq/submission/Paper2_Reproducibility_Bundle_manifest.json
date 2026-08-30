@@ -1,0 +1,22 @@
+{
+  "bytes": 8586449,
+  "categories": {
+    "bibliography": 1,
+    "documentation": 5,
+    "environment": 1,
+    "figure": 10,
+    "module": 8,
+    "paper": 5,
+    "project": 1,
+    "result": 23,
+    "script": 11,
+    "submission": 4,
+    "test": 15
+  },
+  "path": "papers\\paper2_torque_uq\\submission\\Paper2_Reproducibility_Bundle.zip",
+  "raw_data_included": false,
+  "sha256": "01b6673c3c45e2a8602198ec5a68be13b9105d2d18a0b09685bf50930ca55ecb",
+  "source_file_count": 84,
+  "source_manifest_sha256": "077e31f6c8380d56daf6259f599b2e3ccd8950604afb0b029ff65bc91f476941",
+  "status": "built"
+}

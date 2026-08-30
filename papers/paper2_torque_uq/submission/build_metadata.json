@@ -1,0 +1,35 @@
+{
+  "bibliography_sha256": "10895e82000f0522f964c213f44377d609f7b428122046793243462e8460dbc0",
+  "design": {
+    "base_preset": "narrative_proposal",
+    "body": "Times New Roman 10.5 pt, justified, 1.2 spacing",
+    "images": "inline, maximum 6.35 inches",
+    "named_override": "journal-neutral scientific manuscript",
+    "page": "US Letter portrait, 1 inch margins",
+    "tables": "9360 DXA fixed geometry, 120 DXA indent"
+  },
+  "docx": {
+    "citations": 10,
+    "figures": 5,
+    "paragraphs": 149,
+    "path": "papers\\paper2_torque_uq\\submission\\Paper2_Manuscript_Anonymous.docx",
+    "sha256": "336e726d125984bd77dc8cb19c2264b9e3b664e48c784bbd0888d07b96d689ab",
+    "tables": 5
+  },
+  "docx_structural_audit": {
+    "inline_drawings": 5,
+    "paragraphs": 149,
+    "tables": 5
+  },
+  "pdf": {
+    "citations": 10,
+    "figures": 5,
+    "pages": 15,
+    "path": "papers\\paper2_torque_uq\\submission\\Paper2_Manuscript_Anonymous.pdf",
+    "sha256": "99b3560cef8624f8cf7e7fa33974b5cd224794cda47226d3759e1d98b643e76c",
+    "tables": 5
+  },
+  "source": "papers\\paper2_torque_uq\\manuscript.md",
+  "source_sha256": "01699a7a7010f239bf900c51fa7efc02b3a4501e5e2ff47d31955c1ef8e8f6ab",
+  "status": "pass"
+}

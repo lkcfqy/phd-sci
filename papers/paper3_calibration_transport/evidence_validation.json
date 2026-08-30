@@ -1,0 +1,85 @@
+{
+  "created_utc": "2026-08-21T11:09:44.208035+00:00",
+  "status": "pass",
+  "frozen_hashes": {
+    "development_features": "c3e7e13919a8868580bd3af8c501d8f022600f5a2637460470479ad7faff4743",
+    "development_protocol_json": "a37d38937aee35ae0ed44c5c139a4e0daf54cd85a03f1e105b8cc6ab5f071ec9",
+    "development_selection": "1cccd12c8d7b8d4c6ad40b0a96ebd46ec839739b84b30512a8d4b7ca77324bf5",
+    "confirmation_protocol": "4fc0d12e1e69c09776f8c0f691eddf38552bdf2f7512dc71c426103cc349bfd9",
+    "confirmation_inventory": "4890f864e40fc3345f5af37364a6acf7d854af4ab94b57ebc73e2def94a36914",
+    "confirmation_features": "78bbc520ada5bcfe6f3dc419968e64892aaba48743f5976443cdf4f136346040",
+    "confirmation_primary": "f119fde0c7bc6625abc43d68769602305bf24e0e949a3f7c5e301b36634a63cb"
+  },
+  "development": {
+    "methods": 7,
+    "selected_method": "spline_residual",
+    "primary_health_alarms": 1,
+    "primary_health_blocks": 48,
+    "primary_fault_detected_blocks": 237,
+    "primary_fault_blocks": 288
+  },
+  "independent_confirmation": {
+    "calibration_windows": 39,
+    "pre_fault_records": 216,
+    "pre_fault_sessions_with_alarm": 71,
+    "fault_records": 216,
+    "fault_records_detected": 156,
+    "detected_by_first_window": 127,
+    "detected_by_second_window_only": 29,
+    "censored_beyond_0p4s": 60,
+    "fault_records_abstained": 0,
+    "pre_fault_session_far": 0.3287037037037037,
+    "fault_record_detection": 0.7222222222222222,
+    "all_frozen_methods_fail_far_gate": true
+  },
+  "post_reveal": {
+    "session_anchor": {
+      "records": 216,
+      "false_alarms": 17,
+      "far": 0.0787037037037037,
+      "detected": 167,
+      "detection": 0.7731481481481481
+    },
+    "matched_anchor": {
+      "records": 216,
+      "false_alarms": 14,
+      "far": 0.06481481481481481,
+      "detected": 153,
+      "detection": 0.7083333333333334
+    },
+    "conditioned_anchor": {
+      "records": 216,
+      "false_alarms": 18,
+      "far": 0.08333333333333333,
+      "detected": 154,
+      "detection": 0.7129629629629629
+    }
+  },
+  "manuscript": {
+    "word_count_approximate": 5240,
+    "citation_count": 28,
+    "manuscript_sha256": "6ef3f4991a0ec030b7b34faddfa0c4dec92bfcbd489aa32b9abc46cd8caa12c3",
+    "figure_hashes": {
+      "paper3_method_transport": {
+        "png": "8c94d22044e0331c56994980c982f4f8ef4a065a255cb7bac3d5f9fb28dd850d",
+        "pdf": "696d93b0043e3be73202bc650d852c050ec067553897ddda054157c3716a229f"
+      },
+      "paper3_session_repair": {
+        "png": "e6e8783684e3ef368e2afe8d7b5189a7f8eddc47adc88a783e441d6872d182fd",
+        "pdf": "06572198f837a9f196f2ca06ea7e728ad6dc75e7a6e7512a70cae3e96ebe408c"
+      },
+      "paper3_topology_fold_stability": {
+        "png": "8813d092d31a78954590393ef2509790d60e543621d80daa33e96b983bcf2e47",
+        "pdf": "52111de89de9e79517a6607e90925f2e9ffeb7f4ec6e443bee71712dc26bd0f6"
+      },
+      "paper3_condition_heatmap": {
+        "png": "d5a87713848021cca56bb2568b0e68b6c586105db9efa1f95c12e972e8dd603d",
+        "pdf": "e426344190395e5aff216b6b2bed4698ecf52b063e5dd4e41759d154a874a805"
+      },
+      "paper3_first_alarm": {
+        "png": "ff2a39ad8bf94274188f7663f0132a7fb3fc95b3ecd2c7908c430b202aa069ad",
+        "pdf": "c7c98bd306a67c6e2832c7e8d546dce7d801ce005d005de7379b46dbd2b8ff22"
+      }
+    }
+  }
+}

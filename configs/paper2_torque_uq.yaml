@@ -1,0 +1,79 @@
+paper:
+  identifier: paper2_curvewise_torque_uq
+  working_title: >-
+    Curvewise Conformal Risk Control for Periodic PMSM Torque Surrogates
+    under Design-Distribution Shift
+
+source:
+  dataset_doi: 10.5281/zenodo.15688397
+  article_doi: 10.1007/s00366-025-02123-1
+  license: GPL-3.0-or-later
+  machine_scope: one 2D quarter-symmetry PMSM simulation model
+  designs:
+    train_test_uniform: 2000
+    uq_uniform: 11250
+    uq_gaussian: 10000
+  geometry_parameters: 20
+  torque_points: 120
+  torque_period_degrees: 30
+
+roles:
+  published_train_test_first_1800:
+    fit: 1200
+    split_conformal_calibration: 600
+  published_train_test_last_200: internal_uniform_test
+  uq_uniform: large_uniform_evaluation
+  uq_gaussian: density_shift_evaluation
+  split_seeds: [20260821, 1201, 2402, 3603, 4804]
+
+surrogate:
+  retained_fourier_components: 11
+  models: [poly2_ridge, rbf_kernel_ridge, ard_gaussian_process, extra_trees]
+  selection: three_fold_fit_only_waveform_mae
+  forbidden_selection_data: [calibration_torque, internal_test_torque, uq_uniform_torque, uq_gaussian_torque]
+
+uncertainty:
+  primary_alpha: 0.10
+  sensitivity_alpha: 0.05
+  score: maximum_absolute_error_over_120_angles
+  bands: [global_split_conformal, geometry_scaled_split_conformal]
+  geometry_scale:
+    distance: fifth_nearest_fit_design
+    normalization: median_leave_one_out_fifth_neighbour_distance
+    floor: 0.25
+  support_test:
+    score: fifth_nearest_fit_design_distance
+    p_value: upper_tail_split_conformal
+    alpha: 0.05
+
+covariate_shift_comparator:
+  status: post_primary_result_diagnostic
+  targets: [uq_uniform, uq_gauss]
+  target_covariate_partition: disjoint_half_density_ratio_fit_half_band_evaluation
+  density_ratio:
+    estimator: balanced_quadratic_logistic_domain_classifier
+    selection: three_fold_domain_label_log_loss
+    torque_labels_used: false
+  weighted_quantile: test_likelihood_ratio_mass_at_positive_infinity
+  required_diagnostics:
+    - heldout_domain_auc
+    - calibration_weight_effective_sample_size
+    - maximum_normalized_calibration_weight
+    - finite_band_rate
+  claim_limit: estimated_weights_do_not_create_an_exact_distribution_free_guarantee
+
+primary_metrics:
+  - simultaneous_curve_coverage
+  - mean_band_half_width
+  - coverage_by_geometry_distance_quintile
+  - support_rejection_rate
+  - accepted_set_curve_coverage
+  - waveform_mae
+  - torque_ripple_mae
+
+claim_limits:
+  - no hardware validation
+  - no cross-topology or cross-machine claim
+  - no distribution-free guarantee under the Gaussian density shift
+  - no claim that the Fourier surrogate is novel
+  - aggregate feasibility results were inspected before protocol v1 was frozen

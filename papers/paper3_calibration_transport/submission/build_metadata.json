@@ -1,0 +1,35 @@
+{
+  "bibliography_sha256": "a662945cfb72f064438de58637f957790caa522d43544968a7b7a154751c3706",
+  "design": {
+    "base_preset": "narrative_proposal",
+    "body": "Times New Roman 10.5 pt, justified, 1.2 spacing",
+    "images": "inline, maximum 6.35 inches",
+    "named_override": "journal-neutral scientific manuscript",
+    "page": "US Letter portrait, 1 inch margins",
+    "tables": "9360 DXA fixed geometry, 120 DXA indent"
+  },
+  "docx": {
+    "citations": 28,
+    "figures": 5,
+    "paragraphs": 150,
+    "path": "papers\\paper3_calibration_transport\\submission\\Paper3_Manuscript_Anonymous.docx",
+    "sha256": "72bfa2e35d7c4c4cc8c321541976ebe88f9857e93d02e0b386d8837553f0f55c",
+    "tables": 5
+  },
+  "docx_structural_audit": {
+    "inline_drawings": 5,
+    "paragraphs": 150,
+    "tables": 5
+  },
+  "pdf": {
+    "citations": 28,
+    "figures": 5,
+    "pages": 16,
+    "path": "papers\\paper3_calibration_transport\\submission\\Paper3_Manuscript_Anonymous.pdf",
+    "sha256": "0bb9c7830b14f52ba143e0e9b9fbfd7e01cbb5ae2ead7980f20e01aa42b9c703",
+    "tables": 5
+  },
+  "source": "papers\\paper3_calibration_transport\\manuscript.md",
+  "source_sha256": "6ef3f4991a0ec030b7b34faddfa0c4dec92bfcbd489aa32b9abc46cd8caa12c3",
+  "status": "pass"
+}
